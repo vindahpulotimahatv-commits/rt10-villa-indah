@@ -1,0 +1,354 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123a6b"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" href="assets/icon-192.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RT10 Villa Indah"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Daftar Hadir & Doorprize | SIAGA</title><style>
+:root{
+  --green:#123a6b;
+  --green2:#1c4a86;
+  --green3:#081c38;
+  --mint:#e7edf9;
+  --mint2:#dbe6f9;
+  --gold:#d5a62b;
+  --cream:#fff7e8;
+  --blue:#315f9e;
+  --red:#c74444;
+  --ink:#12213f;
+  --muted:#59657f;
+  --line:#dbe2f0;
+  --bg:#eef1f9;
+  --white:#fff;
+  --shadow:0 14px 40px rgba(10,25,56,.10);
+  --shadow-lg:0 30px 80px rgba(5,15,36,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    linear-gradient(180deg,rgba(6,16,36,.72),rgba(8,20,44,.55) 40%,rgba(10,25,56,.85)),
+    url("assets/bg-navy.jpg") center top/cover no-repeat fixed;
+  color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  padding-bottom:0;
+}
+a{text-decoration:none;color:inherit}
+button,input,textarea,select{font:inherit}
+img,svg{max-width:100%;display:block}
+.container{width:min(760px,calc(100% - 34px));margin:auto}
+
+.header-banner{display:block;line-height:0;background:#081428}
+.header-banner img{width:100%;height:auto;max-height:260px;object-fit:cover;display:block}
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:linear-gradient(180deg,rgba(8,20,44,.94),rgba(10,26,58,.88));backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(213,166,43,.28);
+  box-shadow:0 12px 30px rgba(3,10,26,.35)
+}
+.nav{display:flex;align-items:center;justify-content:center;min-height:60px;gap:20px}
+.brand{display:flex;align-items:center;gap:13px;font-weight:950;color:#fff}
+.brand-mark{
+  width:50px;height:50px;border-radius:50%;object-fit:cover;display:block;
+  box-shadow:0 0 0 2px rgba(213,166,43,.6),0 10px 22px rgba(3,10,26,.55);
+  background:radial-gradient(circle,#123a6b,#081c38)
+}
+.brand small{display:block;color:#d5a62b;font-size:10px;letter-spacing:1px;font-weight:800;margin-top:3px;text-transform:uppercase}
+.back-link{font-size:12px;font-weight:900;color:#f3cf6a;display:flex;align-items:center;gap:6px}
+
+.hero{
+  position:relative;overflow:hidden;padding:52px 0 44px;color:#fff;text-align:center;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(213,166,43,.30),transparent 22%),
+    linear-gradient(135deg,#081c38 0%,#123a6b 50%,#2a5fa8 100%);
+}
+.hero:before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:34px 34px;mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+.hero>*{position:relative;z-index:2}
+.kicker{display:inline-flex;gap:8px;align-items:center;padding:9px 12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.7px}
+.hero h1{font-size:clamp(30px,6vw,46px);line-height:1.05;letter-spacing:-1.5px;margin:16px 0 10px}
+.hero p{max-width:520px;margin:0 auto;font-size:15px;line-height:1.7;color:rgba(255,255,255,.85)}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px}
+.info-chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:8px 12px;border-radius:999px;font-size:11.5px;font-weight:800}
+
+.section{padding:34px 0 60px}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:0 10px 30px rgba(10,25,56,.05);margin-top:-40px;position:relative;z-index:3}
+.form-card h2{margin:0 0 4px;font-size:20px}
+.form-card .sub{margin:0 0 20px;color:var(--muted);font-size:13px;line-height:1.6}
+.field{display:grid;gap:7px;margin-bottom:14px}
+label{font-size:11px;font-weight:900;color:#445069}
+input{width:100%;border:1px solid var(--line);background:#f8f9fc;padding:14px 15px;border-radius:13px;outline:none;color:var(--ink);font-size:15px}
+input:focus{border-color:#7d9fd6;box-shadow:0 0 0 4px rgba(18,58,107,.08)}
+.autocomplete-field{position:relative}
+.suggest-list{
+  display:none;position:absolute;left:0;right:0;top:100%;margin-top:6px;z-index:60;
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 16px 38px rgba(3,10,26,.2);max-height:320px;overflow-y:auto;padding:6px;
+  scrollbar-width:thin
+}
+.suggest-list.show{display:block}
+.suggest-count{
+  position:sticky;top:0;background:#fff;padding:8px 12px 9px;margin:-6px -6px 4px;
+  font-size:10.5px;font-weight:900;color:var(--muted);letter-spacing:.3px;
+  border-bottom:1px solid var(--line);text-transform:uppercase;
+  display:flex;align-items:center;justify-content:space-between
+}
+.suggest-count span.hint{color:#c49325;text-transform:none;font-weight:800}
+.suggest-item{padding:11px 12px;border-radius:10px;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer}
+.suggest-item:hover,.suggest-item.active{background:var(--mint);color:var(--green)}
+.suggest-empty{padding:11px 12px;font-size:12.5px;color:var(--muted)}
+.btn{width:100%;min-height:52px;padding:0 18px;border:none;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:900;cursor:pointer;transition:.2s;font-size:15px}
+.btn:hover{transform:translateY(-2px)}
+.btn:disabled{opacity:.6;cursor:default;transform:none}
+.btn-gold{background:var(--gold);color:#231e11}
+.note{margin-top:14px;font-size:11.5px;color:var(--muted);line-height:1.6;text-align:center}
+.note b{color:#445069}
+
+.state-card{display:none;text-align:center;padding:10px 4px}
+.state-card .emoji{font-size:46px;margin-bottom:10px}
+.state-card h2{margin:0 0 8px}
+.state-card p{color:var(--muted);font-size:13.5px;line-height:1.7;margin:0 0 18px}
+.state-card .rumah-badge{display:inline-flex;gap:6px;background:var(--mint);color:var(--green);padding:8px 14px;border-radius:999px;font-weight:900;font-size:13px;margin-bottom:16px}
+.link-reset{font-size:12px;color:var(--muted)}
+.link-reset a{color:var(--green);font-weight:800}
+
+.warn-card{background:var(--cream);border:1px solid #ecd8a0;border-radius:18px;padding:16px;font-size:12.5px;color:#5c4c1a;line-height:1.6;display:none;margin-bottom:16px}
+
+.toast{position:fixed;left:50%;transform:translate(-50%,14px);bottom:22px;background:#0e2c56;color:#fff;padding:12px 16px;border-radius:14px;font-size:12.5px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:200;max-width:88%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:640px){
+  .container{width:min(100% - 22px,760px)}
+  .hero{padding:40px 0 40px}
+  .form-card{margin-top:-30px;padding:20px}
+}
+</style>
+</head><body>
+<a class="header-banner" href="index.html"><img src="assets/header-banner.jpg" alt="SIAGA - Sistem Informasi & Administrasi Warga RT 10 / RW 021" loading="lazy"></a>
+<header class="site-header">
+  <div class="container nav">
+    <a class="back-link" href="index.html">← Beranda</a>
+  </div>
+</header>
+<main>
+<section class="hero">
+  <div class="container">
+    <span class="kicker">🎉 <span id="hAcara">Acara RT 10</span></span>
+    <h1>Daftar Hadir & Undian Doorprize</h1>
+    <p>Isi nama & nomor rumah untuk absen kehadiran sekaligus otomatis ikut undian doorprize spin malam ini.</p>
+    <div class="chip-row">
+      <span class="info-chip">📅 <span id="hTanggal">-</span></span>
+      <span class="info-chip">📍 <span id="hLokasi">-</span></span>
+    </div>
+  </div>
+</section>
+<section class="section"><div class="container">
+
+  <div id="warnCard" class="warn-card">⚠️ Fitur ini belum dikonfigurasi admin RT (alamat penyimpanan data belum diisi di <code>config.js</code>). Hubungi panitia.</div>
+
+  <div id="formCard" class="form-card">
+    <h2>Isi Daftar Hadir</h2>
+    <p class="sub">Cukup isi sekali per rumah ya — data ini yang akan dipakai panitia saat spin doorprize.</p>
+    <form id="hadirForm">
+      <div class="field"><label>Nama Lengkap</label><input id="fNama" required placeholder="Contoh: Budi Santoso" autocomplete="name"></div>
+      <div class="field autocomplete-field"><label>Blok / No. Rumah</label><input id="fRumah" required placeholder="Ketik untuk mencari, contoh: A1 No.1" autocomplete="off"><div id="rumahSuggest" class="suggest-list"></div></div>
+      <button class="btn btn-gold" type="submit" id="btnSubmit">✅ Daftar & Ikut Undian</button>
+      <p class="note">Dengan mengisi form ini, kamu terdaftar hadir di acara <b id="hAcara2">Acara RT 10</b> dan otomatis masuk daftar undian doorprize. <b>1 rumah hanya bisa mengisi 1 kali.</b> Nomor rumah diambil dari data induk RT — mulai ketik untuk melihat saran.</p>
+    </form>
+  </div>
+
+  <div id="successCard" class="form-card state-card">
+    <div class="emoji">🎊</div>
+    <h2>Terima kasih sudah terdaftar!</h2>
+    <div class="rumah-badge">🏠 <span id="sRumah">-</span> · <span id="sNama">-</span></div>
+    <p>Kamu resmi hadir dan sudah masuk daftar undian doorprize. Sampai jumpa di acara nanti — pantau layar panitia saat sesi spin doorprize dimulai!</p>
+    <p class="link-reset">Bukan rumahmu / mau isi ulang? <a href="#" id="linkReset">Klik di sini</a></p>
+  </div>
+
+  <div id="dupCard" class="form-card state-card">
+    <div class="emoji">🏠</div>
+    <h2>Rumah ini sudah terdaftar</h2>
+    <p>Sepertinya rumah <b id="dRumah">-</b> sudah mengisi daftar hadir sebelumnya (mungkin diisi anggota keluarga lain). Satu rumah cukup satu kali pendaftaran.</p>
+    <p class="link-reset">Salah input nomor rumah? <a href="#" id="linkDupReset">Coba isi ulang</a></p>
+  </div>
+
+</div></section>
+</main>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
+<script src="config.js"></script>
+<script>
+var LS_KEY = "rt10_doorprize_daftar";
+var db = null;
+
+function firebaseReady_(){
+  var cfg = RT_CONFIG.firebaseConfig || {};
+  return !!(cfg.apiKey && cfg.databaseURL && cfg.appId);
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  document.getElementById("hAcara").textContent = RT_CONFIG.namaAcaraDoorprize || "Acara RT 10";
+  document.getElementById("hAcara2").textContent = RT_CONFIG.namaAcaraDoorprize || "acara RT 10";
+  document.getElementById("hTanggal").textContent = RT_CONFIG.tanggalAcaraDoorprize || "-";
+  document.getElementById("hLokasi").textContent = RT_CONFIG.lokasiAcaraDoorprize || "-";
+
+  if (!firebaseReady_()) {
+    document.getElementById("warnCard").style.display = "block";
+    document.getElementById("formCard").style.display = "none";
+    return;
+  }
+  firebase.initializeApp(RT_CONFIG.firebaseConfig);
+  db = firebase.database();
+
+  populateRumahOptions_();
+
+  var saved = readSaved_();
+  if (saved) {
+    showSuccess_(saved.nama, saved.rumah);
+  }
+
+  document.getElementById("linkReset").addEventListener("click", function(e){
+    e.preventDefault();
+    clearSaved_();
+    showForm_();
+  });
+  document.getElementById("linkDupReset").addEventListener("click", function(e){
+    e.preventDefault();
+    showForm_();
+  });
+
+  document.getElementById("hadirForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var nama = document.getElementById("fNama").value.trim();
+    var rumahInput = document.getElementById("fRumah").value.trim();
+    if (!nama || !rumahInput) return;
+
+    var rumah = matchRumah_(rumahInput);
+    if (!rumah) {
+      showToast("Nomor rumah tidak ditemukan di daftar. Pilih dari saran yang muncul saat mengetik ya.");
+      return;
+    }
+
+    var btn = document.getElementById("btnSubmit");
+    btn.disabled = true; btn.textContent = "Mengirim...";
+
+    var docId = normalizeRumah_(rumah);
+    var ref = db.ref("daftarHadir/" + docId);
+    var isDuplicate = false;
+
+    ref.transaction(function(current){
+      if (current !== null) {
+        isDuplicate = true;
+        return; // abort transaction, tidak menimpa data yang sudah ada
+      }
+      return {
+        nama: nama,
+        rumah: rumah,
+        waktu: firebase.database.ServerValue.TIMESTAMP,
+        status: "belum"
+      };
+    })
+    .then(function(result){
+      if (isDuplicate || !result.committed) {
+        document.getElementById("dRumah").textContent = rumah;
+        showState_("dupCard");
+      } else {
+        writeSaved_(nama, rumah);
+        showSuccess_(nama, rumah);
+      }
+    })
+    .catch(function(){
+      showToast("Tidak bisa terhubung ke server. Periksa koneksi internet lalu coba lagi.");
+    })
+    .finally(function(){
+      btn.disabled = false; btn.textContent = "✅ Daftar & Ikut Undian";
+    });
+  });
+});
+
+function populateRumahOptions_(){
+  var input = document.getElementById("fRumah");
+  var box = document.getElementById("rumahSuggest");
+  var list = RT_CONFIG.daftarRumah || [];
+
+  function render(query){
+    var q = String(query || "").trim().toLowerCase();
+    var matches = q
+      ? list.filter(function(r){ return r.toLowerCase().indexOf(q) !== -1; })
+      : list.slice();
+    var countBar = '<div class="suggest-count"><span>' + matches.length + ' dari ' + list.length + ' rumah</span>' +
+      (matches.length > 6 ? '<span class="hint">↓ Scroll untuk lihat semua</span>' : '') + '</div>';
+    if (matches.length === 0) {
+      box.innerHTML = countBar + '<div class="suggest-empty">Tidak ditemukan. Coba ketik blok atau nomor saja, misal "A1" atau "12".</div>';
+    } else {
+      box.innerHTML = countBar + matches.map(function(r){
+        return '<div class="suggest-item" data-val="' + esc_(r) + '">' + esc_(r) + '</div>';
+      }).join("");
+    }
+    box.classList.add("show");
+  }
+
+  input.addEventListener("focus", function(){ render(input.value); });
+  input.addEventListener("input", function(){ render(input.value); });
+  input.addEventListener("blur", function(){
+    setTimeout(function(){ box.classList.remove("show"); }, 180);
+  });
+  box.addEventListener("click", function(e){
+    var item = e.target.closest(".suggest-item");
+    if (!item) return;
+    input.value = item.getAttribute("data-val");
+    box.classList.remove("show");
+  });
+}
+function esc_(s){
+  return String(s || "").replace(/[&<>"']/g, function(c){
+    return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+  });
+}
+// Dipakai sebagai key Realtime Database supaya 1 rumah = 1 entri (anti-duplikat).
+function normalizeRumah_(v){
+  return String(v || "").trim().toLowerCase().replace(/[.#$\[\]\/\s]/g, "");
+}
+// Cocokkan input warga dengan daftar rumah resmi (abaikan besar/kecil huruf & spasi).
+// Kalau daftarRumah belum diisi admin, kembalikan apa adanya (mode ketik bebas).
+function matchRumah_(input){
+  var list = RT_CONFIG.daftarRumah || [];
+  if (!list.length) return input;
+  var key = input.toLowerCase().replace(/\s+/g, "");
+  for (var i = 0; i < list.length; i++) {
+    if (String(list[i]).toLowerCase().replace(/\s+/g, "") === key) return list[i];
+  }
+  return null;
+}
+
+function showForm_(){ showState_("formCard"); }
+function showSuccess_(nama, rumah){
+  document.getElementById("sNama").textContent = nama;
+  document.getElementById("sRumah").textContent = rumah;
+  showState_("successCard");
+}
+function showState_(id){
+  ["formCard","successCard","dupCard"].forEach(function(c){
+    document.getElementById(c).style.display = (c === id) ? "block" : "none";
+  });
+}
+function readSaved_(){
+  try { return JSON.parse(localStorage.getItem(LS_KEY) || "null"); } catch(e){ return null; }
+}
+function writeSaved_(nama, rumah){
+  try { localStorage.setItem(LS_KEY, JSON.stringify({ nama: nama, rumah: rumah })); } catch(e){}
+}
+function clearSaved_(){
+  try { localStorage.removeItem(LS_KEY); } catch(e){}
+}
+function showToast(msg){
+  var t = document.querySelector(".toast");
+  if (!t) { t = document.createElement("div"); t.className = "toast"; document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add("show");
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(function(){ t.classList.remove("show"); }, 3200);
+}
+</script>
+</body></html>

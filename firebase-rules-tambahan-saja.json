@@ -1,0 +1,32 @@
+{
+  "iuranTambahan": {
+    ".read": true,
+    "$kid": {
+      ".write": "auth != null && (auth.uid == 'tf5odbdmavXVG1haJCOi6bfNFGe2' || auth.uid == 'ojdTuXdfYeebSlQpOWD2XK9l3V03')",
+      ".validate": "newData.hasChildren(['judul','aktif']) && newData.child('judul').isString() && newData.child('judul').val().length >= 3 && newData.child('judul').val().length <= 80 && newData.child('aktif').isBoolean() && (!newData.child('nominal').exists() || (newData.child('nominal').isNumber() && newData.child('nominal').val() > 0 && newData.child('nominal').val() <= 100000000)) && (!newData.child('target').exists() || (newData.child('target').isNumber() && newData.child('target').val() > 0 && newData.child('target').val() <= 10000000000))"
+    }
+  },
+  "iuranTambahanBayar": {
+    ".read": "auth != null && (auth.uid == 'tf5odbdmavXVG1haJCOi6bfNFGe2' || auth.uid == 'ojdTuXdfYeebSlQpOWD2XK9l3V03' || auth.uid == 'BzPvHZZnVrh9WnnuOJPlQHZ3bpN2')",
+    "$kid": {
+      "$pid": {
+        ".write": "auth != null && (auth.uid == 'tf5odbdmavXVG1haJCOi6bfNFGe2' || auth.uid == 'ojdTuXdfYeebSlQpOWD2XK9l3V03' || (auth.uid == 'BzPvHZZnVrh9WnnuOJPlQHZ3bpN2' && ((!data.exists() && newData.child('status').val() == 'cash_menunggu') || (data.exists() && !newData.exists() && data.child('status').val() == 'cash_menunggu'))))",
+        ".validate": "newData.hasChildren(['rumah','jumlah','metode','status','petugas']) && newData.child('rumah').isString() && newData.child('jumlah').isNumber() && newData.child('jumlah').val() > 0 && newData.child('jumlah').val() <= 100000000 && (newData.child('metode').val() == 'cash' || newData.child('metode').val() == 'transfer') && (newData.child('status').val() == 'cash_menunggu' || newData.child('status').val() == 'lunas_cash' || newData.child('status').val() == 'lunas_transfer') && newData.child('petugas').isString()"
+      }
+    }
+  },
+  "laporTambahan": {
+    ".read": "auth != null && (auth.uid == 'tf5odbdmavXVG1haJCOi6bfNFGe2' || auth.uid == 'ojdTuXdfYeebSlQpOWD2XK9l3V03')",
+    "$id": {
+      ".write": "(!data.exists() && newData.child('status').val() == 'menunggu') || (auth != null && (auth.uid == 'tf5odbdmavXVG1haJCOi6bfNFGe2' || auth.uid == 'ojdTuXdfYeebSlQpOWD2XK9l3V03'))",
+      ".validate": "newData.hasChildren(['kid','rumah','jumlah','status']) && newData.child('rumah').isString() && newData.child('jumlah').isNumber() && newData.child('jumlah').val() > 0 && newData.child('jumlah').val() <= 100000000 && (newData.child('status').val() == 'menunggu' || newData.child('status').val() == 'dicatat' || newData.child('status').val() == 'ditolak')"
+    }
+  },
+  "laporTambahanBukti": {
+    ".read": "auth != null && (auth.uid == 'tf5odbdmavXVG1haJCOi6bfNFGe2' || auth.uid == 'ojdTuXdfYeebSlQpOWD2XK9l3V03')",
+    "$id": {
+      ".write": "!data.exists() || (auth != null && (auth.uid == 'tf5odbdmavXVG1haJCOi6bfNFGe2' || auth.uid == 'ojdTuXdfYeebSlQpOWD2XK9l3V03'))",
+      ".validate": "newData.hasChildren(['foto']) && newData.child('foto').isString() && newData.child('foto').val().length < 400000"
+    }
+  }
+}

@@ -1,0 +1,1393 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123a6b"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" href="assets/icon-192.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RT10 Villa Indah"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="robots" content="noindex,nofollow">
+<title>Humas | SIAGA</title><style>
+:root{
+  --green:#123a6b; --green2:#1c4a86; --green3:#081c38;
+  --mint:#e7edf9; --mint2:#dbe6f9;
+  --gold:#d5a62b; --cream:#fff7e8; --blue:#315f9e; --red:#c74444;
+  --ink:#12213f; --muted:#59657f; --line:#dbe2f0; --bg:#eef1f9; --white:#fff;
+  --shadow:0 14px 40px rgba(10,25,56,.10); --shadow-lg:0 30px 80px rgba(5,15,36,.18);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    linear-gradient(180deg,rgba(6,16,36,.72),rgba(8,20,44,.55) 40%,rgba(10,25,56,.85)),
+    url("assets/bg-navy.jpg") center top/cover no-repeat fixed;
+  color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  min-height:100vh
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(760px,calc(100% - 28px));margin:auto}
+.topbar{
+  position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(8,20,44,.94),rgba(10,26,58,.88));backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(213,166,43,.28);padding:14px 0;box-shadow:0 12px 30px rgba(3,10,26,.35)
+}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:950;color:#fff;font-size:13px}
+.brand-mark{width:38px;height:38px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 2px rgba(213,166,43,.6)}
+.badge-panitia{background:#fdeaea;color:var(--red);font-size:10px;font-weight:900;padding:5px 9px;border-radius:999px;letter-spacing:.4px}
+.back-link{font-size:12px;font-weight:900;color:#f3cf6a}
+.gate-wrap{min-height:calc(100vh - 68px);display:flex;align-items:center;justify-content:center;padding:30px 14px}
+.gate-card{background:#fff;border-radius:26px;padding:34px 26px;max-width:380px;width:100%;box-shadow:var(--shadow-lg);text-align:center}
+.gate-card .emoji{font-size:38px;margin-bottom:10px}
+.gate-card h2{margin:0 0 6px;font-size:20px}
+.gate-card p{margin:0 0 20px;color:var(--muted);font-size:13px;line-height:1.6}
+.gate-card input{width:100%;border:1px solid var(--line);background:#f8f9fc;padding:14px 15px;border-radius:13px;outline:none;color:var(--ink);font-size:15px;margin-bottom:12px;font-family:inherit}
+.gate-card input:focus{border-color:#7d9fd6;box-shadow:0 0 0 4px rgba(18,58,107,.08)}
+.gate-card .err{color:var(--red);font-size:12px;font-weight:800;margin:-4px 0 12px;display:none}
+.btn{width:100%;min-height:50px;padding:0 18px;border:none;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:900;cursor:pointer;transition:.2s;font-size:15px}
+.btn:hover{transform:translateY(-2px)}
+.btn:disabled{opacity:.6;cursor:default;transform:none}
+.btn-gold{background:var(--gold);color:#231e11}
+.btn-brand{background:var(--green);color:#fff}
+.btn-ghost{background:#fdeaea;color:var(--red)}
+.btn-line{background:#fff;color:var(--green);border:1.5px solid var(--line)}
+.btn-sm{min-height:38px;font-size:12.5px;padding:0 14px;border-radius:11px;width:auto}
+#dashboard{display:none;padding:18px 0 90px}
+.warn-card{background:#fff7e8;border:1px solid #ecd8a0;border-radius:18px;padding:16px;color:#5c4c1a;font-size:13px;margin-bottom:16px;line-height:1.6}
+.petugas-bar{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.12);color:#fff;border-radius:16px;padding:12px 16px;margin-bottom:12px;font-size:13px}
+.petugas-bar b{color:#f3cf6a}
+.bulan-bar{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:var(--shadow)}
+.bulan-bar label{font-size:12px;font-weight:900;color:var(--muted)}
+.bulan-bar input{border:1px solid var(--line);background:#f8f9fc;padding:9px 12px;border-radius:11px;outline:none;color:var(--ink);font-size:14px;font-family:inherit}
+.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.summary-grid .sg-item{background:#fff;border-radius:16px;padding:12px 8px;text-align:center;box-shadow:var(--shadow)}
+.summary-grid .sg-item span{display:block;font-size:9.5px;color:var(--muted);font-weight:800;margin-bottom:5px;text-transform:uppercase;letter-spacing:.3px}
+.summary-grid .sg-item strong{display:block;font-size:16px;color:var(--green)}
+.summary-grid .sg-item.lunas strong{color:#1c8a4e}
+.summary-grid .sg-item.belum strong{color:var(--red)}
+.setor-banner{background:linear-gradient(145deg,var(--green2),var(--green3));border-radius:18px;padding:14px 16px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#fff;box-shadow:var(--shadow-lg)}
+.setor-banner div{font-size:12px}
+.setor-banner b{display:block;font-size:17px;color:#f3cf6a;margin-top:2px}
+.search-box{width:100%;border:1px solid var(--line);background:#fff;padding:13px 15px;border-radius:14px;outline:none;color:var(--ink);font-size:15px;margin-bottom:12px;box-shadow:var(--shadow);font-family:inherit}
+.list-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:8px;box-shadow:0 10px 30px rgba(10,25,56,.08);margin-bottom:16px}
+.list-card .list-title{padding:12px 14px 6px;font-size:12px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+.rumah-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px;border-top:1px solid var(--line);cursor:pointer}
+.rumah-row:first-of-type{border-top:0}
+.rumah-row:active{background:#f6f8fd}
+.rumah-row h4{margin:0 0 3px;font-size:14.5px}
+.rumah-row p{margin:0;font-size:12px;color:var(--muted)}
+.status-pill{flex:0 0 auto;font-size:10.5px;font-weight:900;padding:6px 10px;border-radius:999px;text-align:center;white-space:nowrap}
+.status-pill.belum{background:#eef1f9;color:var(--muted)}
+.status-pill.proses{background:#fff7e8;color:#8a6a10}
+.status-pill.lunas{background:#e3f6ec;color:#1c8a4e}
+.status-pill.masalah{background:#fdeaea;color:var(--red)}
+.empty-note{padding:22px 14px;text-align:center;color:var(--muted);font-size:13px}
+.setoran-row{padding:13px 14px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.setoran-row:first-of-type{border-top:0}
+.setoran-row h4{margin:0 0 3px;font-size:13.5px}
+.setoran-row p{margin:0;font-size:11.5px;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,10px);background:#0b2144;color:#fff;padding:12px 18px;border-radius:14px;font-size:13px;font-weight:800;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:.25s;z-index:220;max-width:88%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+/* ---------- Modal transaksi (bottom sheet) ---------- */
+.modal-scrim{position:fixed;inset:0;background:rgba(6,14,32,.55);z-index:200;display:none}
+.modal-scrim.open{display:block}
+.modal-sheet{
+  position:fixed;left:0;right:0;bottom:0;z-index:201;background:#fff;border-radius:26px 26px 0 0;
+  max-height:92vh;overflow-y:auto;padding:20px 20px calc(24px + env(safe-area-inset-bottom,0px));
+  transform:translateY(100%);transition:transform .25s;box-shadow:0 -20px 60px rgba(0,0,0,.35)
+}
+.modal-sheet.open{transform:translateY(0)}
+.modal-handle{width:44px;height:5px;background:var(--line);border-radius:99px;margin:0 auto 14px}
+.modal-sheet h3{margin:0 0 2px;font-size:17px}
+.modal-sheet .msub{margin:0 0 16px;color:var(--muted);font-size:12.5px}
+.mfield{display:grid;gap:6px;margin-bottom:14px}
+.mfield label{font-size:11px;font-weight:900;color:#445069}
+.mfield input,.mfield select,.mfield textarea{width:100%;border:1px solid var(--line);background:#f8f9fc;padding:12px 13px;border-radius:12px;outline:none;color:var(--ink);font-size:14px;font-family:inherit}
+.mfield textarea{min-height:64px;resize:vertical}
+.mchk{display:flex;align-items:flex-start;gap:10px;background:var(--mint);border-radius:14px;padding:12px 14px;margin-bottom:14px;font-size:13px;line-height:1.5}
+.mchk input{width:18px;height:18px;margin-top:2px;flex:0 0 auto}
+.mtotal{background:var(--cream);border:1px solid #ecd8a0;border-radius:14px;padding:12px 14px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+.mtotal span{font-size:12px;color:#8a6a10;font-weight:800}
+.mtotal strong{font-size:19px;color:#5c4c1a}
+.status-now{background:var(--mint2);border-radius:12px;padding:10px 12px;font-size:12px;margin-bottom:14px;color:var(--green)}
+.msheet-actions{display:grid;gap:10px}
+.mclose{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;border:none;background:#f2f5fb;color:var(--muted);font-weight:900;cursor:pointer}
+.kwitansi-file{margin:0 0 4px;font-size:12px;color:var(--muted);text-align:center}
+@media(max-width:420px){.summary-grid{grid-template-columns:1fr 1fr}.summary-grid .sg-item:last-child{grid-column:1/-1}}
+
+/* ===== FIX TAMPILAN HP: cegah zoom otomatis iPhone + saran rumah otomatis ===== */
+html,body{overflow-x:hidden}
+@media(max-width:700px){input,select,textarea{font-size:16px!important}}
+.bulan-bar input{min-width:0;max-width:60%}
+.search-wrap{position:sticky;top:76px;z-index:40;scroll-margin-top:80px;margin-bottom:12px}
+.search-wrap .search-box{margin-bottom:0}
+.ac-list{position:absolute;left:0;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 34px rgba(10,25,56,.28);max-height:min(300px,38vh);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.ac-list[hidden]{display:none}
+.ac-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);cursor:pointer;font-size:14px}
+.ac-item:last-child{border-bottom:0}
+.ac-item:active{background:var(--mint)}
+.ac-item b{white-space:nowrap;color:var(--green)}
+.ac-item span{color:var(--muted);font-size:12.5px;text-align:right;overflow-wrap:anywhere}
+.ac-item em{font-style:normal;font-size:10px;font-weight:900;padding:3px 8px;border-radius:999px;background:#eef1f9;color:var(--muted);white-space:nowrap}
+.ac-item em.lunas{background:#e3f6ec;color:#1c8a4e}
+.rumah-row>div:first-child{min-width:0;overflow-wrap:anywhere}
+</style>
+</head><body>
+<header class="topbar"><div class="container topbar-inner">
+  <div class="brand"><img class="brand-mark" src="icon-192.png" alt="Logo RT 10"><span>Humas RT 10<span class="badge-panitia">🔒 PANITIA</span></span></div>
+  <a class="back-link" href="index.html">← Beranda</a>
+</div></header>
+
+<div class="gate-wrap" id="gateWrap">
+  <div class="gate-card">
+    <div class="emoji">🧾</div>
+    <h2>Halaman Khusus Humas</h2>
+    <p>Untuk petugas Humas Keliling. Masuk menggunakan akun Firebase Authentication; nama petugas dipakai sebagai identitas operasional pada setoran.</p>
+    <input type="text" id="gateNama" placeholder="Nama Petugas Humas" autocomplete="name">
+    <input type="email" id="gateEmail" placeholder="Email akun Humas" autocomplete="username">
+    <input type="password" id="gatePass" placeholder="Password Firebase" autocomplete="current-password">
+    <p class="err" id="gateErr">Nama, email, dan password wajib diisi dengan benar.</p>
+    <button class="btn btn-gold" id="btnMasuk">Masuk</button>
+  </div>
+</div>
+
+<div id="dashboard"><div class="container">
+  <div class="warn-card" id="warnCard" style="display:none">⚠️ Firebase belum dikonfigurasi di <code>config.js</code>. Data penarikan tidak bisa disimpan/ditampilkan sampai diatur admin teknis.</div>
+
+  <div class="petugas-bar">
+    <span>Petugas: <b id="namaPetugasTampil">-</b></span>
+    <button class="btn btn-line btn-sm" id="btnGantiPetugas">🔁 Ganti</button>
+  </div>
+
+  <div class="bulan-bar">
+    <label>Bulan Penarikan</label>
+    <input type="month" id="bulanPilih">
+  </div>
+
+  <div class="summary-grid" id="ringkasan"></div>
+
+  <div class="setor-banner" id="setorBanner" style="display:none">
+    <div>💵 Uang Cash di Tangan<b id="totalCashTangan">Rp 0</b><small style="display:block;font-weight:600;opacity:.85">Belum disetor ke Pengurus. Tekan Setor setelah selesai menarik.</small></div>
+    <button class="btn btn-gold btn-sm" id="btnSetor" style="width:auto">📤 Setor</button>
+  </div>
+
+  <div class="search-wrap" id="searchWrap"><input type="text" class="search-box" id="cariRumah" placeholder="🔍 Ketik blok/no rumah atau nama warga..." autocomplete="off" autocapitalize="characters" spellcheck="false"><div class="ac-list" id="acRumah" hidden></div></div>
+
+  <div class="list-card" id="ddHumas" style="display:none">
+    <div class="list-title">🎯 Iuran Tambahan (sedang aktif)</div>
+    <div style="padding:4px 14px 12px">
+      <select id="hdK" class="search-box" style="margin-bottom:8px"></select>
+      <p id="hdInfo" style="margin:0 0 10px;font-size:12.5px;color:var(--muted);line-height:1.6"></p>
+      <input type="text" id="hdRumah" list="hdRumahList" class="search-box" placeholder="Blok/No rumah, contoh: A1 12" autocomplete="off" autocapitalize="characters" spellcheck="false" style="margin-bottom:6px">
+      <datalist id="hdRumahList"></datalist>
+      <div id="hdPicked" style="font-size:12.5px;font-weight:800;margin:0 0 8px;color:#c74444"></div>
+      <input type="number" id="hdJumlah" class="search-box" inputmode="numeric" min="1" step="500" placeholder="Nominal (Rp)" style="margin-bottom:8px">
+      <input type="text" id="hdCatatan" class="search-box" maxlength="120" placeholder="Catatan (opsional)" style="margin-bottom:8px">
+      <button type="button" class="btn btn-gold" id="hdSimpan">💵 Simpan Cash Diterima</button>
+    </div>
+    <div class="list-title" id="hdJudulList">Cash tambahan belum disetor</div>
+    <div id="hdList"><div class="empty-note">Belum ada.</div></div>
+    <div style="padding:8px 14px 14px"><button type="button" class="btn btn-line btn-sm" id="hdWA" style="width:auto">📲 Kabari Bendahara untuk Setoran</button></div>
+  </div>
+
+  <details class="list-card" id="cardTunggakan">
+    <summary class="list-title" id="judulTunggakan" style="cursor:pointer">⚠️ Tunggakan — memuat...</summary>
+    <div id="listTunggakan"><div class="empty-note">Memuat data...</div></div>
+  </details>
+
+  <div class="list-card">
+    <div class="list-title">Daftar Rumah — Ketuk untuk Catat Penarikan</div>
+    <div id="listRumah"><div class="empty-note">Memuat data...</div></div>
+  </div>
+
+
+  <div class="list-card">
+    <div class="list-title">📢 Kirim Info ke Warga</div>
+    <form id="formInfoHumas" style="padding:6px 14px 14px;display:grid;gap:10px" onsubmit="return false">
+      <select id="ihKategori" style="border:1px solid var(--line);background:#f8f9fc;padding:12px;border-radius:12px;font-family:inherit;font-size:14px">
+        <option value="Penting">🔴 Penting</option>
+        <option value="Kegiatan">🟢 Kegiatan</option>
+        <option value="Fasilitas">🔵 Fasilitas</option>
+        <option value="Keamanan">🛡️ Keamanan</option>
+      </select>
+      <input id="ihJudul" placeholder="Judul info (contoh: Penarikan iuran mulai besok)" style="border:1px solid var(--line);background:#f8f9fc;padding:12px;border-radius:12px;font-family:inherit;font-size:14px">
+      <textarea id="ihIsi" rows="3" placeholder="Isi info untuk warga (opsional)" style="border:1px solid var(--line);background:#f8f9fc;padding:12px;border-radius:12px;font-family:inherit;font-size:14px;resize:vertical"></textarea>
+      <button type="button" class="btn btn-gold" id="btnKirimInfo">📢 Kirim &amp; Beritahu Warga</button>
+      <div style="font-size:11.5px;color:var(--muted);line-height:1.5">Info tampil di halaman Informasi dan otomatis muncul sebagai notifikasi di aplikasi Warga.</div>
+    </form>
+  </div>
+
+  <div class="list-card">
+    <div class="list-title">Riwayat Setoran Saya</div>
+    <div id="listSetoran"><div class="empty-note">Belum ada setoran.</div></div>
+  </div>
+</div></div>
+
+<div class="toast" id="toast"></div>
+<div class="modal-scrim" id="modalScrim"></div>
+<div class="modal-sheet" id="modalSheet">
+  <button class="mclose" id="mClose">✕</button>
+  <div class="modal-handle"></div>
+  <div id="modalBody"></div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="config.js"></script>
+<script src="warga-data.js"></script>
+<script src="warga-kontak.js"></script>
+<script src="surat-pdf.js"></script>
+<script>
+(function(){
+"use strict";
+var db = null;
+var BULAN_ID_LONG = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+var petugasNama = localStorage.getItem("rt10_humas_nama") || "";
+var bulanKey = "";
+var bulanRef = null;
+var penarikanData = {};
+var kontakData = {};
+var setoranData = {};
+var currentRumah = null;   // { key, label, nama, blok, no }
+var buktiFoto_ = null;     // data URL foto bukti transfer (sudah dikompres)
+var hasilKwitansi = null;  // { hasil, payload } sementara utk layar sukses
+var penarikanSemua = {};   // { bulanKey: { rumahKey: entry } } — semua bulan, untuk daftar tunggakan
+var pendingBuka_ = null;   // { r, n } — buka form rumah setelah data bulan termuat (dari daftar tunggakan)
+var defaultJmlBulan_ = 1;  // jumlah bulan awal di form (diisi dari daftar tunggakan)
+
+/* ---------- util ---------- */
+function esc_(s){ return String(s||"").replace(/[&<>"']/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+function fmtRp_(n){ return "Rp " + Math.round(n||0).toLocaleString("id-ID"); }
+/* Saldo titipan warga = total kelebihan bayar bulan-bulan lalu dikurangi yang sudah terpakai. */
+function saldoRumah_(rk){
+  var s = 0;
+  Object.keys(penarikanSemua || {}).forEach(function(b){
+    var e = (penarikanSemua[b] || {})[rk];
+    if (e && (e.status === "lunas_cash" || e.status === "transfer_pending" || e.status === "lunas_transfer")) s += (parseFloat(e.kelebihan) || 0) - (parseFloat(e.saldoDipakai) || 0);
+  });
+  return Math.max(0, s);
+}
+/* Uang fisik/transfer yang benar-benar masuk untuk 1 catatan (data lama: sama dengan iuran). */
+function uangEntry_(e){ return (e && e.uangMasuk != null) ? (parseFloat(e.uangMasuk) || 0) : (parseFloat(e && e.jumlah) || 0); }
+function catatSaldo_(p){
+  var t = "";
+  if (p && p.saldoDipakai > 0) t += " Saldo titipan " + fmtRp_(p.saldoDipakai) + " dipakai untuk iuran bulan ini.";
+  if (p && p.kelebihan > 0) t += " Kelebihan pembayaran " + fmtRp_(p.kelebihan) + " kami catat sebagai saldo iuran bulan depan.";
+  return t;
+}
+
+/* Pesan gagal yang mudah dimengerti (bukan sekadar "Gagal"). */
+function pesanGagal_(err, aksi){
+  var kode = (err && err.code) ? String(err.code) : "";
+  if (/PERMISSION/i.test(kode)) return aksi + " ditolak: akun ini tidak punya izin, atau aturan Firebase belum diperbarui. Coba keluar lalu masuk lagi.";
+  if (/NETWORK|UNAVAILABLE|DISCONNECT/i.test(kode)) return aksi + " gagal: koneksi internet terputus. Cek sinyal lalu coba lagi.";
+  return aksi + " gagal. Data belum berubah, silakan coba lagi.";
+}
+
+/* ---- Helper anti-salah-input (ditambahkan) ---- */
+/* Tanggal hari ini menurut WIB (bukan UTC) - toISOString() salah tanggal antara 00.00-06.59 WIB. */
+function tglWIB_(){
+  var o = {};
+  new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Jakarta", year: "numeric", month: "2-digit", day: "2-digit" })
+    .formatToParts(new Date()).forEach(function(p){ o[p.type] = p.value; });
+  return o.year + "-" + o.month + "-" + o.day;
+}
+/* Nomor HP Indonesia -> 628xxxxxxxxx. Kembalikan "" bila format tidak valid. */
+function nomorWAValid_(n){
+  var d = String(n || "").replace(/[^0-9]/g, "");
+  if (!d) return "";
+  if (d.indexOf("620") === 0) d = "62" + d.slice(3);
+  else if (d.charAt(0) === "0") d = "62" + d.slice(1);
+  else if (d.indexOf("62") !== 0) d = "62" + d;
+  return /^628\d{8,11}$/.test(d) ? d : "";
+}
+/* Foto hanya boleh data URL gambar; selain itu dibuang (cegah injeksi dari form publik). */
+function fotoAman_(u){
+  u = String(u || "");
+  return /^data:image\/(jpeg|png|webp|gif);base64,[A-Za-z0-9+\/=]+$/.test(u) ? u : "";
+}
+
+function normKey_(s){ return String(s||"").toLowerCase().replace(/[\s\/\-\.]+/g,""); }
+function firebaseReady_(){ var cfg = RT_CONFIG.firebaseConfig || {}; return !!(cfg.apiKey && cfg.databaseURL && cfg.appId); }
+/* Nomor WA warga: utamakan data resmi warga-kontak.js (diisi admin per rumah),
+   kalau masih kosong pakai yang pernah diisi manual oleh petugas Humas di Firebase. */
+function nomorWargaTersimpan_(key){
+  var dariData = (typeof WARGA_KONTAK !== "undefined" ? WARGA_KONTAK[key] : "") || "";
+  if (dariData.trim()) return dariData.trim();
+  return (kontakData[key] && kontakData[key].telepon) || "";
+}
+/* Ubah nomor apa pun (0812-xxx, +62 812 xxx, 812xxx) menjadi format WhatsApp 62xxxxxxxxxx.
+   Tanpa ini link wa.me tidak membuka chat kalau nomor diketik dengan awalan 0. */
+function nomorWA_(n){
+  var d = String(n || "").replace(/[^0-9]/g, "");
+  if (!d) return "";
+  if (d.indexOf("620") === 0) return "62" + d.slice(3);
+  if (d.indexOf("62") === 0) return d;
+  if (d.charAt(0) === "0") return "62" + d.slice(1);
+  return "62" + d;
+}
+/* Buka WhatsApp. Browser (terutama di PC) memblokir jendela baru yang dibuka setelah proses
+   simpan selesai. Solusinya: jendela dibuka lebih dulu saat tombol ditekan (waPre), lalu diarahkan
+   ke link WhatsApp setelah data tersimpan. Kalau tetap diblokir, tampil tombol manual. */
+function bukaLinkWA_(link, waPre){
+  try {
+    if (waPre && !waPre.closed) { waPre.location.href = link; return true; }
+    var w = window.open(link, "_blank");
+    return !!w;
+  } catch (e) { return false; }
+}
+function tampilTombolWA_(link, judul, sub, sudahTerbuka){
+  document.getElementById("modalBody").innerHTML =
+    '<h3>' + judul + '</h3><p class="msub">' + sub + '</p>' +
+    '<div class="status-now">' + (sudahTerbuka
+      ? '✅ Status tersimpan dan WhatsApp sedang dibuka. Kalau WhatsApp belum muncul, tekan tombol di bawah.'
+      : '✅ Status tersimpan. Tekan tombol di bawah untuk mengirim pesan WhatsApp.') + '</div>' +
+    '<div class="msheet-actions"><button class="btn btn-gold" id="btnBukaWA" type="button">💬 Kirim Pesan WhatsApp</button>' +
+    '<button class="btn btn-brand" id="btnTutupWA" type="button">Selesai</button></div>';
+  /* Sama seperti tombol kirim kwitansi: dibuka langsung dari tap petugas, jadi tidak diblokir browser. */
+  document.getElementById("btnBukaWA").addEventListener("click", function(){ window.open(link, "_blank", "noopener"); });
+  document.getElementById("btnTutupWA").addEventListener("click", closeModal_);
+  showModal_();
+}
+function showToast(msg){
+  var t = document.getElementById("toast");
+  t.textContent = msg; t.classList.add("show");
+  clearTimeout(showToast._tm);
+  showToast._tm = setTimeout(function(){ t.classList.remove("show"); }, 2800);
+}
+/* Ucapan salam otomatis sesuai jam di HP petugas: pagi 04-10, siang 11-14, sore 15-17, malam 18-03. */
+function salam_(){
+  var j = new Date().getHours();
+  if (j >= 4 && j < 11) return "Selamat pagi";
+  if (j >= 11 && j < 15) return "Selamat siang";
+  if (j >= 15 && j < 18) return "Selamat sore";
+  return "Selamat malam";
+}
+function rekeningTeks_(){
+  var r = RT_CONFIG.rekeningBendahara || {};
+  return r.nomor ? (r.bank + " " + r.nomor + " a.n. " + r.nama + " (Bendahara RT)") : "";
+}
+function periodeLabel_(k, n){ return n <= 1 ? bulanLabel_(k) : bulanLabel_(k) + " – " + bulanLabel_(addBulan_(k, n - 1)); }
+function addBulan_(k, n){
+  var y = parseInt(k.slice(0, 4), 10), m = parseInt(k.slice(5, 7), 10) - 1 + n;
+  y += Math.floor(m / 12); m = ((m % 12) + 12) % 12;
+  return y + "-" + ("0" + (m + 1)).slice(-2);
+}
+function bulanLabel_(k){
+  var m = /^(\d{4})-(\d{2})$/.exec(k||"");
+  if(!m) return k||"-";
+  return BULAN_ID_LONG[parseInt(m[2],10)-1] + " " + m[1];
+}
+function b64_(bytes){
+  var s="", CH=0x8000;
+  for(var i=0;i<bytes.length;i+=CH) s += String.fromCharCode.apply(null, bytes.subarray(i, i+CH));
+  return btoa(s);
+}
+function unduhBlob_(bytes, namaFile){
+  var url = URL.createObjectURL(new Blob([bytes],{type:"application/pdf"}));
+  var a = document.createElement("a"); a.href = url; a.download = namaFile;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 30000);
+}
+
+/* ---------- GATE ---------- */
+document.addEventListener("DOMContentLoaded", function(){
+  var gateWrap = document.getElementById("gateWrap");
+  var dashboard = document.getElementById("dashboard");
+  var gateNama = document.getElementById("gateNama");
+  var gateErr = document.getElementById("gateErr");
+  var gateEmail = document.getElementById("gateEmail");
+  if (petugasNama) gateNama.value = petugasNama;
+
+  if (!firebaseReady_()) { gateErr.textContent = "Firebase belum dikonfigurasi."; gateErr.style.display = "block"; return; }
+  if (!firebase.apps.length) firebase.initializeApp(RT_CONFIG.firebaseConfig);
+  var auth = firebase.auth();
+  auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).catch(function(){});
+
+  function unlock(){
+    gateWrap.style.display = "none";
+    dashboard.style.display = "block";
+    document.getElementById("namaPetugasTampil").textContent = petugasNama;
+    initDashboard_();
+  }
+  function isHumasUser_(user){
+    return !!(user && RT_CONFIG.humasUid && user.uid === RT_CONFIG.humasUid);
+  }
+
+  /* Serahkan sesi login ke aplikasi Android supaya notifikasi real-time bisa membaca data yang dilindungi */
+  function kirimSesiAndroid_(u){
+    try {
+      if (u && window.RTAndroid && RTAndroid.simpanSesi) RTAndroid.simpanSesi(u.refreshToken || "", (RT_CONFIG.firebaseConfig && RT_CONFIG.firebaseConfig.apiKey) || "", u.email || "");
+      else if (!u && window.RTAndroid && RTAndroid.hapusSesi) RTAndroid.hapusSesi();
+    } catch (e) {}
+  }
+  auth.onAuthStateChanged(function(user){
+    kirimSesiAndroid_(user);
+    if (user && isHumasUser_(user) && petugasNama) unlock();
+    else if (user && !isHumasUser_(user)) {
+      auth.signOut();
+      gateErr.textContent = "Akun ini bukan akun Humas yang terdaftar.";
+      gateErr.style.display = "block";
+    }
+  });
+
+  document.getElementById("btnMasuk").addEventListener("click", function(){
+    var nama = gateNama.value.trim();
+    var email = gateEmail.value.trim();
+    var pass = document.getElementById("gatePass").value;
+    if (!nama || !email || !pass) { gateErr.textContent = "Nama, email, dan password wajib diisi."; gateErr.style.display = "block"; return; }
+    var btn = this; btn.disabled = true; btn.textContent = "Memeriksa...";
+    auth.signInWithEmailAndPassword(email, pass).then(function(result){
+      if (!isHumasUser_(result.user)) {
+        return auth.signOut().then(function(){ throw new Error("not-humas"); });
+      }
+      petugasNama = nama;
+      localStorage.setItem("rt10_humas_nama", nama);
+      gateErr.style.display = "none";
+      unlock();
+    }).catch(function(err){
+      console.warn("Firebase Auth humas gagal", err);
+      gateErr.textContent = err && err.message === "not-humas" ? "Akun ini bukan akun Humas yang terdaftar." : (/invalid-credential|wrong-password|user-not-found/i.test(String(err && err.code)) ? "Email atau password salah." : "Login ditolak. Pastikan akun Firebase dan Rules sudah dikonfigurasi.");
+      gateErr.style.display = "block";
+    }).finally(function(){ btn.disabled = false; btn.textContent = "Masuk"; });
+  });
+  ["gateNama","gateEmail","gatePass"].forEach(function(id){ document.getElementById(id).addEventListener("keydown", function(e){ if (e.key === "Enter") document.getElementById("btnMasuk").click(); }); });
+
+  document.getElementById("btnGantiPetugas").addEventListener("click", function(){
+    auth.signOut().finally(function(){ localStorage.removeItem("rt10_humas_nama"); location.reload(); });
+  });
+});
+
+/* ---------- DASHBOARD ---------- */
+var dashboardInited_ = false;
+function initDashboard_(){
+  if (dashboardInited_) return;
+  dashboardInited_ = true;
+
+  if (!firebaseReady_()) { document.getElementById("warnCard").style.display = "block"; return; }
+  if (!firebase.apps.length) firebase.initializeApp(RT_CONFIG.firebaseConfig);
+  db = firebase.database();
+
+  bulanKey = tglWIB_().slice(0, 7);
+  document.getElementById("bulanPilih").value = bulanKey;
+  document.getElementById("bulanPilih").addEventListener("change", function(e){
+    bulanKey = e.target.value || tglWIB_().slice(0,7);
+    subscribeBulan_(bulanKey);
+  });
+
+  db.ref("wargaKontak").on("value", function(snap){ kontakData = snap.val() || {}; });
+  db.ref("humasSetoran").on("value", function(snap){
+    setoranData = snap.val() || {};
+    renderList_(); renderRingkasan_(); renderRiwayatSetoran_();
+  }, function(){ document.getElementById("listSetoran").innerHTML = '<div class="empty-note">Gagal memuat data setoran.</div>'; });
+
+  db.ref("penarikan").on("value", function(snap){
+    penarikanSemua = snap.val() || {};
+    renderTunggakan_();
+  }, function(){ document.getElementById("listTunggakan").innerHTML = '<div class="empty-note">Gagal memuat data tunggakan.</div>'; });
+  document.getElementById("listTunggakan").addEventListener("click", function(ev){
+    var row = ev.target.closest(".rumah-row");
+    if (row) bukaTunggakan_(row.getAttribute("data-key"));
+  });
+
+  subscribeBulan_(bulanKey);
+
+
+  document.getElementById("btnKirimInfo").addEventListener("click", function(){
+    var judul = document.getElementById("ihJudul").value.trim();
+    var isi = document.getElementById("ihIsi").value.trim();
+    var kategori = document.getElementById("ihKategori").value;
+    if (!judul) { showToast("Judul info wajib diisi."); return; }
+    if (!confirm("Kirim info ini ke SEMUA warga?\n\nKategori: " + kategori + "\nJudul: " + judul + "\n\nKoreksi setelah terkirim hanya bisa dilakukan Admin.")) return;
+    var btn = this; btn.disabled = true;
+    db.ref("informasi").push({
+      kategori: kategori,
+      tanggal: tglWIB_(),
+      judul: judul, isi: isi,
+      dari: "Humas — " + petugasNama,
+      createdAt: firebase.database.ServerValue.TIMESTAMP
+    }).then(function(){
+      showToast("Info terkirim. Warga akan menerima notifikasi.");
+      document.getElementById("ihJudul").value = "";
+      document.getElementById("ihIsi").value = "";
+    }).catch(function(){ showToast("Gagal mengirim. Periksa koneksi internet."); })
+      .then(function(){ btn.disabled = false; });
+  });
+
+  document.getElementById("cariRumah").addEventListener("input", renderList_);
+  document.getElementById("btnSetor").addEventListener("click", ajukanSetoran_);
+  document.getElementById("listSetoran").addEventListener("click", function(e){
+    var b = e.target.closest(".btn-xls");
+    if (!b) return;
+    var id = b.getAttribute("data-id"), batch = setoranData[id];
+    if (batch) unduhExcelSetoran_(id, batch);
+  });
+  document.getElementById("mClose").addEventListener("click", closeModal_);
+  document.getElementById("modalScrim").addEventListener("click", closeModal_);
+}
+
+function subscribeBulan_(k){
+  if (bulanRef) bulanRef.off();
+  bulanRef = db.ref("penarikan/" + k);
+  bulanRef.on("value", function(snap){
+    penarikanData = snap.val() || {};
+    renderList_(); renderRingkasan_();
+    if (pendingBuka_) { var pb = pendingBuka_; pendingBuka_ = null; defaultJmlBulan_ = pb.n; openModal_(pb.r); }
+  }, function(){ document.getElementById("listRumah").innerHTML = '<div class="empty-note">Gagal memuat data. Periksa koneksi internet.</div>'; });
+}
+
+/* ---------- TUNGGAKAN ----------
+   Rumah dianggap menunggak untuk bulan yang SUDAH lewat (bukan bulan berjalan) bila tidak ada catatan
+   lunas / transfer menunggu konfirmasi. Titik mulai = bulan tertua yang ada datanya (atau
+   RT_CONFIG.bulanMulaiIuran bila diisi, format "2026-10"), paling jauh 12 bulan ke belakang. */
+function hitungTunggakan_(){
+  var sekarang = tglWIB_().slice(0, 7);
+  var terakhir = addBulan_(sekarang, -1);
+  var kunci = Object.keys(penarikanSemua).filter(function(k){ return /^\d{4}-\d{2}$/.test(k); }).sort();
+  var mulai = (RT_CONFIG.bulanMulaiIuran && /^\d{4}-\d{2}$/.test(RT_CONFIG.bulanMulaiIuran)) ? RT_CONFIG.bulanMulaiIuran : kunci[0];
+  if (!mulai) return [];
+  var batas = addBulan_(sekarang, -12);
+  if (mulai < batas) mulai = batas;
+  var daftarBulan = [];
+  for (var m = mulai; m <= terakhir; m = addBulan_(m, 1)) daftarBulan.push(m);
+  if (!daftarBulan.length) return [];
+  var lunasStatus = { lunas_cash: 1, lunas_transfer: 1, transfer_pending: 1 };
+  var hasil = [];
+  daftarRumahGabung_().forEach(function(r){
+    var tunggak = [], tambahan = false;
+    daftarBulan.forEach(function(b){
+      var e = (penarikanSemua[b] || {})[r.key];
+      if (e && e.tambahanKK) tambahan = true;
+      if (!(e && lunasStatus[e.status])) tunggak.push(b);
+    });
+    if (tunggak.length) hasil.push({ r: r, bulan: tunggak, jumlah: tunggak.length * ((RT_CONFIG.iuranBulanan || 60000) + (tambahan ? (RT_CONFIG.iuranTambahanKK || 7500) : 0)) });
+  });
+  hasil.sort(function(a, b){ return b.bulan.length - a.bulan.length || a.r.label.localeCompare(b.r.label, "id", { numeric: true }); });
+  return hasil;
+}
+function renderTunggakan_(){
+  var judul = document.getElementById("judulTunggakan"), box = document.getElementById("listTunggakan");
+  if (!judul || !box) return;
+  var data = hitungTunggakan_();
+  if (!data.length) { judul.textContent = "✅ Tidak ada tunggakan"; box.innerHTML = '<div class="empty-note">Semua rumah sudah lunas untuk bulan-bulan sebelumnya.</div>'; return; }
+  var total = 0; data.forEach(function(d){ total += d.jumlah; });
+  judul.textContent = "⚠️ Tunggakan — " + data.length + " rumah · ± " + fmtRp_(total);
+  var namaPendek = function(k){ return BULAN_ID_LONG[parseInt(k.slice(5, 7), 10) - 1].slice(0, 3) + " " + k.slice(2, 4); };
+  box.innerHTML = data.map(function(d){
+    return '<div class="rumah-row" data-key="' + esc_(d.r.key) + '">' +
+      '<div><h4>' + esc_(d.r.label) + '</h4><p>' + esc_(d.r.nama || "-") + ' · ' + d.bulan.map(namaPendek).join(", ") + '</p></div>' +
+      '<span class="status-pill masalah">' + d.bulan.length + ' bln · ' + fmtRp_(d.jumlah) + '</span></div>';
+  }).join("");
+}
+/* Ketuk rumah di daftar tunggakan: pindah ke bulan tunggakan tertua & buka form dengan jumlah bulan
+   sesuai tunggakan yang berurutan (bisa diubah, mis. ditambah bulan berjalan). */
+function bukaTunggakan_(key){
+  var d = hitungTunggakan_().filter(function(x){ return x.r.key === key; })[0];
+  if (!d) return;
+  var n = 1;
+  while (n < d.bulan.length && n < 6 && d.bulan[n] === addBulan_(d.bulan[0], n)) n++;
+  bulanKey = d.bulan[0];
+  document.getElementById("bulanPilih").value = bulanKey;
+  pendingBuka_ = { r: d.r, n: n };
+  subscribeBulan_(bulanKey);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* ---------- status & ringkasan ---------- */
+function statusInfo_(entry){
+  if (!entry) return { cls: "belum", text: "⚪ Belum Ditarik" };
+  if (entry.status === "lunas_cash") {
+    if (entry.setoranId === "saldo") return { cls: "lunas", text: "✅ Lunas (dari saldo titipan)" };
+    var s = entry.setoranId ? setoranData[entry.setoranId] : null;
+    if (s && s.status === "diterima") return { cls: "lunas", text: "✅ Lunas (Cash · Disetor)" };
+    if (s) return { cls: "proses", text: "💵 Lunas (Cash · Menunggu Setor Diterima)" };
+    return { cls: "lunas", text: "💵 Lunas (Cash · Belum Disetor)" };
+  }
+  if (entry.status === "transfer_pending") return { cls: "proses", text: "📤 Transfer (Menunggu Konfirmasi Admin)" };
+  if (entry.status === "lunas_transfer") return { cls: "lunas", text: "🏦 Lunas (Transfer)" };
+  if (entry.status === "belum") return { cls: "masalah", text: "❗ " + (entry.catatan || "Belum Bayar") };
+  return { cls: "belum", text: "⚪ Belum Ditarik" };
+}
+function daftarRumahGabung_(){
+  return (typeof WARGA_DATA !== "undefined" ? WARGA_DATA : []).map(function(w){
+    var key = normKey_(w.blok + " " + w.no);
+    return { key: key, blok: w.blok, no: w.no, nama: w.nama, label: "Blok " + w.blok + " No." + w.no, rumah: w.blok + " No." + w.no };
+  });
+}
+function renderRingkasan_(){
+  var all = daftarRumahGabung_();
+  var lunas = 0, belum = 0, cashDiTangan = 0;
+  all.forEach(function(r){
+    var e = penarikanData[r.key];
+    var st = statusInfo_(e).cls;
+    if (st === "lunas") lunas++; else belum++;
+    if (e && e.status === "lunas_cash" && !e.setoranId) cashDiTangan += uangEntry_(e);
+  });
+  document.getElementById("ringkasan").innerHTML =
+    '<div class="sg-item"><span>Total Rumah</span><strong>' + all.length + '</strong></div>' +
+    '<div class="sg-item lunas"><span>Sudah Lunas</span><strong>' + lunas + '</strong></div>' +
+    '<div class="sg-item belum"><span>Belum Lunas</span><strong>' + belum + '</strong></div>';
+  var banner = document.getElementById("setorBanner");
+  if (cashDiTangan > 0) {
+    banner.style.display = "flex";
+    document.getElementById("totalCashTangan").textContent = fmtRp_(cashDiTangan);
+  } else banner.style.display = "none";
+}
+function renderList_(){
+  var q = normKey_(document.getElementById("cariRumah").value);
+  var all = daftarRumahGabung_();
+  var hasil = all.filter(function(r){
+    if (!q) return true;
+    return normKey_(r.label).indexOf(q) !== -1 || String(r.nama||"").toLowerCase().indexOf(document.getElementById("cariRumah").value.toLowerCase()) !== -1;
+  });
+  var box = document.getElementById("listRumah");
+  if (hasil.length === 0) { box.innerHTML = '<div class="empty-note">Tidak ditemukan.</div>'; return; }
+  box.innerHTML = hasil.map(function(r){
+    var info = statusInfo_(penarikanData[r.key]);
+    return '<div class="rumah-row" data-key="' + r.key + '">' +
+      '<div><h4>' + esc_(r.label) + '</h4><p>' + esc_(r.nama || "-") + '</p></div>' +
+      '<span class="status-pill ' + info.cls + '">' + info.text + (penarikanData[r.key] && penarikanData[r.key].paketId ? ' · Bayar di muka ' + penarikanData[r.key].paketKe + '/' + penarikanData[r.key].paketN : '') + '</span>' +
+      '</div>';
+  }).join("");
+  Array.prototype.forEach.call(box.querySelectorAll(".rumah-row"), function(el){
+    el.addEventListener("click", function(){
+      var key = el.getAttribute("data-key");
+      var r = all.filter(function(x){ return x.key === key; })[0];
+      if (r) openModal_(r);
+    });
+  });
+}
+
+/* ---------- SARAN RUMAH OTOMATIS (ketik -> pilih -> langsung buka form catat) ---------- */
+(function(){
+  var inp = document.getElementById("cariRumah"), box = document.getElementById("acRumah"), wrap = document.getElementById("searchWrap");
+  if (!inp || !box) return;
+  function render(){
+    var raw = String(inp.value || "").trim(), q = normKey_(raw), qn = raw.toLowerCase();
+    if (!q) { box.hidden = true; box.innerHTML = ""; return; }
+    var hasil = daftarRumahGabung_().filter(function(r){ return normKey_(r.label).indexOf(q) !== -1 || String(r.nama || "").toLowerCase().indexOf(qn) !== -1; });
+    hasil.sort(function(x, y){ return (normKey_(x.label).indexOf(q) === 0 ? 0 : 1) - (normKey_(y.label).indexOf(q) === 0 ? 0 : 1); });
+    hasil = hasil.slice(0, 40);
+    if (!hasil.length) { box.innerHTML = '<div class="ac-item"><span>Tidak ada rumah yang cocok</span></div>'; box.hidden = false; return; }
+    box.innerHTML = hasil.map(function(r){
+      var info = statusInfo_(penarikanData[r.key]);
+      return '<div class="ac-item" data-key="' + esc_(r.key) + '"><b>' + esc_(r.label) + '</b><span>' + esc_(r.nama || "-") + '</span><em class="' + (info.cls === "lunas" ? "lunas" : "") + '">' + info.text + '</em></div>';
+    }).join("");
+    box.hidden = false;
+  }
+  inp.addEventListener("input", render);
+  inp.addEventListener("focus", function(){ render(); setTimeout(function(){ try { wrap.scrollIntoView({ block: "start", behavior: "smooth" }); } catch (e) {} }, 300); });
+  box.addEventListener("mousedown", function(e){ e.preventDefault(); });
+  box.addEventListener("click", function(e){
+    var it = e.target.closest ? e.target.closest(".ac-item[data-key]") : null; if (!it) return;
+    var key = it.getAttribute("data-key");
+    var r = daftarRumahGabung_().filter(function(x){ return x.key === key; })[0];
+    box.hidden = true; inp.blur();
+    if (r) openModal_(r);
+  });
+  document.addEventListener("click", function(e){ if (!e.target.closest || !e.target.closest("#searchWrap")) box.hidden = true; });
+})();
+function renderRiwayatSetoran_(){
+  var items = Object.keys(setoranData).map(function(k){ return Object.assign({ id: k }, setoranData[k]); })
+    .filter(function(it){ return it.petugas === petugasNama; })
+    .sort(function(a,b){ return (b.createdAt||0) - (a.createdAt||0); });
+  var box = document.getElementById("listSetoran");
+  if (items.length === 0) { box.innerHTML = '<div class="empty-note">Belum ada setoran.</div>'; return; }
+  box.innerHTML = items.map(function(it){
+    var badge = it.status === "diterima" ? '<span class="status-pill lunas">✅ Diterima</span>' : '<span class="status-pill proses">⏳ Menunggu</span>';
+    var jumlahRumah = it.rumahKeys ? Object.keys(it.rumahKeys).length : 0;
+    return '<div class="setoran-row"><div><h4>' + fmtRp_(it.jumlah) + ' · ' + jumlahRumah + ' rumah</h4>' +
+      '<p>' + bulanLabel_(it.bulanKey) + '</p></div><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end">' + badge +
+      '<button class="btn btn-line btn-sm btn-xls" data-id="' + it.id + '">📥 Excel</button></div></div>';
+  }).join("");
+}
+
+/* ---------- LAPORAN SETOR (EXCEL) ---------- */
+function fmtTgl_(ts){
+  if (!ts) return "";
+  var d = new Date(ts);
+  return ("0" + d.getDate()).slice(-2) + "/" + ("0" + (d.getMonth() + 1)).slice(-2) + "/" + d.getFullYear();
+}
+async function bangunExcelSetoran_(id, batch){
+  if (typeof XLSX === "undefined") throw new Error("XLSX belum termuat");
+  var snap = await db.ref("penarikan/" + batch.bulanKey).once("value");
+  var bln = snap.val() || {};
+  var rukem = RT_CONFIG.iuranTambahanKK || 7500;
+  var rows = Object.keys(batch.rumahKeys || {}).map(function(k){
+    var e = bln[k] || {};
+    return { rumah: e.rumah || k, nama: e.nama || "-", tambahan: !!e.tambahanKK, jumlah: uangEntry_(e), tgl: e.createdAt, kwt: e.kodeKwitansi || "" };
+  }).sort(function(a, b){ return a.rumah.localeCompare(b.rumah, "id", { numeric: true }); });
+
+  var HDR = 10, first = HDR + 1, last = HDR + rows.length;
+  var aoa = [
+    ["LAPORAN SETORAN IURAN BULANAN"],
+    ["RT " + (String(RT_CONFIG.namaRT || "08").replace(/\D+/g, "") || "08") + " / RW " + (String(RT_CONFIG.namaRW || "021").replace(/\D+/g, "") || "021") + " - " + (RT_CONFIG.namaKompleks || "Villa Indah Pulo Timaha")],
+    [],
+    ["Bulan Penarikan", bulanLabel_(batch.bulanKey)],
+    ["Petugas Humas", batch.petugas],
+    ["Tanggal Setor", fmtTgl_(batch.createdAt)],
+    ["Status", batch.status === "diterima" ? "Diterima Bendahara" : "Menunggu konfirmasi Bendahara"],
+    ["Kode Setoran", String(id).slice(-8).toUpperCase()],
+    [],
+    ["No", "Blok / No. Rumah", "Nama Warga", "Rincian", "Iuran Bulanan (Rp)", "Iuran RUKEM (Rp)", "Total (Rp)", "Tanggal Tarik", "Kode Kwitansi"]
+  ];
+  rows.forEach(function(r, i){
+    var f = r.tambahan ? rukem : 0, e = r.jumlah - f, row = first + i;
+    aoa.push([i + 1, r.rumah, r.nama, r.tambahan ? "Iuran + RUKEM (beda KK)" : "Iuran Bulanan",
+      e, f, { t: "n", f: "E" + row + "+F" + row, v: e + f }, fmtTgl_(r.tgl), r.kwt]);
+  });
+  var tot = rows.reduce(function(a, r){ return a + r.jumlah; }, 0);
+  var totE = rows.reduce(function(a, r){ return a + r.jumlah - (r.tambahan ? rukem : 0); }, 0);
+  var totF = rows.reduce(function(a, r){ return a + (r.tambahan ? rukem : 0); }, 0);
+  aoa.push(["", "", "", "TOTAL (" + rows.length + " rumah)",
+    { t: "n", f: "SUM(E" + first + ":E" + last + ")", v: totE },
+    { t: "n", f: "SUM(F" + first + ":F" + last + ")", v: totF },
+    { t: "n", f: "SUM(G" + first + ":G" + last + ")", v: tot }, "", ""]);
+  aoa.push([], []);
+  aoa.push(["", "Diserahkan oleh,", "", "", "Diterima oleh,"]);
+  aoa.push(["", "Petugas Humas", "", "", "Bendahara RT"]);
+  aoa.push([], [], []);
+  aoa.push(["", "( " + batch.petugas + " )", "", "", "( " + (RT_CONFIG.namaBendahara || "Bendahara") + " )"]);
+
+  var ws = XLSX.utils.aoa_to_sheet(aoa);
+  ws["!cols"] = [{ wch: 5 }, { wch: 18 }, { wch: 30 }, { wch: 26 }, { wch: 18 }, { wch: 18 }, { wch: 16 }, { wch: 14 }, { wch: 22 }];
+  ws["!merges"] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 8 } }, { s: { r: 1, c: 0 }, e: { r: 1, c: 8 } }];
+  for (var r = first; r <= last + 1; r++) ["E", "F", "G"].forEach(function(c){ if (ws[c + r]) ws[c + r].z = "#,##0"; });
+  var wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Laporan Setoran");
+  var bytes = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+  var namaFile = "Laporan-Setoran_" + batch.bulanKey + "_" + String(batch.petugas || "humas").replace(/[^A-Za-z0-9]+/g, "-") + "_" + fmtTgl_(batch.createdAt).replace(/\//g, "") + ".xlsx";
+  return { bytes: bytes, namaFile: namaFile, jumlahRumah: rows.length };
+}
+var XLSX_MIME = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+async function unduhExcelSetoran_(id, batch){
+  try {
+    showToast("Menyiapkan file Excel...");
+    var x = await bangunExcelSetoran_(id, batch);
+    var url = URL.createObjectURL(new Blob([x.bytes], { type: XLSX_MIME }));
+    var a = document.createElement("a"); a.href = url; a.download = x.namaFile;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 30000);
+    showToast("Excel diunduh: " + x.namaFile);
+  } catch (e) { console.error(e); showToast("Gagal membuat Excel. Pastikan internet aktif lalu coba lagi."); }
+}
+async function kirimExcelSetoran_(id, batch){
+  try {
+    var x = await bangunExcelSetoran_(id, batch);
+    var file = new File([x.bytes], x.namaFile, { type: XLSX_MIME });
+    var pesan = salam_() + " Pak/Bu Bendahara, berikut *laporan setoran iuran bulanan* " + bulanLabel_(batch.bulanKey) + " dari Humas (" + batch.petugas + "): " +
+      fmtRp_(batch.jumlah) + " dari " + x.jumlahRumah + " rumah.\n\nMohon dikonfirmasi di halaman Admin (tab Iuran Bulanan) setelah uang fisik diterima. Terima kasih 🙏";
+    if (window.RTAndroid && typeof window.RTAndroid.shareFile === "function") {
+      try { if (window.RTAndroid.shareFile(b64_(x.bytes), x.namaFile, XLSX_MIME, nomorWA_(RT_CONFIG.waBendahara) || "", pesan, true)) return; } catch (e4) { console.warn(e4); }
+    }
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({ files: [file], text: pesan });
+      showToast("Pilih WhatsApp lalu kontak Bendahara.");
+      return;
+    }
+    unduhExcelSetoran_(id, batch);
+    rtOpenWa(RT_CONFIG.waBendahara, pesan + "\n\n(File Excel sudah diunduh — mohon dilampirkan di chat ini.)", "Nomor WhatsApp Bendahara belum diatur di config.js.");
+  } catch (e) { if (e && e.name === "AbortError") return; console.error(e); showToast("Gagal menyiapkan Excel. Coba lagi."); }
+}
+function tampilLaporanSetoran_(id, batch){
+  document.getElementById("modalBody").innerHTML =
+    '<h3>✅ Setoran Diajukan</h3><p class="msub">' + fmtRp_(batch.jumlah) + ' · ' + Object.keys(batch.rumahKeys).length + ' rumah · ' + esc_(bulanLabel_(batch.bulanKey)) + '</p>' +
+    '<div class="status-now">Serahkan uang cash ke Bendahara. Laporan setoran (Excel) bisa dibawa/dikirim sebagai rekap. Setoran baru tercatat di Kas RT setelah Admin mengonfirmasi.</div>' +
+    '<div class="msheet-actions">' +
+      '<button class="btn btn-gold" id="btnXlsUnduh" type="button">📥 Unduh Laporan Setor (Excel)</button>' +
+      '<button class="btn btn-line" id="btnXlsKirim" type="button">📤 Kirim Excel ke Bendahara</button>' +
+      '<button class="btn btn-brand" id="btnXlsSelesai" type="button">Selesai</button></div>';
+  document.getElementById("btnXlsUnduh").addEventListener("click", function(){ unduhExcelSetoran_(id, batch); });
+  document.getElementById("btnXlsKirim").addEventListener("click", function(){ kirimExcelSetoran_(id, batch); });
+  document.getElementById("btnXlsSelesai").addEventListener("click", closeModal_);
+  showModal_();
+}
+
+/* ---------- SETOR CASH ---------- */
+function ajukanSetoran_(){
+  var keys = [], total = 0;
+  Object.keys(penarikanData).forEach(function(k){
+    var e = penarikanData[k];
+    if (e && e.status === "lunas_cash" && !e.setoranId) { keys.push(k); total += uangEntry_(e); }
+  });
+  if (keys.length === 0) { showToast("Tidak ada uang cash yang perlu disetor."); return; }
+  /* Pembayaran beberapa bulan sekaligus: uangnya diserahkan bersamaan, jadi bulan-bulan lain dalam paket
+     ikut disetor (dibuat satu setoran per bulan supaya laporan & kas tetap per bulan). */
+  var sib = {};
+  keys.forEach(function(k){
+    var e = penarikanData[k];
+    if (e.paketId && e.paketBulan) String(e.paketBulan).split(",").forEach(function(m){ if (m && m !== bulanKey) (sib[m] = sib[m] || {})[k] = e.paketId; });
+  });
+  var bulanLain = Object.keys(sib);
+  var btnSetor = document.getElementById("btnSetor");
+  btnSetor.disabled = true;
+  (bulanLain.length ? Promise.all(bulanLain.map(function(m){ return db.ref("penarikan/" + m).once("value"); })) : Promise.resolve([])).then(function(snaps){
+    var batches = [{ bulan: bulanKey, keys: keys, total: total }];
+    snaps.forEach(function(sn, i){
+      var m = bulanLain[i], data = sn.val() || {}, ks = [], t = 0;
+      Object.keys(sib[m]).forEach(function(k){
+        var e = data[k];
+        if (e && e.status === "lunas_cash" && !e.setoranId && e.paketId === sib[m][k]) { ks.push(k); t += uangEntry_(e); }
+      });
+      if (ks.length) batches.push({ bulan: m, keys: ks, total: t });
+    });
+    var grand = 0, rumahSet = {};
+    batches.forEach(function(b){ grand += b.total; b.keys.forEach(function(k){ rumahSet[k] = true; }); });
+    var infoBulan = batches.length > 1
+      ? "Periode: " + batches.map(function(b){ return bulanLabel_(b.bulan); }).join(", ") + "\n(termasuk pembayaran bulan di muka — dibuat " + batches.length + " setoran, satu per bulan)"
+      : "Bulan: " + bulanLabel_(bulanKey);
+    if (!confirm("Setor uang cash ke Pengurus?\n\n" + infoBulan + "\nPetugas: " + petugasNama + "\nJumlah: " + fmtRp_(grand) + " dari " + Object.keys(rumahSet).length + " rumah\n\nSetelah ini catatan rumah-rumah tersebut terkunci sampai Admin menerima uangnya.")) return null;
+    var updates = {}, pertama = null, pertamaKey = null;
+    batches.forEach(function(b, idx){
+      var newKey = db.ref("humasSetoran").push().key;
+      var rumahKeys = {}; b.keys.forEach(function(k){ rumahKeys[k] = true; });
+      var batchBaru = { bulanKey: b.bulan, petugas: petugasNama, jumlah: b.total, rumahKeys: rumahKeys, status: "menunggu", createdAt: Date.now(), createdBy: (firebase.auth().currentUser && firebase.auth().currentUser.email) || "" };
+      updates["humasSetoran/" + newKey] = Object.assign({}, batchBaru, { createdAt: firebase.database.ServerValue.TIMESTAMP });
+      b.keys.forEach(function(k){ updates["penarikan/" + b.bulan + "/" + k + "/setoranId"] = newKey; });
+      if (idx === 0) { pertama = batchBaru; pertamaKey = newKey; }
+    });
+    return db.ref().update(updates).then(function(){
+      showToast(batches.length > 1 ? batches.length + " setoran diajukan (per bulan). Menunggu konfirmasi Admin." : "Setoran diajukan. Menunggu konfirmasi Admin.");
+      tampilLaporanSetoran_(pertamaKey, pertama);
+    });
+  }).catch(function(err){ showToast(pesanGagal_(err, "Pengajuan setoran")); })
+  .finally(function(){ btnSetor.disabled = false; });
+}
+
+/* ---------- MODAL TRANSAKSI ---------- */
+function openModal_(r){
+  currentRumah = r; hasilKwitansi = null; buktiFoto_ = null;
+  var existing = penarikanData[r.key] || {};
+  var telpAwal = existing.teleponWarga || nomorWargaTersimpan_(r.key) || "";
+  var metodeAwal = existing.metode || "cash";
+  document.getElementById("modalBody").innerHTML =
+    '<h3>' + esc_(r.label) + '</h3><p class="msub">' + esc_(r.nama || "-") + ' · Bulan ' + esc_(bulanLabel_(bulanKey)) + '</p>' +
+    (existing.status ? '<div class="status-now">Status saat ini: ' + esc_(statusInfo_(existing).text) + (existing.petugas ? ' · oleh ' + esc_(existing.petugas) : '') + '</div>' : '') +
+    '<label class="mchk"><input type="checkbox" id="mdTambahan"' + (existing.tambahanKK ? " checked" : "") + '> Ada saudara/keluarga beda KK di rumah ini (tambahan iuran RUKEM ' + fmtRp_(RT_CONFIG.iuranTambahanKK) + ')</label>' +
+    '<div class="mfield" id="mdBulanWrap"' + ((existing.status && existing.status !== "belum") ? ' style="display:none"' : '') + '><label>Dibayar untuk berapa bulan? (mulai ' + esc_(bulanLabel_(bulanKey)) + ')</label><select id="mdJmlBulan">' +
+      [1,2,3,4,5,6].map(function(n){ return '<option value="' + n + '">' + (n === 1 ? '1 bulan (bulan ini saja)' : n + ' bulan sekaligus (bayar di muka)') + '</option>'; }).join("") + '</select>' +
+      '<div class="status-now" id="mdPaketInfo" style="display:none;margin-top:6px"></div></div>' +
+    '<div class="mtotal"><span id="mdTotalLabel">Total Tagihan Bulan Ini</span><strong id="mdTotal">' + fmtRp_(RT_CONFIG.iuranBulanan) + '</strong></div>' +
+    '<div class="mfield" id="mdTerimaWrap" style="display:none"><label>Uang yang diterima (Rp) — isi lebih besar bila warga membayar lebih, sisanya jadi saldo bulan depan</label><input type="number" id="mdDiterima" inputmode="numeric" min="0" step="1000"><div class="status-now" id="mdSaldoInfo" style="margin-top:6px"></div></div>' +
+    '<div class="mfield"><label>Nomor WhatsApp Warga (opsional — kalau kosong, kwitansi sementara ke Bendahara &amp; reminder ke Pak RT)</label><input type="tel" id="mdTelp" placeholder="08xxxxxxxxxx" value="' + esc_(telpAwal) + '"></div>' +
+    '<div class="mfield"><label>Cara Pembayaran</label><select id="mdMetode">' +
+      '<option value="cash"' + (metodeAwal === "cash" ? " selected" : "") + '>💵 Cash (Tunai)</option>' +
+      '<option value="transfer"' + (metodeAwal === "transfer" ? " selected" : "") + '>🏦 Transfer</option>' +
+      '<option value="lainnya"' + (metodeAwal === "lainnya" ? " selected" : "") + '>✍️ Lainnya (Tidak ada di rumah, dll)</option>' +
+    '</select></div>' +
+    '<div class="status-now" id="mdRekWrap" style="display:none">🏦 Rekening tujuan transfer:<br><b>' + esc_(rekeningTeks_()) + '</b></div>' +
+    '<div class="mfield" id="mdBuktiWrap" style="display:none"><label>Bukti Transfer (foto/screenshot) — wajib</label>' +
+      (existing.adaBukti ? '<div class="status-now" style="margin:0">✅ Bukti sudah terlampir. Pilih foto baru hanya kalau ingin mengganti.</div>' : '') +
+      '<input type="file" id="mdBukti" accept="image/*"><img id="mdBuktiPrev" alt="Bukti transfer" style="display:none;max-width:100%;border-radius:12px;margin-top:6px;border:1px solid var(--line)"></div>' +
+    '<div class="mfield" id="mdCatatanWrap" style="display:none"><label>Keterangan</label><textarea id="mdCatatan" placeholder="Contoh: Tidak ada di rumah, Menolak bayar, Rumah kosong, dll">' + esc_(existing.catatan || "") + '</textarea></div>' +
+    '<div class="msheet-actions"><button class="btn btn-gold" id="btnSimpanTransaksi" type="button">✅ Tandai Lunas &amp; Buat Kwitansi PDF</button>' +
+    (existing.status ? '<button class="btn btn-ghost" id="btnHapusCatatan" type="button">🗑️ Hapus Catatan Rumah Ini</button>' : '') + '</div>';
+
+  var tambahanEl = document.getElementById("mdTambahan");
+  var totalEl = document.getElementById("mdTotal");
+  var jmlBulanEl = document.getElementById("mdJmlBulan");
+  if (defaultJmlBulan_ > 1) jmlBulanEl.value = String(defaultJmlBulan_);
+  defaultJmlBulan_ = 1;
+  function jmlBulanAktif_(){
+    var w = document.getElementById("mdBulanWrap");
+    return (w && w.style.display !== "none") ? (parseInt(jmlBulanEl.value, 10) || 1) : 1;
+  }
+  function recompute(){
+    var n = jmlBulanAktif_();
+    var perBulan = RT_CONFIG.iuranBulanan + (tambahanEl.checked ? RT_CONFIG.iuranTambahanKK : 0);
+    totalEl.textContent = fmtRp_(perBulan * n);
+    document.getElementById("mdTotalLabel").textContent = n > 1 ? "Total " + n + " Bulan" : "Total Tagihan Bulan Ini";
+    var info = document.getElementById("mdPaketInfo");
+    if (n > 1) { info.style.display = "block"; info.textContent = "📦 " + periodeLabel_(bulanKey, n) + " · " + fmtRp_(perBulan) + " × " + n + " bulan. Tiap bulan tercatat lunas sendiri-sendiri; satu kwitansi untuk semuanya."; }
+    else info.style.display = "none";
+    hitungTerima_();
+  }
+  tambahanEl.addEventListener("change", recompute);
+  jmlBulanEl.addEventListener("change", recompute);
+
+  /* Uang diterima & saldo titipan (hanya untuk catatan 1 bulan yang belum dibayar). */
+  var diterimaEl = document.getElementById("mdDiterima"), diterimaManual_ = false;
+  var bisaSaldo_ = !(existing.status && existing.status !== "belum");
+  function hitungTerima_(){
+    var wrap = document.getElementById("mdTerimaWrap");
+    var m = document.getElementById("mdMetode") ? document.getElementById("mdMetode").value : "cash";
+    var tampil = bisaSaldo_ && jmlBulanAktif_() === 1 && m !== "lainnya";
+    wrap.style.display = tampil ? "grid" : "none";
+    if (!tampil) return;
+    var tag = RT_CONFIG.iuranBulanan + (tambahanEl.checked ? RT_CONFIG.iuranTambahanKK : 0);
+    var saldo = saldoRumah_(r.key), pakai = Math.min(saldo, tag), perlu = tag - pakai;
+    if (!diterimaManual_) diterimaEl.value = String(perlu);
+    var dt = parseFloat(diterimaEl.value) || 0, info = "Iuran bulan ini " + fmtRp_(tag);
+    if (saldo > 0) info += " · Saldo titipan " + fmtRp_(saldo) + " dipakai " + fmtRp_(pakai) + " → uang yang perlu diterima " + fmtRp_(perlu);
+    if (dt > perlu) info += " · ✅ Kelebihan " + fmtRp_(dt - perlu) + " disimpan jadi saldo bulan depan";
+    else if (dt < perlu) info += " · ⚠️ Uang diterima kurang " + fmtRp_(perlu - dt);
+    document.getElementById("mdSaldoInfo").textContent = info;
+  }
+  diterimaEl.addEventListener("input", function(){ diterimaManual_ = true; hitungTerima_(); });
+
+  var metodeEl = document.getElementById("mdMetode");
+  var catatanWrap = document.getElementById("mdCatatanWrap");
+  var btnSimpan = document.getElementById("btnSimpanTransaksi");
+  function syncMetode(){
+    var m = metodeEl.value;
+    catatanWrap.style.display = m === "lainnya" ? "block" : "none";
+    document.getElementById("mdBuktiWrap").style.display = m === "transfer" ? "grid" : "none";
+    document.getElementById("mdRekWrap").style.display = (m === "transfer" && rekeningTeks_()) ? "block" : "none";
+    var bw = document.getElementById("mdBulanWrap");
+    if (bw) {
+      var boleh = m !== "lainnya" && !(existing.status && existing.status !== "belum");
+      bw.style.display = boleh ? "grid" : "none";
+      if (!boleh) jmlBulanEl.value = "1";
+      recompute();
+    }
+    btnSimpan.textContent = m === "cash" ? "✅ Tandai Lunas & Buat Kwitansi PDF" : m === "transfer" ? "📤 Kirim ke Admin untuk Konfirmasi" : "💬 Simpan & Kirim Reminder WhatsApp";
+  }
+  metodeEl.addEventListener("change", syncMetode);
+  syncMetode();
+
+  document.getElementById("mdBukti").addEventListener("change", function(ev){
+    var f = ev.target.files && ev.target.files[0];
+    if (!f) return;
+    kompresFoto_(f, function(url){
+      if (!url) { showToast("Foto tidak bisa dibaca. Coba foto lain."); return; }
+      buktiFoto_ = url;
+      var pv = document.getElementById("mdBuktiPrev"); pv.src = url; pv.style.display = "block";
+    });
+  });
+  btnSimpan.addEventListener("click", simpanTransaksi_);
+  var btnHapus = document.getElementById("btnHapusCatatan");
+  if (btnHapus) btnHapus.addEventListener("click", hapusCatatan_);
+  showModal_();
+}
+/* Kecilkan foto bukti (maks 1000px, JPEG 70%) supaya ringan disimpan di Firebase & cepat dibuka admin. */
+function kompresFoto_(file, cb){
+  var fr = new FileReader();
+  fr.onerror = function(){ cb(null); };
+  fr.onload = function(){
+    var img = new Image();
+    img.onerror = function(){ cb(null); };
+    img.onload = function(){
+      var k = Math.min(1, 1000 / Math.max(img.width, img.height));
+      var c = document.createElement("canvas");
+      c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      cb(c.toDataURL("image/jpeg", 0.7));
+    };
+    img.src = fr.result;
+  };
+  fr.readAsDataURL(file);
+}
+function showModal_(){
+  document.getElementById("modalScrim").classList.add("open");
+  document.getElementById("modalSheet").classList.add("open");
+}
+function closeModal_(){
+  document.getElementById("modalScrim").classList.remove("open");
+  document.getElementById("modalSheet").classList.remove("open");
+  currentRumah = null; hasilKwitansi = null;
+}
+
+function simpanTransaksi_(){
+  if (!currentRumah) return;
+  var metode = document.getElementById("mdMetode").value;
+  var tambahan = document.getElementById("mdTambahan").checked;
+  var catatan = (document.getElementById("mdCatatan") ? document.getElementById("mdCatatan").value.trim() : "");
+  var telp = document.getElementById("mdTelp").value.trim();
+  if (metode === "lainnya" && !catatan) { showToast("Isi keterangan dulu, contoh: Tidak ada di rumah."); return; }
+  var existingCek = penarikanData[currentRumah.key] || {};
+  if (metode === "transfer" && !buktiFoto_ && !existingCek.adaBukti) { showToast("Lampirkan foto bukti transfer dulu."); return; }
+  if (existingCek.setoranId) { showToast("Rumah ini sudah masuk setoran ke Pengurus, jadi tidak bisa diubah. Minta Admin membatalkan setoran bila perlu koreksi."); return; }
+  if (existingCek.paketId) { showToast("Catatan ini bagian dari pembayaran beberapa bulan. Hapus dulu (🗑️ Hapus Catatan), lalu catat ulang bila perlu."); return; }
+  if (telp) {
+    var telNorm_ = nomorWAValid_(telp);
+    if (!telNorm_) { showToast("Nomor WhatsApp tidak valid. Contoh: 081234567890"); return; }
+    telp = telNorm_;
+  }
+  var wrapBln_ = document.getElementById("mdBulanWrap");
+  var nBulan_ = (wrapBln_ && wrapBln_.style.display !== "none") ? (parseInt(document.getElementById("mdJmlBulan").value, 10) || 1) : 1;
+  if (nBulan_ > 1 && metode !== "lainnya") { simpanPaket_(metode, tambahan, telp, nBulan_); return; }
+  var bulanIni_ = tglWIB_().slice(0, 7);
+  if (bulanKey !== bulanIni_ && !confirm("Anda mencatat untuk bulan " + bulanLabel_(bulanKey) + ", BUKAN bulan berjalan (" + bulanLabel_(bulanIni_) + "). Lanjutkan?")) return;
+  var statusBaru_ = metode === "cash" ? "lunas_cash" : (metode === "transfer" ? "transfer_pending" : "belum");
+  if (existingCek.status && existingCek.status !== statusBaru_ &&
+      !confirm("Ubah status " + currentRumah.label + "?\n\nSekarang: " + statusInfo_(existingCek).text + "\nMenjadi: " + (metode === "cash" ? "Lunas (Cash)" : metode === "transfer" ? "Transfer (menunggu konfirmasi Admin)" : "Belum Bayar"))) return;
+
+  var jumlah = (RT_CONFIG.iuranBulanan || 60000) + (tambahan ? (RT_CONFIG.iuranTambahanKK || 7500) : 0);
+  var status = metode === "cash" ? "lunas_cash" : (metode === "transfer" ? "transfer_pending" : "belum");
+  var existing = penarikanData[currentRumah.key] || {};
+  var uangMasuk_ = null, kelebihan_ = 0, saldoDipakai_ = 0, saldoSaja_ = false;
+  var elTerima_ = document.getElementById("mdDiterima"), wrapTerima_ = document.getElementById("mdTerimaWrap");
+  if (metode !== "lainnya" && elTerima_ && wrapTerima_ && wrapTerima_.style.display !== "none") {
+    saldoDipakai_ = Math.min(saldoRumah_(currentRumah.key), jumlah);
+    var perlu_ = jumlah - saldoDipakai_;
+    var dt_ = parseFloat(elTerima_.value); if (isNaN(dt_)) dt_ = perlu_;
+    if (dt_ < perlu_) { showToast("Uang diterima kurang. Seharusnya minimal " + fmtRp_(perlu_) + "."); return; }
+    if (metode === "transfer" && dt_ <= 0) { showToast("Isi jumlah uang yang ditransfer."); return; }
+    kelebihan_ = dt_ - perlu_; uangMasuk_ = dt_;
+    saldoSaja_ = (metode === "cash" && dt_ === 0);
+    if (kelebihan_ > 0 && !confirm("Warga membayar " + fmtRp_(dt_) + ", iuran " + fmtRp_(perlu_) + ".\nKelebihan " + fmtRp_(kelebihan_) + " akan disimpan sebagai saldo iuran bulan depan. Lanjutkan?")) return;
+  }
+  var payload = {
+    blok: currentRumah.blok, no: currentRumah.no, rumah: currentRumah.rumah, nama: currentRumah.nama || "",
+    tambahanKK: tambahan, jumlah: jumlah, metode: metode, catatan: catatan, status: status,
+    petugas: petugasNama, teleponWarga: telp, setoranId: saldoSaja_ ? "saldo" : (existing.setoranId || null),
+    uangMasuk: uangMasuk_, kelebihan: kelebihan_ || null, saldoDipakai: saldoDipakai_ || null,
+    saldoSetelah: (uangMasuk_ != null) ? Math.max(0, saldoRumah_(currentRumah.key) - saldoDipakai_ + kelebihan_) : null,
+    adaBukti: metode === "transfer" ? true : null,
+    createdAt: existing.createdAt || firebase.database.ServerValue.TIMESTAMP,
+    updatedAt: firebase.database.ServerValue.TIMESTAMP
+  };
+
+  var btn = document.getElementById("btnSimpanTransaksi");
+  var teksTombol_ = btn.innerHTML;
+  btn.disabled = true; btn.textContent = "Menyimpan...";
+  var updates = {};
+  updates["penarikan/" + bulanKey + "/" + currentRumah.key] = payload;
+  if (metode === "transfer") {
+    if (buktiFoto_) updates["buktiTransfer/" + bulanKey + "/" + currentRumah.key] = { foto: buktiFoto_, petugas: petugasNama, updatedAt: firebase.database.ServerValue.TIMESTAMP };
+  } else if (existing.adaBukti) updates["buktiTransfer/" + bulanKey + "/" + currentRumah.key] = null;
+  /* Nomor WA disimpan ke Firebase terpisah & hanya bila BEDA dari data resmi warga-kontak.js,
+     supaya kegagalan simpan nomor tidak ikut menggagalkan pencatatan iuran. */
+  var nomorResmi_ = (typeof WARGA_KONTAK !== "undefined" ? WARGA_KONTAK[currentRumah.key] : "") || "";
+  var kontakBaru_ = (telp && nomorWA_(telp) !== nomorWA_(nomorResmi_)) ? { telepon: telp, updatedAt: firebase.database.ServerValue.TIMESTAMP } : null;
+  var kontakKey_ = currentRumah.key;
+
+  var waPre = null;
+  if (metode === "lainnya") {
+    try { waPre = window.open("", "_blank"); if (waPre) waPre.document.write("<p style='font-family:sans-serif'>Membuka WhatsApp...</p>"); } catch (e) { waPre = null; }
+  }
+  db.ref().update(updates).then(function(){
+    if (kontakBaru_) { try { db.ref("wargaKontak/" + kontakKey_).set(kontakBaru_).catch(function(e){ console.warn("wargaKontak tidak tersimpan", e); }); } catch (e) {} }
+    if (metode === "cash") {
+      buatKwitansi_(payload);
+    } else if (metode === "transfer") {
+      tampilKirimTransfer_(payload, buktiFoto_);
+    } else {
+      showToast("Tersimpan sebagai Belum Bayar.");
+      if (kirimReminder_(payload, waPre)) closeModal_();
+    }
+  }).catch(function(err){
+    console.error("Gagal simpan iuran:", err);
+    if (waPre && !waPre.closed) waPre.close();
+    showToast(pesanGagal_(err, "Penyimpanan iuran"));
+    btn.disabled = false; btn.innerHTML = teksTombol_;
+  });
+}
+
+/* Bayar beberapa bulan sekaligus: tiap bulan dicatat sendiri (status, kas, rekap tetap per bulan),
+   diikat oleh paketId supaya Humas & Admin tahu ini satu pembayaran. Bukti transfer & kwitansi cukup satu. */
+function simpanPaket_(metode, tambahan, telp, n){
+  var rumah = currentRumah, rk = rumah.key;
+  if (metode === "transfer" && !buktiFoto_) { showToast("Lampirkan foto bukti transfer dulu."); return; }
+  var bulanList = []; for (var i = 0; i < n; i++) bulanList.push(addBulan_(bulanKey, i));
+  var btn = document.getElementById("btnSimpanTransaksi");
+  var teksTombol_ = btn.innerHTML;
+  btn.disabled = true; btn.textContent = "Memeriksa...";
+  function pulihTombol_(){ btn.disabled = false; btn.innerHTML = teksTombol_; }
+  Promise.all(bulanList.map(function(m){ return db.ref("penarikan/" + m + "/" + rk).once("value"); })).then(function(snaps){
+    var bentrok = [];
+    snaps.forEach(function(sn, idx){ var v = sn.val(); if (v && v.status && v.status !== "belum") bentrok.push(bulanLabel_(bulanList[idx])); });
+    if (bentrok.length) throw new Error("!Sudah ada catatan untuk: " + bentrok.join(", ") + ". Hapus/koreksi dulu, atau kurangi jumlah bulan.");
+    var perBulan = (RT_CONFIG.iuranBulanan || 60000) + (tambahan ? (RT_CONFIG.iuranTambahanKK || 7500) : 0);
+    var total = perBulan * n, periode = periodeLabel_(bulanKey, n);
+    if (!confirm("Catat pembayaran " + n + " bulan sekaligus?\n\n" + rumah.label + " — " + (rumah.nama || "-") + "\nPeriode: " + periode + "\n" + fmtRp_(perBulan) + " × " + n + " = " + fmtRp_(total) + "\nCara bayar: " + (metode === "cash" ? "Cash" : "Transfer") + "\n\nSetiap bulan akan tercatat lunas.")) throw new Error("!");
+    var TS = firebase.database.ServerValue.TIMESTAMP;
+    var paketId = db.ref("penarikan").push().key;
+    var status = metode === "cash" ? "lunas_cash" : "transfer_pending";
+    var updates = {}, first = null;
+    bulanList.forEach(function(m, idx){
+      var ex = snaps[idx].val() || {};
+      var p = {
+        blok: rumah.blok, no: rumah.no, rumah: rumah.rumah, nama: rumah.nama || "",
+        tambahanKK: tambahan, jumlah: perBulan, metode: metode, catatan: "", status: status,
+        petugas: petugasNama, teleponWarga: telp, setoranId: null,
+        adaBukti: metode === "transfer" ? true : null,
+        paketId: paketId, paketKe: idx + 1, paketN: n, paketBulan: bulanList.join(","), paketTotal: total, periodeLabel: periode,
+        createdAt: ex.createdAt || TS, updatedAt: TS
+      };
+      updates["penarikan/" + m + "/" + rk] = p;
+      if (idx === 0) first = p;
+      if (metode === "transfer") updates["buktiTransfer/" + m + "/" + rk] = idx === 0
+        ? { foto: buktiFoto_, petugas: petugasNama, updatedAt: TS }
+        : { refBulan: bulanList[0], petugas: petugasNama, updatedAt: TS };
+    });
+    var nomorResmi_ = (typeof WARGA_KONTAK !== "undefined" ? WARGA_KONTAK[rk] : "") || "";
+    var kontakBaru_ = (telp && nomorWA_(telp) !== nomorWA_(nomorResmi_)) ? { telepon: telp, updatedAt: TS } : null;
+    btn.textContent = "Menyimpan...";
+    return db.ref().update(updates).then(function(){
+      if (kontakBaru_) { try { db.ref("wargaKontak/" + rk).set(kontakBaru_).catch(function(e){ console.warn("wargaKontak tidak tersimpan", e); }); } catch (e) {} }
+      var tampil = Object.assign({}, first, { jumlah: total });
+      if (metode === "cash") buatKwitansi_(tampil);
+      else tampilKirimTransfer_(tampil, buktiFoto_);
+    });
+  }).catch(function(err){
+    var msg = (err && err.message) || "";
+    if (msg.charAt(0) === "!") { if (msg.length > 1) showToast(msg.slice(1)); }
+    else { console.error("Gagal simpan paket:", err); showToast(pesanGagal_(err, "Penyimpanan iuran")); }
+    pulihTombol_();
+  });
+}
+/* Hapus paket (semua bulan) — hanya bila belum disetor / dikonfirmasi. */
+function hapusPaket_(e){
+  var rk = currentRumah.key, label = currentRumah.label;
+  var bulanList = String(e.paketBulan || "").split(",").filter(Boolean);
+  if (!bulanList.length) bulanList = [bulanKey];
+  Promise.all(bulanList.map(function(m){ return db.ref("penarikan/" + m + "/" + rk).once("value"); })).then(function(snaps){
+    var terkunci = false;
+    snaps.forEach(function(sn){ var v = sn.val(); if (v && v.paketId === e.paketId && (v.setoranId || v.status === "lunas_transfer" || v.disetorKonfirmasi)) terkunci = true; });
+    if (terkunci) { showToast("Sebagian bulan sudah masuk setoran / sudah dikonfirmasi, jadi paket tidak bisa dihapus. Minta Admin mereset."); return; }
+    if (!confirm("Hapus pembayaran " + bulanList.length + " bulan untuk " + label + " (" + (e.periodeLabel || "") + ")?\n\nSemua bulan dalam paket ini dihapus.")) return;
+    var updates = {};
+    snaps.forEach(function(sn, idx){ var v = sn.val(); if (v && v.paketId === e.paketId) { updates["penarikan/" + bulanList[idx] + "/" + rk] = null; updates["buktiTransfer/" + bulanList[idx] + "/" + rk] = null; } });
+    return db.ref().update(updates).then(function(){ showToast("Paket dihapus."); closeModal_(); });
+  }).catch(function(err){ showToast(pesanGagal_(err, "Penghapusan catatan")); });
+}
+
+/* Hapus catatan penarikan 1 rumah (bulan terpilih) — dikunci password supaya tidak terhapus tak sengaja. */
+function hapusCatatan_(){
+  if (!currentRumah) return;
+  var key = currentRumah.key, e = penarikanData[key];
+  if (!e) return;
+  if (e.paketId) { hapusPaket_(e); return; }
+  var batch = e.setoranId ? setoranData[e.setoranId] : null;
+  if (batch && batch.status === "diterima") { showToast("Catatan yang sudah diterima Bendahara tidak dapat dihapus."); return; }
+  if (e.status === "lunas_transfer") { showToast("Transfer yang sudah dikonfirmasi tidak dapat dihapus."); return; }
+  var pesan = "Hapus catatan " + currentRumah.label + " (" + fmtRp_(e.jumlah) + ")?";
+  if (!confirm(pesan)) return;
+  var updates = {};
+  updates["penarikan/" + bulanKey + "/" + key] = null;
+  updates["buktiTransfer/" + bulanKey + "/" + key] = null;
+  if (batch && batch.status === "menunggu") {
+    var sisa = Object.keys(batch.rumahKeys || {}).filter(function(k){ return k !== key; });
+    if (sisa.length === 0) updates["humasSetoran/" + e.setoranId] = null;
+    else {
+      updates["humasSetoran/" + e.setoranId + "/rumahKeys/" + key] = null;
+      updates["humasSetoran/" + e.setoranId + "/jumlah"] = Math.max(0, (parseFloat(batch.jumlah) || 0) - uangEntry_(e));
+    }
+  }
+  db.ref().update(updates).then(function(){ showToast("Catatan dihapus."); closeModal_(); })
+    .catch(function(err){ showToast(pesanGagal_(err, "Penghapusan catatan")); });
+}
+
+/* Setelah transfer dicatat: beritahu Bendahara langsung lewat WhatsApp (data + foto bukti).
+   Bendahara lalu cek mutasi, konfirmasi di admin.html, dan Bendahara yang mengirim kwitansi ke warga. */
+function pesanKeBendahara_(payload){
+  var adminUrl = new URL("admin.html", location.href).href;
+  return salam_() + " Pak/Bu Bendahara. Humas (" + petugasNama + ") menerima pembayaran *transfer* iuran bulanan dari " +
+    (payload.nama || "-") + " (" + payload.rumah + ") bulan " + (payload.periodeLabel || bulanLabel_(bulanKey)) + " sebesar *" + fmtRp_(payload.uangMasuk != null ? payload.uangMasuk : payload.jumlah) + "*." + catatSaldo_(payload) +
+    "\n\nMohon dicek di mutasi rekening, lalu dikonfirmasi di halaman Admin (tab Iuran Bulanan):\n" + adminUrl +
+    "\n\nSetelah dikonfirmasi, mohon kwitansi dikirim ke warga dari halaman yang sama. Terima kasih 🙏";
+}
+function tampilKirimTransfer_(payload, foto){
+  var adaFoto = !!foto;
+  document.getElementById("modalBody").innerHTML =
+    '<h3>✅ Transfer Tercatat</h3><p class="msub">' + esc_(payload.rumah) + ' · ' + esc_(payload.nama || "-") + ' · ' + fmtRp_(payload.jumlah) + '</p>' +
+    '<div class="status-now">Data sudah masuk ke halaman Admin. Beritahu Bendahara lewat WhatsApp supaya segera dicek &amp; dikonfirmasi. <b>Kwitansi akan dikirim Bendahara</b> ke warga setelah transfer dikonfirmasi.</div>' +
+    '<div class="msheet-actions">' +
+      (adaFoto ? '<button class="btn btn-gold" id="btnFotoBend" type="button">🖼️ Kirim Foto Bukti + Data ke Bendahara</button>' : '') +
+      '<button class="btn ' + (adaFoto ? 'btn-line' : 'btn-gold') + '" id="btnTeksBend" type="button">💬 Kirim Data ke WA Bendahara' + (adaFoto ? ' (tanpa foto)' : '') + '</button>' +
+      '<button class="btn btn-brand" id="btnSelesaiTf" type="button">Selesai</button>' +
+    '</div>';
+  var pesan = pesanKeBendahara_(payload);
+  document.getElementById("btnTeksBend").addEventListener("click", function(){
+    rtOpenWa(RT_CONFIG.waBendahara, pesan, "Nomor WhatsApp Bendahara belum diatur di config.js.");
+  });
+  var bf = document.getElementById("btnFotoBend");
+  if (bf) bf.addEventListener("click", async function(){
+    try {
+      var blob = await (await fetch(foto)).blob();
+      var file = new File([blob], "bukti-transfer-" + payload.rumah.replace(/[^A-Za-z0-9]+/g, "") + ".jpg", { type: "image/jpeg" });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], text: pesan });
+        showToast("Pilih WhatsApp lalu kontak Bendahara.");
+        return;
+      }
+    } catch (e) { if (e && e.name === "AbortError") return; console.warn(e); }
+    showToast("HP ini belum bisa kirim foto langsung. Kirim data dulu, lalu foto bukti manual lewat WhatsApp.");
+    rtOpenWa(RT_CONFIG.waBendahara, pesan, "Nomor WhatsApp Bendahara belum diatur di config.js.");
+  });
+  document.getElementById("btnSelesaiTf").addEventListener("click", closeModal_);
+}
+
+function kirimReminder_(payload, waPre){
+  var nomor = nomorWA_(payload.teleponWarga);
+  var rek = rekeningTeks_();
+  var link, judul, sub;
+  if (nomor) {
+    var pesan = salam_() + " Bpk/Ibu " + (payload.nama || "") + " (" + payload.rumah + "). Kami dari Humas RT 10 tadi berkunjung untuk penarikan *iuran bulanan* " +
+      bulanLabel_(bulanKey) + " sebesar " + fmtRp_(payload.jumlah) + ", namun belum bertemu Bapak/Ibu." +
+      "\n\nMohon informasi kapan bisa kami kunjungi kembali" + (rek ? ", atau bisa dibayar via transfer ke:\n*" + rek + "*\n(mohon kirim bukti transfernya di chat ini)" : ".") +
+      "\n\nTerima kasih 🙏";
+    link = rtWaLink(nomor, pesan);
+    judul = "💬 Reminder WhatsApp"; sub = esc_(payload.rumah) + " · " + esc_(payload.nama || "-");
+  } else {
+    // Nomor WA warga belum ada di data: teruskan info ke WhatsApp Pak RT (Ketua RT).
+    var pesanRT = salam_() + " Pak RT, info dari petugas Humas (" + petugasNama + "): rumah " + payload.rumah + " (" + (payload.nama || "-") +
+      ") belum bayar iuran bulan " + bulanLabel_(bulanKey) + ". Keterangan: " + (payload.catatan || "-") +
+      ". Nomor WA warga ini belum ada di data, mohon info kalau Bapak punya kontaknya.";
+    link = rtWaLink(nomorWA_(RT_CONFIG.waKetua), pesanRT);
+    judul = "💬 Info ke Pak RT"; sub = "Nomor WA warga belum ada, info dikirim ke Ketua RT";
+    if (link) showToast("Nomor WA warga belum ada di data — reminder untuk sementara dikirim ke WhatsApp Pak RT.");
+  }
+  if (!link) {
+    if (waPre && !waPre.closed) waPre.close();
+    showToast("Nomor WhatsApp belum diatur di config.js.");
+    return true;
+  }
+  var terbuka = bukaLinkWA_(link, waPre);
+  tampilTombolWA_(link, judul, sub, terbuka);
+  return false;
+}
+
+function buatKwitansi_(payload){
+  if (typeof RTSurat === "undefined") { showToast("Gagal membuat PDF: surat-pdf.js belum termuat."); return; }
+  var dataKwitansi = {
+    nama: payload.nama || "-", blok: payload.rumah, bulan: payload.periodeLabel || bulanLabel_(bulanKey),
+    rincian: "Iuran Bulanan" + (payload.paketN > 1 ? " × " + payload.paketN + " bulan" : "") + (payload.tambahanKK ? " + Iuran RUKEM (tambahan KK)" : ""),
+    jumlah: fmtRp_(payload.jumlah), metode: "Tunai (Cash)", petugas: payload.petugas
+  };
+  if (payload.uangMasuk != null && (payload.kelebihan > 0 || payload.saldoDipakai > 0)) {
+    dataKwitansi.diterima = fmtRp_(payload.uangMasuk);
+    if (payload.saldoDipakai > 0) dataKwitansi.saldoPakai = fmtRp_(payload.saldoDipakai);
+    if (payload.saldoSetelah > 0) dataKwitansi.saldoSisa = fmtRp_(payload.saldoSetelah);
+  }
+  var hasil;
+  try { hasil = RTSurat.buat("kwitansiIuran", dataKwitansi, RT_CONFIG, null, new Date(), "KW-" + bulanKey.slice(2, 4) + bulanKey.slice(5, 7) + "-" + String(payload.blok || "").toUpperCase() + "-" + String(payload.no || "").toUpperCase()); }
+  catch (e) { console.error(e); showToast("Tersimpan, tapi gagal membuat PDF kwitansi."); closeModal_(); return; }
+  String(payload.paketBulan || bulanKey).split(",").forEach(function(m){ db.ref("penarikan/" + m + "/" + currentRumah.key + "/kodeKwitansi").set(hasil.kode); });
+  hasilKwitansi = { hasil: hasil, payload: payload };
+  tampilHasilKwitansi_();
+}
+
+/* Tujuan kirim kwitansi: kalau nomor WA PEMILIK RUMAH sudah ada di data/terisi,
+   kirim langsung ke warga. Kalau belum, sementara dikirim ke Bendahara (yang
+   memegang rekapan iuran) sambil menunggu data nomor WA warga diupload admin. */
+function tujuanKwitansi_(payload){
+  var nomorWarga = nomorWA_(payload.teleponWarga);
+  if (nomorWarga) {
+    return { nomor: nomorWarga, label: "Warga", ke: payload.nama || "warga" };
+  }
+  return { nomor: nomorWA_(RT_CONFIG.waBendahara), label: "Bendahara", ke: RT_CONFIG.namaBendahara || "Bendahara" };
+}
+function tampilHasilKwitansi_(){
+  if (!hasilKwitansi) return;
+  var hasil = hasilKwitansi.hasil, payload = hasilKwitansi.payload;
+  var tujuan = tujuanKwitansi_(payload);
+  var catatanTujuan = tujuan.label === "Bendahara"
+    ? '<p class="kwitansi-file">ℹ️ Nomor WA warga ini belum ada di data — kwitansi untuk sementara dikirim ke <b>Bendahara</b> (' + esc_(tujuan.ke) + ').</p>' : "";
+  document.getElementById("modalBody").innerHTML =
+    '<h3>✅ Kwitansi Siap</h3><p class="msub">' + esc_(payload.rumah) + ' · ' + esc_(payload.nama || "-") + ' · ' + fmtRp_(payload.jumlah) + '</p>' +
+    '<p class="kwitansi-file">📎 ' + esc_(hasil.namaFile) + '</p>' + catatanTujuan +
+    '<p class="kwitansi-file">Mode kirim: ' + (modeAPK_() ? '✅ Aplikasi Android (PDF langsung terlampir)' : (navigator.canShare ? '📤 Browser (menu Bagikan)' : '💻 Browser tanpa menu Bagikan (lampirkan manual)')) + '</p>' +
+    '<div class="msheet-actions">' +
+      '<button class="btn btn-gold" id="btnKirimKwitansi" type="button">📤 Kirim ke WhatsApp ' + esc_(tujuan.label) + '</button>' +
+      '<button class="btn btn-line" id="btnChatKwitansi" type="button">💬 Buka Chat ' + esc_(tujuan.label) + ' (lampirkan PDF manual)</button>' +
+      '<button class="btn btn-line" id="btnUnduhKwitansi" type="button">⬇️ Unduh PDF</button>' +
+      '<button class="btn btn-brand" id="btnSelesaiKwitansi" type="button">Selesai</button>' +
+    '</div>';
+  document.getElementById("btnKirimKwitansi").addEventListener("click", kirimKwitansi_);
+  document.getElementById("btnChatKwitansi").addEventListener("click", function(){
+    if (!tujuan.nomor) { showToast("Nomor WhatsApp belum tersedia."); return; }
+    unduhBlob_(hasil.bytes, hasil.namaFile);
+    rtOpenWa(tujuan.nomor, teksKwitansi_(payload, hasil, tujuan) + "\n\n(PDF kwitansi sudah diunduh — tekan 📎 lalu lampirkan file tersebut di chat ini.)");
+    showToast("Chat WhatsApp dibuka. Lampirkan PDF lalu kirim.");
+  });
+  document.getElementById("btnUnduhKwitansi").addEventListener("click", function(){ unduhBlob_(hasil.bytes, hasil.namaFile); showToast("PDF diunduh."); });
+  document.getElementById("btnSelesaiKwitansi").addEventListener("click", closeModal_);
+}
+
+function modeAPK_(){ return !!(window.RTAndroid && typeof window.RTAndroid.sharePdf === "function"); }
+function teksKwitansi_(payload, hasil, tujuan){
+  return tujuan.label === "Warga"
+    ? (salam_() + " Bpk/Ibu " + (payload.nama || "") + ", pembayaran *iuran bulanan RT 10* (" + payload.rumah + ") bulan " + (payload.periodeLabel || bulanLabel_(bulanKey)) +
+       " sebesar *" + fmtRp_(payload.jumlah) + "* (Tunai) sudah kami terima. Kwitansi PDF kami lampirkan. Terima kasih atas partisipasinya 🙏" + catatSaldo_(payload) + " (Kode: " + hasil.kode + ")")
+    : (salam_() + " Pak/Bu Bendahara, berikut kwitansi iuran bulanan a.n. " + (payload.nama || "-") + " (" + payload.rumah + "), bulan " +
+       (payload.periodeLabel || bulanLabel_(bulanKey)) + " sebesar " + fmtRp_(payload.jumlah) + ". Nomor WA warga ini belum ada di data, jadi untuk sementara " +
+       "dikirim ke Bendahara." + catatSaldo_(payload) + " (Kode: " + hasil.kode + ")");
+}
+async function kirimKwitansi_(){
+  if (!hasilKwitansi) return;
+  var hasil = hasilKwitansi.hasil, payload = hasilKwitansi.payload;
+  var tujuan = tujuanKwitansi_(payload);
+  var pesan = teksKwitansi_(payload, hasil, tujuan);
+  if (!tujuan.nomor) { showToast("Nomor WhatsApp " + tujuan.label + " belum diatur di config.js. PDF diunduh saja."); unduhBlob_(hasil.bytes, hasil.namaFile); return; }
+  if (window.RTAndroid && typeof window.RTAndroid.sharePdf === "function") {
+    try { if (window.RTAndroid.sharePdf(b64_(hasil.bytes), hasil.namaFile, tujuan.nomor, pesan)) return; showToast("Aplikasi tidak bisa membuka WhatsApp (pastikan WhatsApp terpasang). Memakai cara cadangan."); } catch (e) { console.warn(e); showToast("Gagal dari aplikasi: " + ((e && e.message) || e)); }
+  }
+  /* Browser HP (Chrome/Safari): menu Bagikan membawa PDF TERLAMPIR ke WhatsApp. wa.me tidak bisa melampirkan file,
+     jadi ini satu-satunya cara agar PDF langsung ikut. Pengguna tinggal memilih kontak (nomor ditampilkan di notifikasi). */
+  try {
+    var file = new File([hasil.bytes], hasil.namaFile, { type: "application/pdf" });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      showToast("Pilih WhatsApp lalu kontak " + (tujuan.label === "Warga" ? (payload.nama || "warga") + " (" + tujuan.nomor.replace(/^62/, "0") + ")" : tujuan.label) + ".");
+      await navigator.share({ files: [file], text: pesan });
+      return;
+    }
+  } catch (e) { if (e && e.name === "AbortError") return; console.warn(e); }
+  unduhBlob_(hasil.bytes, hasil.namaFile);
+  rtOpenWa(tujuan.nomor, pesan + "\n\n(PDF kwitansi sudah diunduh — tekan 📎 lalu lampirkan file tersebut di chat ini.)");
+  showToast("Chat WhatsApp ke " + tujuan.label + " dibuka. Tinggal lampirkan PDF lalu kirim.");
+}
+})();
+</script>
+<script>
+/* ===== IURAN TAMBAHAN (Humas) — catat cash warga, disetor ke Bendahara ===== */
+(function(){
+  var K = {}, B = {}, started = false;
+  function $(i){ return document.getElementById(i); }
+  function nk(x){ return String(x||"").toLowerCase().replace(/[\s\/\-\.]+/g,""); }
+  var rumahList = (typeof WARGA_DATA !== "undefined" ? WARGA_DATA : []).map(function(w){ return { key: nk(w.blok + " " + w.no), rumah: w.blok + " No." + w.no, blok: w.blok, no: w.no, nama: w.nama }; });
+  function cari(v){ var k = nk(v); return rumahList.filter(function(r){ return r.key === k; })[0] || null; }
+  var tm = setInterval(function(){ if (!started && window.db && firebase.auth().currentUser) { started = true; clearInterval(tm); init(); } }, 700);
+  function aktifIds(){ return Object.keys(K).filter(function(i){ return K[i] && K[i].aktif === true && K[i].judul; }).sort(function(a, b){ return (K[b].createdAt || 0) - (K[a].createdAt || 0); }); }
+  function saya(kid){ var d = B[kid] || {}; return Object.keys(d).filter(function(p){ return d[p].status === "cash_menunggu" && d[p].petugas === petugasNama; }).map(function(p){ return Object.assign({ id: p }, d[p]); }).sort(function(a, b){ return (b.createdAt || 0) - (a.createdAt || 0); }); }
+  function render(){
+    var ids = aktifIds(); $("ddHumas").style.display = ids.length ? "block" : "none"; if (!ids.length) return;
+    var cur = $("hdK").value;
+    $("hdK").innerHTML = ids.map(function(id){ return '<option value="' + id + '">' + esc_(K[id].judul) + '</option>'; }).join(""); if (ids.indexOf(cur) >= 0) $("hdK").value = cur;
+    var k = K[$("hdK").value]; $("hdInfo").textContent = k ? ((k.nominal > 0 ? fmtRp_(k.nominal) + " per rumah" : "Nominal bebas") + (k.target > 0 ? " • Target " + fmtRp_(k.target) : "") + (k.deskripsi ? " • " + k.deskripsi : "")) : "";
+    if (k && k.nominal > 0 && !$("hdJumlah").value) $("hdJumlah").placeholder = "Nominal (Rp) — " + fmtRp_(k.nominal);
+    var l = saya($("hdK").value), tot = l.reduce(function(a, p){ return a + (parseFloat(p.jumlah) || 0); }, 0);
+    $("hdJudulList").textContent = "Cash tambahan belum disetor — " + l.length + " rumah • " + fmtRp_(tot);
+    $("hdList").innerHTML = l.length ? l.map(function(p){ return '<div class="rumah-row" style="cursor:default"><div><h4>' + esc_(p.rumah) + (p.nama ? ' — ' + esc_(p.nama) : '') + '</h4><p>' + fmtRp_(p.jumlah) + (p.catatan ? ' • “' + esc_(p.catatan) + '”' : '') + '</p></div><div style="display:flex;gap:6px"><button class="btn btn-gold btn-sm hd-act" data-act="kw" data-id="' + p.id + '" style="width:auto">🧾</button><button class="btn btn-line btn-sm hd-act" data-act="del" data-id="' + p.id + '" style="width:auto">🗑</button></div></div>'; }).join("") : '<div class="empty-note">Belum ada cash yang dicatat untuk pengumpulan dana ini.</div>';
+  }
+  function kwitansi(kid, pid){
+    var p = (B[kid] || {})[pid], k = K[kid]; if (!p || !k) return;
+    if (typeof RTSurat === "undefined") { showToast("surat-pdf.js belum termuat."); return; }
+    var hasil;
+    try { hasil = RTSurat.buat("kwitansiTambahan", { nama: p.nama || "-", blok: p.rumah, bulan: k.judul, rincian: "Iuran Tambahan: " + k.judul, jumlah: fmtRp_(p.jumlah), metode: "Tunai (Cash)", petugas: p.petugas || "-" }, RT_CONFIG, null, new Date(), "KD-" + String(p.blok || "").toUpperCase() + String(p.no || "").toUpperCase() + "-" + pid.slice(-4).toUpperCase()); }
+    catch (e) { console.error(e); showToast("Gagal membuat PDF kwitansi."); return; }
+    var pesan = salam_() + " Bpk/Ibu " + (p.nama || "") + ", terima kasih. Iuran tambahan *" + k.judul + "* sebesar *" + fmtRp_(p.jumlah) + "* (tunai) sudah kami terima. Kwitansi terlampir 🙏";
+    var file; try { file = new File([hasil.bytes], hasil.namaFile, { type: "application/pdf" }); } catch (e) {}
+    if (file && navigator.canShare && navigator.canShare({ files: [file] })) { navigator.share({ files: [file], text: pesan }).catch(function(){}); return; }
+    var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([hasil.bytes], { type: "application/pdf" })); a.download = hasil.namaFile; document.body.appendChild(a); a.click(); a.remove();
+    showToast("PDF kwitansi diunduh. Lampirkan manual di WhatsApp warga.");
+  }
+  function init(){
+    $("hdRumahList").innerHTML = rumahList.map(function(r){ return '<option value="' + esc_(r.blok + " " + r.no) + '">' + esc_(r.nama) + '</option>'; }).join("");
+    $("hdRumah").addEventListener("input", function(){ var r = cari(this.value), el = $("hdPicked"); el.style.color = r ? "#1c8a4e" : "#c74444"; el.textContent = r ? "✅ " + r.rumah + " — " + r.nama : (this.value.trim() ? "Belum cocok — pilih dari daftar saran" : ""); });
+    $("hdK").addEventListener("change", function(){ var k = K[this.value]; $("hdJumlah").value = k && k.nominal > 0 ? k.nominal : ""; render(); });
+    db.ref("iuranTambahan").on("value", function(s){ K = s.val() || {}; render(); }, function(){});
+    db.ref("iuranTambahanBayar").on("value", function(s){ B = s.val() || {}; render(); }, function(){});
+    $("hdSimpan").addEventListener("click", function(){
+      var kid = $("hdK").value, k = K[kid]; if (!k || !k.aktif) { showToast("Pengumpulan dana ini tidak aktif."); return; }
+      var r = cari($("hdRumah").value); if (!r) { showToast("Rumah tidak ditemukan. Pilih dari daftar, contoh: A1 12."); return; }
+      var jml = parseFloat($("hdJumlah").value) || (k.nominal > 0 ? k.nominal : 0); if (!(jml > 0)) { showToast("Isi nominal yang diterima."); return; }
+      if (!confirm("Simpan cash diterima?\n\n" + k.judul + "\n" + r.rumah + " — " + r.nama + "\n" + fmtRp_(jml))) return;
+      var btn = this, pid = db.ref("iuranTambahanBayar/" + kid).push().key; btn.disabled = true;
+      var d = { rumah: r.rumah, rumahKey: r.key, blok: r.blok, no: r.no, nama: r.nama, jumlah: jml, metode: "cash", status: "cash_menunggu", petugas: petugasNama, createdAt: firebase.database.ServerValue.TIMESTAMP };
+      var c = $("hdCatatan").value.trim(); if (c) d.catatan = c;
+      db.ref("iuranTambahanBayar/" + kid + "/" + pid).set(d).then(function(){ showToast("Tersimpan. Tekan 🧾 untuk kwitansi, lalu setor ke Bendahara."); $("hdRumah").value = ""; $("hdCatatan").value = ""; $("hdJumlah").value = k.nominal > 0 ? k.nominal : ""; $("hdPicked").textContent = ""; })
+        .catch(function(e){ showToast(/PERMISSION/i.test(String(e && e.code)) ? "Ditolak: aturan Firebase iuranTambahanBayar belum dipasang." : "Gagal menyimpan. Cek sinyal."); }).then(function(){ btn.disabled = false; });
+    });
+    $("hdList").addEventListener("click", function(ev){
+      var b = ev.target.closest ? ev.target.closest(".hd-act") : null; if (!b) return; var kid = $("hdK").value, id = b.getAttribute("data-id");
+      if (b.getAttribute("data-act") === "kw") kwitansi(kid, id);
+      else if (confirm("Hapus catatan cash ini? (hanya bila salah input dan belum disetor)")) db.ref("iuranTambahanBayar/" + kid + "/" + id).remove().then(function(){ showToast("Catatan dihapus."); }).catch(function(){ showToast("Gagal menghapus."); });
+    });
+    $("hdWA").addEventListener("click", function(){
+      var kid = $("hdK").value, k = K[kid], l = saya(kid); if (!k || !l.length) { showToast("Belum ada cash yang perlu disetor."); return; }
+      var tot = l.reduce(function(a, p){ return a + (parseFloat(p.jumlah) || 0); }, 0);
+      rtOpenWa(RT_CONFIG.waBendahara || RT_CONFIG.waKetua, salam_() + " Pak/Bu Bendahara. Humas (" + petugasNama + ") menyetor cash *iuran tambahan " + k.judul + "*: " + l.length + " rumah, total *" + fmtRp_(tot) + "*. Mohon diterima & dicatat di aplikasi Bendahara 🙏", "Nomor WhatsApp Bendahara belum diatur di config.js.");
+    });
+  }
+})();
+</script>
+
+</body></html>

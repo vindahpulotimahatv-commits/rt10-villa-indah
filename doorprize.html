@@ -1,0 +1,463 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123a6b"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" href="assets/icon-192.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RT10 Villa Indah"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Roda Doorprize | SIAGA</title><style>
+:root{
+  --green:#123a6b;
+  --green2:#1c4a86;
+  --green3:#081c38;
+  --mint:#e7edf9;
+  --mint2:#dbe6f9;
+  --gold:#d5a62b;
+  --cream:#fff7e8;
+  --blue:#315f9e;
+  --red:#c74444;
+  --ink:#12213f;
+  --muted:#59657f;
+  --line:#dbe2f0;
+  --bg:#eef1f9;
+  --white:#fff;
+  --shadow:0 14px 40px rgba(10,25,56,.10);
+  --shadow-lg:0 30px 80px rgba(5,15,36,.18);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    linear-gradient(180deg,rgba(6,16,36,.72),rgba(8,20,44,.55) 40%,rgba(10,25,56,.85)),
+    url("assets/bg-navy.jpg") center top/cover no-repeat fixed;
+  color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(920px,calc(100% - 28px));margin:auto}
+
+.topbar{
+  position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(8,20,44,.94),rgba(10,26,58,.88));backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(213,166,43,.28);padding:14px 0;box-shadow:0 12px 30px rgba(3,10,26,.35)
+}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:950;color:#fff;font-size:13px}
+.brand-mark{width:38px;height:38px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 2px rgba(213,166,43,.6)}
+.badge-panitia{background:#fdeaea;color:var(--red);font-size:10px;font-weight:900;padding:5px 9px;border-radius:999px;letter-spacing:.4px}
+.back-link{font-size:12px;font-weight:900;color:#f3cf6a}
+.btn-mini{border:1px solid rgba(213,166,43,.4);background:rgba(255,255,255,.08);border-radius:11px;padding:8px 12px;font-size:12px;font-weight:900;color:#fff;cursor:pointer}
+.btn-mini:hover{background:rgba(213,166,43,.18)}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+.stat-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}
+.stat-card strong{display:block;font-size:22px;color:var(--green)}
+.stat-card span{display:block;font-size:10.5px;color:var(--muted);font-weight:800;letter-spacing:.3px;margin-top:2px}
+
+.stage{
+  background:linear-gradient(180deg,#081c38,#123a6b);border-radius:32px;padding:34px 20px 30px;
+  display:flex;flex-direction:column;align-items:center;box-shadow:var(--shadow-lg);position:relative;overflow:hidden
+}
+.stage:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 85% 10%,rgba(213,166,43,.20),transparent 24%)}
+.event-name{position:relative;z-index:2;color:#fff;font-weight:900;font-size:13px;letter-spacing:.4px;opacity:.85;margin-bottom:14px;text-align:center}
+
+.wheel-zone{position:relative;z-index:2;width:min(94vw,560px);aspect-ratio:1/1;margin:0 auto}
+.pointer{
+  position:absolute;top:-6px;left:50%;transform:translateX(-50%);z-index:5;
+  width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;
+  border-top:28px solid var(--gold);filter:drop-shadow(0 4px 6px rgba(0,0,0,.35))
+}
+.wheel-outer{
+  width:100%;height:100%;border-radius:50%;padding:10px;background:linear-gradient(145deg,#f4e2ac,var(--gold));
+  box-shadow:0 20px 50px rgba(0,0,0,.35)
+}
+.wheel-wrap{width:100%;height:100%;border-radius:50%;position:relative;transition:transform 5.2s cubic-bezier(.22,.98,.36,1)}
+.wheel-wrap canvas{width:100%;height:100%;border-radius:50%;display:block}
+.hub{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:4;
+  width:17%;height:17%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--gold) 70%);
+  box-shadow:0 4px 14px rgba(0,0,0,.3);border:3px solid #fff8e6
+}
+
+.spin-btn{
+  position:relative;z-index:2;margin-top:26px;min-height:58px;padding:0 34px;border:none;border-radius:16px;
+  background:var(--gold);color:#231e11;font-weight:950;font-size:16px;cursor:pointer;letter-spacing:.3px;
+  box-shadow:0 14px 30px rgba(213,166,43,.35);transition:.2s
+}
+.spin-btn:hover:not(:disabled){transform:translateY(-2px)}
+.spin-btn:disabled{opacity:.55;cursor:default;transform:none}
+.empty-msg{position:relative;z-index:2;color:#fff;text-align:center;padding:30px 10px}
+.empty-msg .em{font-size:40px;margin-bottom:10px}
+.empty-msg p{opacity:.82;font-size:13px;line-height:1.7;max-width:340px;margin:0 auto}
+
+.list-toggle{margin:22px 0 8px;text-align:center}
+.list-toggle button{background:none;border:none;color:var(--green);font-weight:900;font-size:12.5px;cursor:pointer}
+.peserta-list{display:none;background:#fff;border:1px solid var(--line);border-radius:18px;padding:8px 4px;max-height:280px;overflow:auto;margin-bottom:40px}
+.peserta-row{display:flex;justify-content:space-between;gap:10px;padding:9px 14px;font-size:12.5px;border-bottom:1px solid #e9eef7}
+.peserta-row:last-child{border-bottom:0}
+.peserta-row b{color:var(--green)}
+.peserta-row.won{opacity:.45;text-decoration:line-through}
+
+.warn-card{background:var(--cream);border:1px solid #ecd8a0;border-radius:18px;padding:16px;font-size:12.5px;color:#5c4c1a;line-height:1.6;margin:20px 0}
+
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:200;background:rgba(6,14,30,.72);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;padding:20px
+}
+.modal-overlay.show{display:flex}
+.win-card{
+  background:#fff;border-radius:28px;padding:34px 26px;max-width:380px;width:100%;text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);position:relative;overflow:hidden
+}
+.win-card .em{font-size:52px;margin-bottom:6px}
+.win-card h2{margin:0 0 14px;color:var(--green);font-size:22px}
+.win-card .rumah-pill{display:inline-flex;flex-direction:column;gap:2px;background:var(--mint);border-radius:18px;padding:14px 20px;margin-bottom:20px}
+.win-card .rumah-pill b{font-size:20px;color:var(--green)}
+.win-card .rumah-pill span{font-size:12.5px;color:var(--muted);font-weight:700}
+.win-actions{display:grid;gap:9px}
+.win-actions .btn{min-height:48px;border:none;border-radius:13px;font-weight:900;cursor:pointer;font-size:13.5px}
+.btn-confirm{background:var(--green);color:#fff}
+.btn-cancel{background:#eef1f9;color:#4f5c78}
+
+.confetti-piece{position:fixed;top:-14px;width:9px;height:15px;z-index:210;opacity:.95;border-radius:2px;pointer-events:none;animation:confetti-fall linear forwards}
+@keyframes confetti-fall{to{transform:translateY(105vh) rotate(540deg);opacity:.2}}
+
+.toast{position:fixed;left:50%;transform:translate(-50%,14px);bottom:22px;background:#0e2c56;color:#fff;padding:12px 16px;border-radius:14px;font-size:12.5px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:200;max-width:88%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:640px){
+  .stat-row{grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .stat-card{padding:10px}
+  .stage{padding:26px 12px 24px;border-radius:24px}
+}
+</style>
+</head><body>
+
+<div class="topbar"><div class="container topbar-inner">
+  <div class="brand"><img class="brand-mark" src="icon-192.png" alt="Logo RT 10">Roda Doorprize RT 10<span class="badge-panitia">🔒 PANITIA</span></div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <button class="btn-mini" id="btnReload">🔄 Muat Ulang Data</button>
+    <a class="back-link" href="index.html">← Beranda</a>
+  </div>
+</div></div>
+
+<main class="container" style="padding:22px 0 60px">
+
+  <div id="warnCard" class="warn-card" style="display:none">⚠️ Fitur ini belum dikonfigurasi admin RT (alamat penyimpanan data belum diisi di <code>config.js</code>). Hubungi panitia teknis.</div>
+
+  <div class="stat-row">
+    <div class="stat-card"><strong id="statTotal">0</strong><span>TERDAFTAR HADIR</span></div>
+    <div class="stat-card"><strong id="statMenang">0</strong><span>SUDAH MENANG</span></div>
+    <div class="stat-card"><strong id="statSisa">0</strong><span>SISA PESERTA</span></div>
+  </div>
+
+  <div class="stage">
+    <div class="event-name" id="eventName">Acara RT 10</div>
+
+    <div id="wheelArea">
+      <div class="wheel-zone">
+        <div class="pointer"></div>
+        <div class="wheel-outer">
+          <div class="wheel-wrap" id="wheelWrap">
+            <canvas id="wheelCanvas" width="900" height="900"></canvas>
+          </div>
+        </div>
+        <div class="hub"></div>
+      </div>
+      <div style="text-align:center"><button class="spin-btn" id="btnSpin">🎉 PUTAR RODA!</button></div>
+    </div>
+
+    <div id="emptyMsg" class="empty-msg" style="display:none">
+      <div class="em">🎪</div>
+      <p id="emptyText">Belum ada peserta terdaftar. Bagikan link daftar hadir ke warga, lalu klik "Muat Ulang Data".</p>
+    </div>
+  </div>
+
+  <div class="list-toggle"><button id="btnToggleList">📋 Lihat / sembunyikan daftar peserta tersisa</button></div>
+  <div class="peserta-list" id="pesertaList"></div>
+
+</main>
+
+<div class="modal-overlay" id="winModal">
+  <div class="win-card">
+    <div class="em">🎊</div>
+    <h2>Selamat!</h2>
+    <div class="rumah-pill"><b id="winRumah">-</b><span id="winNama">-</span></div>
+    <div class="win-actions">
+      <button class="btn btn-confirm" id="btnConfirmWin">✅ Tandai Sudah Menang & Lanjut</button>
+      <button class="btn btn-cancel" id="btnCancelWin">↩️ Batalkan Undian Ini</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
+<script src="config.js"></script>
+<script>
+var COLORS = ["#123a6b","#d5a62b","#1c4a86","#f4e2ac","#081c38","#e8c874"];
+var state = { peserta: [], rotation: 0, spinning: false, lastWinnerIdx: null };
+var db = null;
+
+function firebaseReady_(){
+  var cfg = RT_CONFIG.firebaseConfig || {};
+  return !!(cfg.apiKey && cfg.databaseURL && cfg.appId);
+}
+function normalizeRumah_(v){
+  return String(v || "").trim().toLowerCase().replace(/[.#$\[\]\/\s]/g, "");
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  document.getElementById("eventName").textContent = "🎉 " + (RT_CONFIG.namaAcaraDoorprize || "Acara RT 10");
+
+  if (!firebaseReady_()) {
+    document.getElementById("warnCard").style.display = "block";
+    document.getElementById("btnSpin").disabled = true;
+    document.getElementById("btnReload").disabled = true;
+    return;
+  }
+  firebase.initializeApp(RT_CONFIG.firebaseConfig);
+  db = firebase.database();
+
+  document.getElementById("btnReload").addEventListener("click", reloadAndReset);
+  document.getElementById("btnSpin").addEventListener("click", spin);
+  document.getElementById("btnToggleList").addEventListener("click", function(){
+    var el = document.getElementById("pesertaList");
+    el.style.display = (el.style.display === "block") ? "none" : "block";
+  });
+  document.getElementById("btnConfirmWin").addEventListener("click", confirmWin);
+  document.getElementById("btnCancelWin").addEventListener("click", function(){
+    closeModal();
+  });
+
+  loadData();
+});
+
+function loadData(){
+  var btn = document.getElementById("btnReload");
+  btn.disabled = true; btn.textContent = "Memuat...";
+  db.ref("daftarHadir").once("value")
+    .then(function(snap){
+      var rows = [];
+      snap.forEach(function(child){
+        var d = child.val();
+        rows.push({ nama: d.nama || "", rumah: d.rumah || "", status: d.status || "belum" });
+      });
+      state.peserta = rows;
+      render();
+    })
+    .catch(function(){ showToast("Tidak bisa terhubung ke server. Periksa koneksi internet."); })
+    .finally(function(){ btn.disabled = false; btn.textContent = "🔄 Muat Ulang Data"; });
+}
+
+// Tombol "Muat Ulang Data": selain menarik data terbaru, pemenang yang sudah ada
+// dikembalikan ke daftar (status "menang" -> "belum") supaya masuk roda lagi.
+// Kalau ada pemenang, panitia diminta konfirmasi dulu; pilih Batal = muat ulang
+// saja tanpa reset. Nama & nomor rumah peserta tidak diubah.
+// Catatan: pemuatan otomatis saat halaman dibuka (loadData) TIDAK mereset.
+function reloadAndReset(){
+  if (state.spinning) { showToast("Tunggu roda selesai berputar dulu."); return; }
+  var btn = document.getElementById("btnReload");
+  btn.disabled = true; btn.textContent = "Memeriksa...";
+  db.ref("daftarHadir").once("value")
+    .then(function(snap){
+      var updates = {}, count = 0;
+      snap.forEach(function(child){
+        var d = child.val() || {};
+        if (d.status === "menang") { updates[child.key + "/status"] = "belum"; count++; }
+      });
+      if (!count) return;
+      if (!confirm("Ada " + count + " pemenang.\n\nOK = reset pemenang (masuk roda lagi) & muat ulang data.\nBatal = muat ulang data saja, pemenang tetap.")) return;
+      btn.textContent = "Mereset...";
+      return db.ref("daftarHadir").update(updates).then(function(){
+        showToast(count + " pemenang dikembalikan ke daftar.");
+      });
+    })
+    .catch(function(){ showToast("Gagal mereset pemenang. Periksa koneksi lalu coba lagi."); })
+    .then(function(){ loadData(); });
+}
+
+function remaining_(){
+  return state.peserta.filter(function(p){ return p.status !== "menang"; });
+}
+
+function render(){
+  var total = state.peserta.length;
+  var menang = state.peserta.filter(function(p){ return p.status === "menang"; }).length;
+  var sisa = total - menang;
+  document.getElementById("statTotal").textContent = total;
+  document.getElementById("statMenang").textContent = menang;
+  document.getElementById("statSisa").textContent = sisa;
+
+  var rem = remaining_();
+  var wheelArea = document.getElementById("wheelArea");
+  var emptyMsg = document.getElementById("emptyMsg");
+  var spinBtn = document.getElementById("btnSpin");
+
+  if (rem.length === 0) {
+    wheelArea.style.display = "none";
+    emptyMsg.style.display = "block";
+    document.getElementById("emptyText").textContent = (total === 0)
+      ? 'Belum ada peserta terdaftar. Bagikan link daftar hadir ke warga, lalu klik "Muat Ulang Data".'
+      : "🎉 Semua peserta terdaftar sudah mendapat doorprize!";
+  } else {
+    wheelArea.style.display = "block";
+    emptyMsg.style.display = "none";
+    spinBtn.disabled = (rem.length < 1) || state.spinning;
+    drawWheel(rem);
+  }
+
+  renderList(rem);
+}
+
+function renderList(rem){
+  var wrap = document.getElementById("pesertaList");
+  if (rem.length === 0) { wrap.innerHTML = '<div class="peserta-row">Tidak ada peserta tersisa.</div>'; return; }
+  wrap.innerHTML = rem.map(function(p){
+    return '<div class="peserta-row"><span>' + esc_(p.nama) + '</span><b>' + esc_(p.rumah) + '</b></div>';
+  }).join("");
+}
+
+function esc_(s){
+  return String(s || "").replace(/[&<>"']/g, function(c){
+    return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+  });
+}
+
+function drawWheel(rem){
+  var canvas = document.getElementById("wheelCanvas");
+  var ctx = canvas.getContext("2d");
+  var n = rem.length;
+  var size = canvas.width;
+  var cx = size / 2, cy = size / 2, r = size / 2;
+  var seg = (Math.PI * 2) / n;
+  // Below this count there's room for both the name and the house number.
+  // Above it, we keep just the house number so labels stay legible instead of vanishing.
+  var showName = n <= 40;
+  var margin = r * 0.055;
+
+  ctx.clearRect(0, 0, size, size);
+  for (var i = 0; i < n; i++) {
+    var start = -Math.PI / 2 + i * seg;
+    var end = start + seg;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, start, end);
+    ctx.closePath();
+    ctx.fillStyle = COLORS[i % COLORS.length];
+    ctx.fill();
+
+    var nameTxt = String(rem[i].nama || "").trim();
+    var rumahTxt = "No. " + String(rem[i].rumah || "").trim();
+    var maxChars = Math.max(4, Math.round(320 / n));
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(start + seg / 2);
+    ctx.textAlign = "right";
+
+    if (showName) {
+      var nameSize = Math.max(9, Math.min(15, 220 / n));
+      var rumahSize = Math.max(8, nameSize - 2);
+      ctx.fillStyle = "#fff";
+      ctx.font = "800 " + nameSize + "px Inter, sans-serif";
+      ctx.fillText(nameTxt.slice(0, maxChars), r - margin, -3);
+      ctx.fillStyle = "#f3cf6a";
+      ctx.font = "700 " + rumahSize + "px Inter, sans-serif";
+      ctx.fillText(rumahTxt.slice(0, maxChars), r - margin, rumahSize + 3);
+    } else {
+      var soloSize = Math.max(8, Math.min(13, 260 / n));
+      ctx.fillStyle = "#fff";
+      ctx.font = "800 " + soloSize + "px Inter, sans-serif";
+      ctx.fillText(rumahTxt.slice(0, maxChars), r - margin, soloSize / 3);
+    }
+    ctx.restore();
+  }
+}
+
+function spin(){
+  var rem = remaining_();
+  if (rem.length === 0 || state.spinning) return;
+  state.spinning = true;
+  document.getElementById("btnSpin").disabled = true;
+
+  var n = rem.length;
+  var idx = Math.floor(Math.random() * n);
+  var seg = 360 / n;
+  var midpoint = idx * seg + seg / 2;
+  var jitter = (Math.random() - 0.5) * seg * 0.6;
+  var target = ((360 - (midpoint + jitter)) % 360 + 360) % 360;
+
+  var currentMod = ((state.rotation % 360) + 360) % 360;
+  var delta = ((target - currentMod) % 360 + 360) % 360;
+  var extraSpins = 6 + Math.floor(Math.random() * 3);
+  state.rotation = state.rotation + delta + extraSpins * 360;
+
+  var wrap = document.getElementById("wheelWrap");
+  wrap.style.transform = "rotate(" + state.rotation + "deg)";
+
+  state.lastWinnerIdx = idx;
+  state.lastWinner = rem[idx];
+
+  // Kirim ke Firebase supaya halaman output (vMix) ikut berputar secara real-time.
+  db.ref("liveSpin").set({
+    order: rem.map(function(p){ return { nama: p.nama, rumah: p.rumah }; }),
+    rotation: state.rotation,
+    winnerIdx: idx,
+    ts: firebase.database.ServerValue.TIMESTAMP
+  });
+
+  setTimeout(function(){
+    state.spinning = false;
+    showWinner(rem[idx]);
+  }, 5300);
+}
+
+function showWinner(p){
+  document.getElementById("winRumah").textContent = p.rumah;
+  document.getElementById("winNama").textContent = p.nama;
+  document.getElementById("winModal").classList.add("show");
+  burstConfetti();
+}
+
+function closeModal(){
+  document.getElementById("winModal").classList.remove("show");
+  document.getElementById("btnSpin").disabled = remaining_().length === 0;
+}
+
+function confirmWin(){
+  var p = state.lastWinner;
+  if (!p) { closeModal(); return; }
+  var btn = document.getElementById("btnConfirmWin");
+  btn.disabled = true; btn.textContent = "Menyimpan...";
+  db.ref("daftarHadir/" + normalizeRumah_(p.rumah) + "/status").set("menang")
+  .then(function(){
+    var found = state.peserta.find(function(x){ return x.rumah === p.rumah; });
+    if (found) found.status = "menang";
+    render();
+    closeModal();
+  })
+  .catch(function(){ showToast("Gagal menyimpan status menang, coba lagi."); })
+  .finally(function(){ btn.disabled = false; btn.textContent = "✅ Tandai Sudah Menang & Lanjut"; });
+}
+
+function burstConfetti(){
+  var colors = ["#123a6b","#d5a62b","#1c4a86","#c74444","#315f9e"];
+  for (var i = 0; i < 60; i++) {
+    (function(){
+      var el = document.createElement("div");
+      el.className = "confetti-piece";
+      el.style.left = (Math.random() * 100) + "vw";
+      el.style.background = colors[Math.floor(Math.random() * colors.length)];
+      var dur = 2.6 + Math.random() * 1.6;
+      el.style.animationDuration = dur + "s";
+      el.style.animationDelay = (Math.random() * 0.4) + "s";
+      document.body.appendChild(el);
+      setTimeout(function(){ el.remove(); }, (dur + 1) * 1000);
+    })();
+  }
+}
+
+function showToast(msg){
+  var t = document.querySelector(".toast");
+  if (!t) { t = document.createElement("div"); t.className = "toast"; document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add("show");
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(function(){ t.classList.remove("show"); }, 3200);
+}
+</script>
+</body></html>
