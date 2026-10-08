@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="id"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123a6b"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" href="assets/icon-192.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RT10 Villa Indah"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0A1B32"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" href="assets/icon-192.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RT10 Villa Indah"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Roda Doorprize | Output</title><style>
 :root{
   --green:#123a6b;
@@ -68,7 +68,10 @@ body.bg-transparent{background:transparent}
 .confetti-piece{position:fixed;top:-14px;width:9px;height:15px;z-index:60;opacity:.95;border-radius:2px;pointer-events:none;animation:confetti-fall linear forwards}
 @keyframes confetti-fall{to{transform:translateY(105vh) rotate(540deg);opacity:.2}}
 </style>
-</head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap">
+<link rel="stylesheet" href="assets/siaga.css?v=1">
+</head><body class="sg-plain sg-stage">
 
 <div class="event-name" id="eventName">Roda Doorprize RT 10</div>
 
@@ -290,4 +293,5 @@ function burstConfetti_(){
   }
 }
 </script>
+<script src="assets/siaga-ui.js?v=1"></script>
 </body></html>

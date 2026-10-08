@@ -1,145 +1,131 @@
 <!DOCTYPE html><html lang="id"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0A1B32"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" href="assets/icon-192.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RT10 Villa Indah"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Beranda | SIAGA</title>
-<meta name="description" content="SIAGA — Sistem Informasi &amp; Administrasi Warga RT 10 / RW 021 Villa Indah Pulo Timaha. Informasi, layanan, agenda, kas, UMKM, dan galeri kegiatan warga.">
-<meta property="og:type" content="website"><meta property="og:title" content="SIAGA RT 10 / RW 021 Villa Indah Pulo Timaha"><meta property="og:description" content="Portal digital warga: informasi, layanan, agenda, transparansi kas, UMKM, dan galeri.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="siaga.css"><link rel="stylesheet" href="siaga-home.css">
-</head><body>
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol><symbol id="i-megaphone" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol><symbol id="i-file-text" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol><symbol id="i-store" viewBox="0 0 24 24"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2 2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/></symbol><symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol><symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol><symbol id="i-user-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol><symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol><symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol><symbol id="i-message" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol><symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol><symbol id="i-zap" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l-1.92-6.02A1 1 0 0 0 11 14z"/></symbol><symbol id="i-newspaper" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></symbol><symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-wallet" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol><symbol id="i-home-users" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22v-7h6v7"/></symbol></svg>
-<a class="skip-link" href="#main">Lewati ke konten</a>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0A1B32"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" href="assets/icon-192.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RT10 Villa Indah"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Beranda | SIAGA</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap">
+<link rel="stylesheet" href="assets/siaga.css?v=1">
+</head>
+<body>
 <div class="bumper" id="bumper">
-  <img src="assets/bumper-intro.jpg" alt="SIAGA - Sistem Informasi & Administrasi Warga">
+  <img src="assets/bumper-intro.jpg" alt="SIAGA - Sistem Informasi &amp; Administrasi Warga">
   <div class="bumper-hint">Ketuk layar untuk melanjutkan</div>
 </div>
-
-<header class="site-header">
-  <div class="container nav">
-    <a class="brand" href="index.html" aria-label="SIAGA - Beranda">
-      <img class="brand-logo" src="assets/logo-badge.png" alt="Logo RT 10 / RW 021">
-      <span class="brand-text"><strong>SIAGA</strong><span class="long">Sistem Informasi &amp; Administrasi Warga</span><span><b>RT 10 / RW 021</b> &middot; Villa Indah Pulo Timaha</span></span>
-    </a>
-    <nav class="desktop-nav" aria-label="Menu utama"><a class="nav-link active" href="index.html" aria-current="page"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span>Beranda</span></a><a class="nav-link" href="informasi.html"><svg class="ic" aria-hidden="true"><use href="#i-megaphone"/></svg><span>Informasi</span></a><a class="nav-link" href="agenda.html"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span>Agenda</span></a><a class="nav-link" href="layanan.html"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg><span>Layanan</span></a><a class="nav-link" href="transparansi.html"><svg class="ic" aria-hidden="true"><use href="#i-file-text"/></svg><span>Transparansi</span></a><a class="nav-link" href="umkm.html"><svg class="ic" aria-hidden="true"><use href="#i-store"/></svg><span>UMKM</span></a><a class="nav-link" href="galeri.html"><svg class="ic" aria-hidden="true"><use href="#i-image"/></svg><span>Galeri</span></a>
-      <div class="nav-more" id="navMore"><button class="nav-link" type="button" id="btnMore" aria-haspopup="true" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chevron-down"/></svg><span>Lainnya</span></button>
-        <div class="dd" role="menu"><a href="berita.html"><svg class="ic" aria-hidden="true"><use href="#i-newspaper"/></svg><span>Berita Terkini</span></a><a href="kontak.html"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span>Kontak Penting</span></a><a href="livechat.html"><svg class="ic" aria-hidden="true"><use href="#i-message"/></svg><span>Live Chat</span></a><a href="layanan.html#lapor"><svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg><span>Lapor & Pengaduan</span></a><a href="bayar.html"><svg class="ic" aria-hidden="true"><use href="#i-card"/></svg><span>Bayar Iuran</span></a></div></div>
+<header class="sg-header" id="sgHeader">
+  <div class="sg-header__in">
+    <a class="sg-brand" href="index.html" aria-label="SIAGA RT 10 / RW 021, ke Beranda"><img src="assets/logo-badge.png" alt="" width="56" height="56"><span class="sg-brand__t"><b>SIAGA</b><small>Sistem Informasi &amp; Administrasi Warga</small><small class="sg-sub2">RT 10 / RW 021 &middot; Villa Indah Pulo Timaha</small><small class="sg-sub-m">RT 10 / RW 021</small></span></a>
+    <nav class="sg-nav" aria-label="Menu utama"><a href="index.html" class="active" aria-current="page"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-home"/></svg><span>Beranda</span></a><a href="informasi.html"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-megaphone"/></svg><span>Informasi</span></a><a href="agenda.html"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-calendar-days"/></svg><span>Agenda</span></a><a href="layanan.html"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg><span>Layanan</span></a><a href="transparansi.html"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-file-text"/></svg><span>Transparansi</span></a><a href="umkm.html"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-store"/></svg><span>UMKM</span></a><a href="galeri.html"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-images"/></svg><span>Galeri</span></a>
+      <div class="sg-pop"><button type="button" data-pop-btn aria-expanded="false" aria-haspopup="true"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg><span class="lbl">Lainnya<svg class="i sg-caret" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg></span></button>
+        <div class="sg-dd" role="menu"><a href="layanan.html#lapor" class="is-cta"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-triangle-alert"/></svg></span><span>Lapor & Pengaduan<small>Sampaikan masalah lingkungan</small></span></a><a href="kontak.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span><span>Kontak Penting<small>Telepon & WhatsApp pengurus</small></span></a><a href="livechat.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-message-circle"/></svg></span><span>Live Chat<small>Tanya langsung ke pengurus</small></span></a><a href="berita.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-newspaper"/></svg></span><span>Berita Terkini<small>Berita seputar Bekasi</small></span></a><a href="bayar.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-credit-card"/></svg></span><span>Bayar Iuran<small>Lapor pembayaran iuran bulanan</small></span></a><a href="daftar-hadir.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-calendar-check"/></svg></span><span>Daftar Hadir<small>Absen kegiatan & undian</small></span></a></div></div>
     </nav>
-    <div class="nav-tools">
-      <button class="icon-btn hide-m" type="button" id="btnSearch" aria-label="Cari halaman" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg></button>
-      <a class="icon-btn" href="informasi.html" aria-label="Pengumuman terbaru"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg><span class="dot" id="bellDot" hidden></span></a>
-      <a class="icon-btn hide-m" href="kontak.html" aria-label="Kontak pengurus"><svg class="ic" aria-hidden="true"><use href="#i-user-circle"/></svg></a>
-      <button class="icon-btn nav-burger" type="button" id="btnBurger" aria-label="Buka menu" aria-controls="drawer"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    <div class="sg-tools">
+      <button type="button" class="sg-iconbtn sg-only-desktop" data-open="sgSearch" data-focus="#sgSearchInput" aria-label="Cari halaman"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-search"/></svg></button>
+      <a class="sg-iconbtn" href="informasi.html" aria-label="Pengumuman terbaru"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-bell"/></svg></a>
+      <div class="sg-pop sg-only-desktop"><button type="button" class="sg-iconbtn sg-iconbtn--avatar" data-pop-btn aria-expanded="false" aria-haspopup="true" aria-label="Masuk pengurus"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-user-circle"/></svg></button>
+        <div class="sg-dd" role="menu"><a href="livechat.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-message-circle"/></svg></span><span>Live Chat<small>Tanya langsung ke pengurus</small></span></a><hr><a href="admin.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-layout-dashboard"/></svg></span><span>Admin RT<small>Kelola konten & keuangan</small></span></a><a href="bendahara.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-wallet"/></svg></span><span>Bendahara<small>Kas, iuran & laporan</small></span></a><a href="humas.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg></span><span>Humas Keliling<small>Setoran & penagihan</small></span></a></div></div>
+      <button type="button" class="sg-iconbtn sg-menu-btn" data-open="sgDrawer" aria-label="Buka menu"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg></button>
     </div>
   </div>
-  <div class="finder" id="finder"><div class="container">
-    <label class="finder-box"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><span class="sr-only">Cari halaman</span><input id="finderInput" type="search" placeholder="Cari halaman, mis. iuran, agenda, kontak" autocomplete="off"></label>
-    <div class="finder-list" id="finderList"><a href="index.html" data-t="beranda"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-home"/></svg><span>Beranda</span></a><a href="informasi.html" data-t="informasi"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-megaphone"/></svg><span>Informasi</span></a><a href="agenda.html" data-t="agenda"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-calendar"/></svg><span>Agenda</span></a><a href="layanan.html" data-t="layanan"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-users"/></svg><span>Layanan</span></a><a href="transparansi.html" data-t="transparansi"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-file-text"/></svg><span>Transparansi</span></a><a href="umkm.html" data-t="umkm"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-store"/></svg><span>UMKM</span></a><a href="galeri.html" data-t="galeri"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-image"/></svg><span>Galeri</span></a><a href="berita.html" data-t="berita terkini"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-newspaper"/></svg><span>Berita Terkini</span></a><a href="kontak.html" data-t="kontak penting"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-phone"/></svg><span>Kontak Penting</span></a><a href="livechat.html" data-t="live chat"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-message"/></svg><span>Live Chat</span></a><a href="layanan.html#lapor" data-t="lapor & pengaduan"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-alert"/></svg><span>Lapor & Pengaduan</span></a><a href="bayar.html" data-t="bayar iuran"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-card"/></svg><span>Bayar Iuran</span></a></div>
-  </div></div>
 </header>
-
-<div class="drawer-bg" id="drawerBg"></div>
-<aside class="drawer" id="drawer" aria-label="Menu">
-  <div class="drawer-head"><div class="brand"><img class="brand-logo" src="assets/logo-badge.png" alt=""><span class="brand-text"><strong>SIAGA</strong><span>RT 10 / RW 021</span></span></div>
-    <button class="icon-btn" type="button" id="btnCloseDrawer" aria-label="Tutup menu"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>
-  <a class="d-link active" href="index.html"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span>Beranda</span></a><a class="d-link" href="informasi.html"><svg class="ic" aria-hidden="true"><use href="#i-megaphone"/></svg><span>Informasi</span></a><a class="d-link" href="agenda.html"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span>Agenda</span></a><a class="d-link" href="layanan.html"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg><span>Layanan</span></a><a class="d-link" href="transparansi.html"><svg class="ic" aria-hidden="true"><use href="#i-file-text"/></svg><span>Transparansi</span></a><a class="d-link" href="umkm.html"><svg class="ic" aria-hidden="true"><use href="#i-store"/></svg><span>UMKM</span></a><a class="d-link" href="galeri.html"><svg class="ic" aria-hidden="true"><use href="#i-image"/></svg><span>Galeri</span></a><a class="d-link" href="berita.html"><svg class="ic" aria-hidden="true"><use href="#i-newspaper"/></svg><span>Berita Terkini</span></a><a class="d-link" href="kontak.html"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span>Kontak Penting</span></a><a class="d-link" href="livechat.html"><svg class="ic" aria-hidden="true"><use href="#i-message"/></svg><span>Live Chat</span></a><a class="d-link" href="layanan.html#lapor"><svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg><span>Lapor & Pengaduan</span></a><a class="d-link" href="bayar.html"><svg class="ic" aria-hidden="true"><use href="#i-card"/></svg><span>Bayar Iuran</span></a>
-</aside>
-
-<main id="main">
-<section class="hero"><div class="container hero-grid">
-  <div>
-    <p class="eyebrow">Selamat Datang di</p>
-    <h1>SIAGA <em>RT 10 / RW 021</em></h1>
-    <p class="place">Villa Indah Pulo Timaha</p>
-    <div class="rule"></div>
-    <p class="lead">Informasi, layanan, agenda, kas, UMKM, dan berbagai kebutuhan warga tersedia dalam satu portal.</p>
-    <div class="hero-actions">
-      <a class="btn btn-gold" href="informasi.html">Info Terbaru <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-      <a class="btn btn-outline" href="layanan.html">Layanan Warga</a>
-      <a class="btn btn-outline" href="bayar.html"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-card"/></svg> Bayar Iuran</a>
-    </div>
-    <div class="hero-pills">
-      <a class="pill" href="informasi.html"><svg class="ic" aria-hidden="true"><use href="#i-megaphone"/></svg><span><b>Informasi Terkini</b><small>Seputar Warga</small></span></a>
-      <a class="pill" href="layanan.html"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg><span><b>Layanan Online</b><small>Lebih Mudah</small></span></a>
-      <a class="pill" href="transparansi.html"><svg class="ic" aria-hidden="true"><use href="#i-wallet"/></svg><span><b>Transparansi</b><small>Pengelolaan Dana</small></span></a>
-    </div>
-  </div>
-  <div class="hero-card">
-    <span class="live">Portal Aktif</span>
-    <img src="assets/foto-warga-hut-ri.jpg" alt="SIAGA RT 10 / RW 021 Villa Indah Pulo Timaha" width="1254" height="1254" loading="eager">
-  </div>
-</div></section>
-
-<div class="quick-wrap"><div class="container">
-  <nav class="quick" aria-label="Menu cepat"><a class="q-tile active" href="index.html"><span class="q-ic"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg></span><b>Beranda</b><small>Halaman Utama</small></a><a class="q-tile" href="informasi.html"><span class="q-ic"><svg class="ic" aria-hidden="true"><use href="#i-megaphone"/></svg></span><b>Informasi</b><small>& Pengumuman</small></a><a class="q-tile" href="agenda.html"><span class="q-ic"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg></span><b>Agenda</b><small>Kegiatan</small></a><a class="q-tile" href="layanan.html"><span class="q-ic"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span><b>Layanan</b><small>Warga</small></a><a class="q-tile" href="transparansi.html"><span class="q-ic"><svg class="ic" aria-hidden="true"><use href="#i-file-text"/></svg></span><b>Transparansi</b><small>Kas RT</small></a><a class="q-tile" href="umkm.html"><span class="q-ic"><svg class="ic" aria-hidden="true"><use href="#i-store"/></svg></span><b>UMKM</b><small>Warga</small></a><a class="q-tile" href="galeri.html"><span class="q-ic"><svg class="ic" aria-hidden="true"><use href="#i-image"/></svg></span><b>Galeri</b><small>Kegiatan</small></a><a class="q-tile" href="layanan.html#lapor"><span class="q-ic"><svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg></span><b>Lapor</b><small>& Pengaduan</small></a><a class="q-tile" href="kontak.html"><span class="q-ic"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span><b>Kontak</b><small>Penting</small></a></nav>
-  <div class="stats">
-    <div class="stat"><svg class="ic" aria-hidden="true"><use href="#i-home-users"/></svg><div><strong id="statKK">—</strong><span>Kepala Keluarga</span></div></div>
-    <div class="stat"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><div><strong id="statAgenda">—</strong><span>Agenda Aktif</span></div></div>
-    <div class="stat"><svg class="ic" aria-hidden="true"><use href="#i-megaphone"/></svg><div><strong id="statInfo">—</strong><span>Pengumuman</span></div></div>
-  </div>
-</div></div>
-
-<section class="section"><div class="container grid-2">
-  <div class="card">
-    <div class="section-head"><div><h2>Info Terbaru</h2><p>Yang penting terlihat dulu.</p></div><a class="link-more" href="informasi.html">Semua info <svg class="ic ic-sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
-    <div id="infoListHome"><div class="announcement"><p class="meta">Memuat informasi...</p></div></div>
-  </div>
-  <div class="card">
-    <div class="section-head"><div><h2>Agenda Terdekat</h2><p>Ringkas, tanpa kalender yang ramai.</p></div><a class="link-more" href="agenda.html">Lihat agenda <svg class="ic ic-sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
-    <div id="agendaListHome"><div class="agenda-item"><p class="meta">Memuat agenda...</p></div></div>
-  </div>
-</div></section>
-
-<section class="section"><div class="container grid-2">
-  <div class="svc-card">
-    <h2><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg> Layanan Cepat</h2>
-    <div class="svc-list">
-      <a class="svc" href="bayar.html"><span class="svc-ic"><svg class="ic" aria-hidden="true"><use href="#i-card"/></svg></span><span><b>Bayar Iuran RT</b><small>Pembayaran online lebih mudah</small></span><svg class="ic chev" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
-      <a class="svc" id="btnTambahan" href="tambahan.html" style="display:none"><span class="svc-ic"><svg class="ic" aria-hidden="true"><use href="#i-target"/></svg></span><span><b>Iuran Tambahan</b><small>Kegiatan &amp; kebutuhan khusus</small></span><svg class="ic chev" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
-      <a class="svc" href="daftar-hadir.html"><span class="svc-ic"><svg class="ic" aria-hidden="true"><use href="#i-clipboard"/></svg></span><span><b>Daftar Hadir</b><small>Kegiatan warga &amp; acara</small></span><svg class="ic chev" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
-      <a class="svc" href="layanan.html"><span class="svc-ic"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span><span><b>Layanan Warga</b><small>Surat &amp; pengajuan</small></span><svg class="ic chev" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
-      <a class="svc" href="informasi.html"><span class="svc-ic"><svg class="ic" aria-hidden="true"><use href="#i-megaphone"/></svg></span><span><b>Info Pengumuman</b><small>Berita terbaru dari RT</small></span><svg class="ic chev" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
-      <a class="svc" href="kontak.html"><span class="svc-ic"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span><span><b>Kontak Pengurus</b><small>Hubungi pengurus RT</small></span><svg class="ic chev" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
-    </div>
-  </div>
-  <div class="lapor">
-    <svg class="ic lapor-ghost" aria-hidden="true"><use href="#i-alert"/></svg>
+<main>
+<section class="hm-hero" aria-labelledby="hmTitle">
+  <div class="container hm-hero__grid">
     <div>
-      <span class="tag"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-alert"/></svg> Lapor Warga</span>
-      <h3>Ada masalah di lingkungan?</h3>
-      <p>Lampu jalan mati, sampah, drainase, keamanan, atau fasilitas umum bisa dilaporkan langsung dari portal.</p>
-      <div class="chips"><span>Lampu jalan</span><span>Sampah</span><span>Drainase</span><span>Keamanan</span><span>Fasilitas umum</span></div>
+      <p class="hm-eyebrow">Selamat datang di SIAGA</p>
+      <h1 id="hmTitle">RT 10 lebih dekat dengan warganya.</h1>
+      <p class="hm-hero__lead">Informasi, layanan, agenda, kas, UMKM, dan berbagai kebutuhan warga Villa Indah Pulo Timaha tersedia dalam satu portal.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="informasi.html"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-megaphone"/></svg>Info terbaru</a>
+        <a class="btn btn-outline" href="layanan.html"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-clipboard-list"/></svg>Layanan warga</a>
+        <a class="btn btn-outline" href="bayar.html"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-credit-card"/></svg>Bayar iuran</a>
+      </div>
+      <div class="hm-pills">
+        <div class="hm-pill"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-megaphone"/></svg></span><span><b>Informasi terkini</b><span>Seputar warga</span></span></div>
+        <div class="hm-pill"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-clipboard-list"/></svg></span><span><b>Layanan online</b><span>Lebih mudah</span></span></div>
+        <div class="hm-pill"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-coins"/></svg></span><span><b>Transparansi</b><span>Pengelolaan dana</span></span></div>
+      </div>
     </div>
-    <a class="btn btn-navy" href="layanan.html#lapor">Buat Laporan <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    <div class="hm-poster"><div class="hm-poster__frame"><img src="assets/foto-warga-hut-ri.jpg" alt="SIAGA, Sistem Informasi dan Administrasi Warga RT 10 RW 021 Villa Indah Pulo Timaha" width="1254" height="1254" fetchpriority="high"></div><span class="hm-poster__tag"><i></i>Portal aktif</span></div>
   </div>
-</div></section>
+</section>
 
-<section class="section"><div class="container">
-  <div class="section-head"><div><h2>Berita Terkini</h2><p>Dari InfoBekasi.co.id</p></div><a class="link-more" href="berita.html">Lihat semua <svg class="ic ic-sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
-  <div class="bt-list" id="beritaHome"><div class="meta" style="padding:16px">Memuat berita...</div></div>
-</div></section>
+<section class="hm-quick" aria-label="Menu utama"><div class="container"><div class="hm-quick__card"><div class="hm-quick__grid"><a class="hm-tile is-active" href="index.html" aria-current="page"><span class="hm-tile__ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span><span><b>Beranda</b><small>Halaman utama</small></span></a><a class="hm-tile" href="informasi.html"><span class="hm-tile__ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-megaphone"/></svg></span><span><b>Informasi</b><small>&amp; Pengumuman</small></span></a><a class="hm-tile" href="agenda.html"><span class="hm-tile__ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-calendar-days"/></svg></span><span><b>Agenda</b><small>Kegiatan</small></span></a><a class="hm-tile" href="layanan.html"><span class="hm-tile__ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg></span><span><b>Layanan</b><small>Warga</small></span></a><a class="hm-tile" href="transparansi.html"><span class="hm-tile__ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-file-text"/></svg></span><span><b>Transparansi</b><small>Kas RT</small></span></a><a class="hm-tile" href="umkm.html"><span class="hm-tile__ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-store"/></svg></span><span><b>UMKM</b><small>Warga</small></span></a><a class="hm-tile" href="galeri.html"><span class="hm-tile__ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-images"/></svg></span><span><b>Galeri</b><small>Kegiatan</small></span></a><a class="hm-tile" href="layanan.html#lapor"><span class="hm-tile__ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-triangle-alert"/></svg></span><span><b>Lapor</b><small>&amp; Pengaduan</small></span></a><a class="hm-tile" href="kontak.html"><span class="hm-tile__ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span><span><b>Kontak</b><small>Penting</small></span></a></div></div></div></section>
+
+<div class="container">
+  <div class="hm-grid">
+    <section class="hm-card hm-span2" aria-labelledby="hBerita">
+      <div class="hm-card__head"><h2 id="hBerita"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-newspaper"/></svg></span>Berita terkini</h2><a class="link-more" href="berita.html">Lihat semua<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a></div>
+      <div id="beritaHome"><div class="hm-empty">Memuat berita...</div></div>
+    </section>
+    <section class="hm-card hm-card--dark" aria-labelledby="hLayanan">
+      <div class="hm-card__head"><h2 id="hLayanan"><span class="sg-ic" style="background:rgba(212,166,74,.16)"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-zap"/></svg></span>Layanan cepat</h2></div>
+      <a class="hm-svc" href="bayar.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-credit-card"/></svg></span><span><b>Bayar iuran RT</b><small>Lapor pembayaran online</small></span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a>
+      <a class="hm-svc" href="daftar-hadir.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-calendar-check"/></svg></span><span><b>Daftar hadir</b><small>Kegiatan warga &amp; acara</small></span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a>
+      <a class="hm-svc" href="layanan.html#lapor"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-triangle-alert"/></svg></span><span><b>Laporan warga</b><small>Sampaikan keluhan atau saran</small></span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a>
+      <a class="hm-svc" href="informasi.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-megaphone"/></svg></span><span><b>Info pengumuman</b><small>Berita terbaru dari RT</small></span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a>
+      <a class="hm-svc" href="kontak.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span><span><b>Kontak pengurus</b><small>Ketua, sekretaris, bendahara</small></span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a>
+      <a class="hm-svc" href="tambahan.html" id="btnTambahan" style="display:none"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-target"/></svg></span><span><b>Iuran tambahan</b><small>Dana khusus yang sedang dibuka</small></span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a>
+    </section>
+
+    <section class="hm-card" aria-labelledby="hAgenda">
+      <div class="hm-card__head"><h2 id="hAgenda"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-calendar-days"/></svg></span>Agenda terdekat</h2><a class="link-more" href="agenda.html">Semua<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a></div>
+      <div id="agendaListHome"><div class="hm-empty">Memuat agenda...</div></div>
+    </section>
+    <section class="hm-card" aria-labelledby="hInfo">
+      <div class="hm-card__head"><h2 id="hInfo"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-megaphone"/></svg></span>Pengumuman</h2><a class="link-more" href="informasi.html">Semua<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a></div>
+      <div id="infoListHome"><div class="hm-empty">Memuat informasi...</div></div>
+    </section>
+    <section class="hm-card hm-card--dark hm-welcome" aria-labelledby="hWelcome">
+      <p class="hm-eyebrow">Assalamu&rsquo;alaikum</p>
+      <h2 id="hWelcome">Selamat datang, warga RT 10 / RW 021</h2>
+      <p>Portal ini adalah pusat informasi, layanan, dan administrasi warga Villa Indah Pulo Timaha. Mari bersama menjaga kekompakan dan kemajuan lingkungan kita.</p>
+      <a class="btn btn-gold" href="layanan.html">Jelajahi layanan<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+      <div class="hm-stats">
+        <div class="hm-stat"><strong id="statKK">&mdash;</strong><span>Kepala keluarga</span></div>
+        <div class="hm-stat"><strong id="statAgenda">&mdash;</strong><span>Agenda aktif</span></div>
+        <div class="hm-stat"><strong id="statInfo">&mdash;</strong><span>Pengumuman</span></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="hm-lapor" aria-labelledby="hLapor">
+    <div><h2 id="hLapor">Ada masalah di lingkungan?</h2>
+      <p>Sampaikan langsung ke pengurus lewat portal. Laporan Anda membantu lingkungan tetap aman dan nyaman.</p>
+      <div class="hm-lapor__chips"><span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-lightbulb"/></svg>Lampu jalan</span><span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-trash-2"/></svg>Sampah</span><span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-droplets"/></svg>Drainase</span><span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-shield-check"/></svg>Keamanan</span><span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-building"/></svg>Fasilitas umum</span></div></div>
+    <a class="btn btn-gold" href="layanan.html#lapor"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-triangle-alert"/></svg>Buat laporan</a>
+  </section>
+
+  <nav class="hm-promo" aria-label="Jelajahi lebih lanjut">
+    <a href="transparansi.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-file-text"/></svg></span><span><b>Transparansi kas RT</b><small>Saldo, pemasukan, dan pengeluaran</small></span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a>
+    <a href="umkm.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-store"/></svg></span><span><b>UMKM warga</b><small>Dukung usaha tetangga sendiri</small></span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a>
+    <a href="galeri.html"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-images"/></svg></span><span><b>Galeri kegiatan</b><small>Dokumentasi kegiatan warga</small></span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a>
+  </nav>
+</div>
 </main>
-
-<footer class="footer">
-  <div class="container footer-grid">
-    <div>
-      <div class="brand"><img class="brand-logo" src="assets/logo-badge.png" alt="Logo RT 10 / RW 021" loading="lazy"><span class="brand-text"><strong>SIAGA</strong><span><b>RT 10 / RW 021</b></span><span>Villa Indah Pulo Timaha</span></span></div>
-      <p>Portal digital warga untuk informasi, pelayanan, transparansi, keamanan, UMKM, dan dokumentasi kegiatan lingkungan.</p>
-    </div>
-    <div><h5>Navigasi</h5><div class="footer-links">
-      <a href="informasi.html">Pengumuman</a><a href="agenda.html">Agenda</a><a href="layanan.html">Layanan Warga</a><a href="transparansi.html">Kas RT</a><a href="umkm.html">UMKM Warga</a><a href="galeri.html">Galeri</a></div></div>
-    <div><h5>Kontak</h5><div class="footer-links">
-      <a href="kontak.html"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg> Kontak Penting</a><a href="livechat.html"><svg class="ic" aria-hidden="true"><use href="#i-message"/></svg> Live Chat</a><a href="#" id="navGrupWA"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg> Grup WhatsApp Warga</a></div></div>
+<footer class="sg-footer">
+  <div class="sg-footer__grid">
+    <div><a class="sg-brand" href="index.html"><img src="assets/logo-badge.png" alt="" width="56" height="56" loading="lazy"><span class="sg-brand__t"><b>SIAGA</b><small>RT 10 / RW 021</small><small class="sg-sub2">Villa Indah Pulo Timaha</small></span></a>
+      <p>Portal digital warga untuk informasi, pelayanan, transparansi, keamanan, UMKM, dan dokumentasi kegiatan lingkungan.</p></div>
+    <div><h3>Jelajahi</h3><nav><a href="informasi.html">Pengumuman</a><a href="agenda.html">Agenda</a><a href="layanan.html">Layanan Warga</a><a href="transparansi.html">Kas RT</a><a href="umkm.html">UMKM Warga</a><a href="galeri.html">Galeri</a></nav></div>
+    <div><h3>Hubungi kami</h3><nav><a href="kontak.html"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Kontak Penting</a><a href="livechat.html"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-message-circle"/></svg>Live Chat</a><a href="#" id="navGrupWA" data-grupwa><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>Grup WhatsApp Warga</a><a href="layanan.html#lapor"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-triangle-alert"/></svg>Lapor &amp; Pengaduan</a></nav></div>
   </div>
-  <div class="container footer-bottom"><span>&copy; RT 10 / RW 021 Villa Indah Pulo Timaha</span><span class="tagline">Bersama membangun lingkungan yang lebih baik</span></div>
+  <div class="sg-footer__bar"><span>&copy; 2026 SIAGA RT 10 / RW 021 Villa Indah Pulo Timaha</span><em>Bersama Kita Bisa</em></div>
 </footer>
-
-<nav class="bottom-nav" aria-label="Navigasi bawah">
-  <a class="bn-item active" href="index.html" aria-current="page"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span>Beranda</span></a>
-  <a class="bn-item" href="agenda.html"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span>Agenda</span></a>
-  <a class="bn-plus" href="layanan.html#lapor" aria-label="Buat laporan"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></a>
-  <a class="bn-item" href="layanan.html"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg><span>Layanan</span></a>
-  <button class="bn-item" type="button" id="btnBottomMenu"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
+<nav class="sg-bottom" aria-label="Navigasi cepat">
+  <a href="index.html" class="active" aria-current="page"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-home"/></svg><span>Beranda</span></a><a href="agenda.html"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-calendar-days"/></svg><span>Agenda</span></a>
+  <button type="button" class="sg-plus" data-open="sgQuick" aria-label="Aksi cepat"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></button>
+  <a href="layanan.html"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg><span>Layanan</span></a>
+  <button type="button" data-open="sgAccount" aria-label="Akun dan bantuan"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-user-circle"/></svg><span>Akun</span></button>
 </nav>
+<div class="sg-layer sg-search" id="sgSearch" hidden><div class="sg-layer__scrim" data-close></div>
+  <div class="sg-panel" role="dialog" aria-modal="true" aria-label="Cari halaman"><div class="sg-searchbox"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-search"/></svg><input id="sgSearchInput" type="search" placeholder="Cari halaman, mis. kas, lapor, agenda" autocomplete="off" aria-label="Cari halaman"><button type="button" class="sg-iconbtn" data-close aria-label="Tutup" style="width:36px;height:36px;border-radius:11px"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button></div>
+  <ul id="sgSearchList"></ul></div></div>
+<div class="sg-layer sg-drawer" id="sgDrawer" hidden><div class="sg-layer__scrim" data-close></div>
+  <div class="sg-panel" role="dialog" aria-modal="true" aria-label="Menu"><div class="sg-panel__head"><h2>Menu SIAGA</h2><button type="button" class="sg-iconbtn" data-close aria-label="Tutup menu"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button></div>
+  <ul><li><a href="#" data-open="sgSearch" data-focus="#sgSearchInput" onclick="return false"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-search"/></svg></span><span>Cari halaman<small>Temukan layanan dengan cepat</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li></ul><hr>
+  <ul><li><a href="index.html" class="active"><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></span><span>Beranda<small>Halaman utama</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="informasi.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-megaphone"/></svg></span><span>Informasi<small>Pengumuman warga</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="agenda.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-calendar-days"/></svg></span><span>Agenda<small>Jadwal kegiatan</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="layanan.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg></span><span>Layanan<small>Surat & layanan</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="transparansi.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-file-text"/></svg></span><span>Transparansi<small>Kas RT</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="umkm.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-store"/></svg></span><span>UMKM<small>Usaha warga</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="galeri.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-images"/></svg></span><span>Galeri<small>Dokumentasi kegiatan</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li></ul><hr><div class="sg-label">Lainnya</div><ul><li><a href="layanan.html#lapor" class="is-cta "><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-triangle-alert"/></svg></span><span>Lapor & Pengaduan<small>Sampaikan masalah lingkungan</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="kontak.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span><span>Kontak Penting<small>Telepon & WhatsApp pengurus</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="livechat.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-message-circle"/></svg></span><span>Live Chat<small>Tanya langsung ke pengurus</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="berita.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-newspaper"/></svg></span><span>Berita Terkini<small>Berita seputar Bekasi</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="bayar.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-credit-card"/></svg></span><span>Bayar Iuran<small>Lapor pembayaran iuran bulanan</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="daftar-hadir.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-calendar-check"/></svg></span><span>Daftar Hadir<small>Absen kegiatan & undian</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li></ul></div></div>
+<div class="sg-layer sg-sheet" id="sgQuick" hidden><div class="sg-layer__scrim" data-close></div>
+  <div class="sg-panel" role="dialog" aria-modal="true" aria-label="Aksi cepat"><div class="sg-panel__head"><h2>Aksi cepat</h2><button type="button" class="sg-iconbtn" data-close aria-label="Tutup"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button></div><ul><li><a href="layanan.html#lapor" class="is-cta "><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-triangle-alert"/></svg></span><span>Buat laporan<small>Masalah di lingkungan</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="bayar.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-credit-card"/></svg></span><span>Bayar iuran<small>Lapor pembayaran bulanan</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="layanan.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-clipboard-list"/></svg></span><span>Ajukan layanan<small>Surat pengantar & lainnya</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="daftar-hadir.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-calendar-check"/></svg></span><span>Daftar hadir<small>Absen kegiatan</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="livechat.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-message-circle"/></svg></span><span>Live chat<small>Tanya pengurus</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li></ul></div></div>
+<div class="sg-layer sg-sheet" id="sgAccount" hidden><div class="sg-layer__scrim" data-close></div>
+  <div class="sg-panel" role="dialog" aria-modal="true" aria-label="Akun dan bantuan"><div class="sg-panel__head"><h2>Akun &amp; bantuan</h2><button type="button" class="sg-iconbtn" data-close aria-label="Tutup"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button></div><ul><li><a href="livechat.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-message-circle"/></svg></span><span>Live Chat<small>Tanya langsung ke pengurus</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="kontak.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span><span>Kontak Penting<small>Pengurus & nomor darurat</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="kontak.html" data-grupwa><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg></span><span>Grup WhatsApp Warga<small>Gabung percakapan warga</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li></ul><hr><div class="sg-label">Khusus pengurus</div><ul><li><a href="admin.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-layout-dashboard"/></svg></span><span>Admin RT<small>Kelola konten & keuangan</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="bendahara.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-wallet"/></svg></span><span>Bendahara<small>Kas, iuran & laporan</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li><li><a href="humas.html" class=""><span class="sg-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg></span><span>Humas Keliling<small>Setoran & penagihan</small></span><svg class="i sg-chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></a></li></ul></div></div>
 <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
 <script src="config.js"></script><script>
@@ -162,126 +148,98 @@
   bumper.addEventListener("click",function(){ clearTimeout(autoTimer); closeBumper(); });
 })();
 
-/* ---- Navigasi: dropdown Lainnya, pencarian halaman, drawer mobile ---- */
-(function(){
-  var more=document.getElementById("navMore"), btnMore=document.getElementById("btnMore");
-  var finder=document.getElementById("finder"), btnSearch=document.getElementById("btnSearch"), fin=document.getElementById("finderInput");
-  function setMore(o){ if(!more) return; more.classList.toggle("open",o); btnMore.setAttribute("aria-expanded",o?"true":"false"); }
-  function setFinder(o){ if(!finder) return; finder.classList.toggle("open",o); if(btnSearch) btnSearch.setAttribute("aria-expanded",o?"true":"false"); if(o&&fin) fin.focus(); }
-  if(btnMore) btnMore.addEventListener("click",function(e){ e.stopPropagation(); setMore(!more.classList.contains("open")); setFinder(false); });
-  if(btnSearch) btnSearch.addEventListener("click",function(e){ e.stopPropagation(); setFinder(!finder.classList.contains("open")); setMore(false); });
-  document.addEventListener("click",function(e){
-    if(more && !more.contains(e.target)) setMore(false);
-    if(finder && !finder.contains(e.target) && e.target!==btnSearch) setFinder(false);
-  });
-  document.addEventListener("keydown",function(e){ if(e.key==="Escape"){ setMore(false); setFinder(false); closeDrawer(); } });
-  if(fin) fin.addEventListener("input",function(){
-    var q=fin.value.trim().toLowerCase();
-    document.querySelectorAll("#finderList a").forEach(function(a){ a.style.display=(!q||a.getAttribute("data-t").indexOf(q)>-1)?"":"none"; });
-  });
-  function openDrawer(){ document.body.classList.add("drawer-open"); }
-  function closeDrawer(){ document.body.classList.remove("drawer-open"); }
-  var b1=document.getElementById("btnBurger"), b2=document.getElementById("btnBottomMenu"), b3=document.getElementById("btnCloseDrawer"), bg=document.getElementById("drawerBg");
-  if(b1) b1.addEventListener("click",openDrawer);
-  if(b2) b2.addEventListener("click",openDrawer);
-  if(b3) b3.addEventListener("click",closeDrawer);
-  if(bg) bg.addEventListener("click",closeDrawer);
-  window.closeDrawer=closeDrawer;
-})();
-
-document.addEventListener("DOMContentLoaded",()=>{
-  const g=document.getElementById("navGrupWA");
-  if(g){
-    if(RT_CONFIG.linkGrupWA){ g.href=RT_CONFIG.linkGrupWA; g.target="_blank"; g.rel="noopener"; }
-    else { g.href="kontak.html"; g.removeAttribute("target"); }
-  }
-  const kk=document.getElementById("statKK");
+document.addEventListener("DOMContentLoaded",function(){
+  var kk=document.getElementById("statKK");
   if(kk) kk.textContent = RT_CONFIG.jumlahKK || "—";
-
-  function ic(n){ return '<svg class="ic" aria-hidden="true"><use href="#i-'+n+'"/></svg>'; }
-  var ICON_KATEGORI_H={Penting:"megaphone",Kegiatan:"users",Fasilitas:"map-pin",Keamanan:"shield"};
-  var BADGE_KATEGORI_H={Penting:"",Kegiatan:"navy",Fasilitas:"navy",Keamanan:""};
-  var BULAN_ID_H=["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
-  function escH_(s){return String(s||"").replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
-  function fmtTglLongH_(iso){
+  var I=window.SiagaIcon||function(){return "";};
+  var ICON_KATEGORI={Penting:"megaphone",Kegiatan:"sparkles",Fasilitas:"lightbulb",Keamanan:"shield-check"};
+  var BADGE_KATEGORI={Penting:"",Kegiatan:"green",Fasilitas:"blue",Keamanan:"gold"};
+  var BULAN_ID=["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
+  function esc(s){return String(s||"").replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  function fmtTglLong(iso){
     if(!iso) return "";
-    var BULAN=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
-    var p=iso.split("-"); return parseInt(p[2],10)+" "+(BULAN[parseInt(p[1],10)-1]||"")+" "+p[0];
+    var B=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+    var p=iso.split("-"); return parseInt(p[2],10)+" "+(B[parseInt(p[1],10)-1]||"")+" "+p[0];
   }
-  function fmtTglH_(iso){
+  function fmtTgl(iso){
     if(!iso) return {d:"--",m:"-"};
-    var p=iso.split("-"); var d=parseInt(p[2],10); var m=BULAN_ID_H[parseInt(p[1],10)-1]||"-";
+    var p=iso.split("-"); var d=parseInt(p[2],10); var m=BULAN_ID[parseInt(p[1],10)-1]||"-";
     return {d:(d<10?"0"+d:d),m:m};
   }
-  var elInfo = document.getElementById("infoListHome");
-  var elAgenda = document.getElementById("agendaListHome");
-  var statAgendaEl = document.getElementById("statAgenda");
-  var statInfoEl = document.getElementById("statInfo");
-  var bellDot = document.getElementById("bellDot");
-  var cfgH = RT_CONFIG.firebaseConfig || {};
-  if(!(cfgH.apiKey && cfgH.databaseURL && cfgH.appId)){
-    if(elInfo) elInfo.innerHTML='<div class="announcement"><p class="meta">Belum ada pengumuman.</p></div>';
-    if(elAgenda) elAgenda.innerHTML='<div class="agenda-item"><p class="meta">Belum ada agenda terjadwal.</p></div>';
+  var elInfo=document.getElementById("infoListHome"), elAgenda=document.getElementById("agendaListHome");
+  var statAgendaEl=document.getElementById("statAgenda"), statInfoEl=document.getElementById("statInfo");
+  var cfg=RT_CONFIG.firebaseConfig||{};
+  var KOSONG_INFO='<div class="hm-empty">Belum ada pengumuman.</div>', KOSONG_AGENDA='<div class="hm-empty">Belum ada agenda terjadwal.</div>';
+  if(!(cfg.apiKey && cfg.databaseURL && cfg.appId)){
+    if(elInfo) elInfo.innerHTML=KOSONG_INFO;
+    if(elAgenda) elAgenda.innerHTML=KOSONG_AGENDA;
     if(statAgendaEl) statAgendaEl.textContent="0";
     if(statInfoEl) statInfoEl.textContent="0";
     return;
   }
-  if(!firebase.apps.length) firebase.initializeApp(cfgH);
-  var dbH = firebase.database();
+  if(!firebase.apps.length) firebase.initializeApp(cfg);
+  var db=firebase.database();
 
-  dbH.ref("informasi").on("value", function(snap){
-    var val = snap.val() || {};
-    var items = Object.keys(val).map(function(k){ return val[k]; });
-    items.sort(function(a,b){ return (b.tanggal||"").localeCompare(a.tanggal||"") || (b.createdAt||0)-(a.createdAt||0); });
-    if(statInfoEl) statInfoEl.textContent = items.length;
-    if(bellDot) bellDot.hidden = items.length===0;
+  db.ref("informasi").on("value",function(snap){
+    var val=snap.val()||{};
+    var items=Object.keys(val).map(function(k){return val[k];});
+    items.sort(function(a,b){return (b.tanggal||"").localeCompare(a.tanggal||"")||(b.createdAt||0)-(a.createdAt||0);});
+    if(statInfoEl) statInfoEl.textContent=items.length;
     if(!elInfo) return;
-    var list = items.slice(0,3);
-    if(list.length===0){ elInfo.innerHTML='<div class="announcement"><p class="meta">Belum ada pengumuman.</p></div>'; return; }
-    elInfo.innerHTML = list.map(function(it){
-      var icon = ICON_KATEGORI_H[it.kategori] || "megaphone";
-      var badgeCls = BADGE_KATEGORI_H[it.kategori] || "";
-      var meta = fmtTglLongH_(it.tanggal) + (it.isi ? " • " + it.isi : "");
-      return '<div class="announcement"><div class="ann-icon">'+ic(icon)+'</div><div><span class="badge '+badgeCls+'">'+escH_(it.kategori||"Info")+'</span><h4>'+escH_(it.judul)+'</h4><p class="meta">'+escH_(meta)+'</p></div></div>';
+    var list=items.slice(0,3);
+    if(!list.length){elInfo.innerHTML=KOSONG_INFO;return;}
+    elInfo.innerHTML=list.map(function(it){
+      var icon=ICON_KATEGORI[it.kategori]||"megaphone", cls=BADGE_KATEGORI[it.kategori]||"";
+      return '<div class="hm-info"><div class="ann-icon">'+I(icon)+'</div><div><span class="badge '+cls+'">'+esc(it.kategori||"Info")+'</span><h4>'+esc(it.judul)+'</h4><p class="meta">'+esc(fmtTglLong(it.tanggal)+(it.isi?" • "+it.isi:""))+'</p></div></div>';
     }).join("");
   });
 
-  dbH.ref("agenda").on("value", function(snap){
-    var val = snap.val() || {};
-    var items = Object.keys(val).map(function(k){ return val[k]; });
-    items.sort(function(a,b){ return (a.tanggal||"").localeCompare(b.tanggal||""); });
-    var today = new Date().toISOString().slice(0,10);
-    var upcoming = items.filter(function(it){ return (it.tanggal||"") >= today; });
-    if(statAgendaEl) statAgendaEl.textContent = upcoming.length;
-    var list = (upcoming.length ? upcoming : items).slice(0,3);
+  db.ref("agenda").on("value",function(snap){
+    var val=snap.val()||{};
+    var items=Object.keys(val).map(function(k){return val[k];});
+    items.sort(function(a,b){return (a.tanggal||"").localeCompare(b.tanggal||"");});
+    var today=new Date().toISOString().slice(0,10);
+    var upcoming=items.filter(function(it){return (it.tanggal||"")>=today;});
+    if(statAgendaEl) statAgendaEl.textContent=upcoming.length;
+    var list=(upcoming.length?upcoming:items).slice(0,3);
     if(!elAgenda) return;
-    if(list.length===0){ elAgenda.innerHTML='<div class="agenda-item"><p class="meta">Belum ada agenda terjadwal.</p></div>'; return; }
-    elAgenda.innerHTML = list.map(function(it){
-      var dt=fmtTglH_(it.tanggal);
-      var meta=[it.waktu?it.waktu+" WIB":"", it.lokasi||""].filter(Boolean).join(" • ") || it.keterangan || "-";
-      return '<div class="agenda-item"><div class="datebox">'+dt.d+'<small>'+dt.m+'</small></div><div><h4>'+escH_(it.judul)+'</h4><p class="meta">'+escH_(meta)+'</p></div></div>';
+    if(!list.length){elAgenda.innerHTML=KOSONG_AGENDA;return;}
+    elAgenda.innerHTML=list.map(function(it){
+      var dt=fmtTgl(it.tanggal), meta="";
+      if(it.waktu) meta+='<span>'+I("clock")+esc(it.waktu)+' WIB</span>';
+      if(it.lokasi) meta+='<span>'+I("map-pin")+esc(it.lokasi)+'</span>';
+      if(!meta) meta='<span>'+esc(it.keterangan||"-")+'</span>';
+      return '<div class="hm-agenda"><div class="datebox">'+dt.d+'<small>'+dt.m+'</small></div><div><h4>'+esc(it.judul)+'</h4><p class="meta">'+meta+'</p></div></div>';
     }).join("");
   });
 });
 function showToast(msg){
-  let t=document.querySelector(".toast");
-  if(!t){t=document.createElement("div");t.className="toast";document.body.appendChild(t)}
+  var t=document.querySelector(".toast");
+  if(!t){t=document.createElement("div");t.className="toast";document.body.appendChild(t);}
   t.textContent=msg;t.classList.add("show");
   clearTimeout(window.toastTimer);
-  window.toastTimer=setTimeout(()=>t.classList.remove("show"),2600);
+  window.toastTimer=setTimeout(function(){t.classList.remove("show");},2600);
 }
 </script>
 <script>
 (function(){
   var el=document.getElementById("beritaHome"); if(!el) return;
+  var I=function(n){return window.SiagaIcon?window.SiagaIcon(n):"";};
+  var IK={Ekonomi:"shopping-bag",Lingkungan:"leaf",Kesehatan:"heart",Peristiwa:"triangle-alert",Olahraga:"activity",Kuliner:"utensils",Travel:"map-pin",Sejarah:"file-text",Events:"sparkles"};
   var B=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
   function e(s){return String(s||"").replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+  function tgl(t){var p=t.split("-");return (+p[2])+" "+B[+p[1]-1]+" "+p[0];}
   fetch("berita.json?t="+Date.now()).then(function(r){return r.json()}).then(function(d){
-    var it=(d.items||[]).slice().sort(function(a,b){return b.tgl.localeCompare(a.tgl)}).slice(0,3);
-    if(!it.length){el.innerHTML='<div class="meta" style="padding:16px">Belum ada berita.</div>';return}
-    el.innerHTML=it.map(function(n){var p=n.tgl.split("-");
-      return '<a class="bt-item" href="'+e(n.link)+'" target="_blank" rel="noopener"><div class="bt-th"><svg class="ic" aria-hidden="true"><use href="#i-newspaper"/></svg>'+(n.img?'<img src="'+e(n.img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">':'')+'</div><div class="bt-tx"><h4>'+e(n.judul)+'</h4><small>'+(+p[2])+" "+B[+p[1]-1]+" "+p[0]+' &nbsp;|&nbsp; '+e(d.sumber||"infobekasi.co.id")+'</small></div></a>'}).join("");
-  }).catch(function(){el.innerHTML='<div class="meta" style="padding:16px">Berita belum bisa dimuat.</div>'});
+    var it=(d.items||[]).slice().sort(function(a,b){return b.tgl.localeCompare(a.tgl)}).slice(0,4);
+    if(!it.length){el.innerHTML='<div class="hm-empty">Belum ada berita.</div>';return}
+    var f=it[0], sumber=e(d.sumber||"infobekasi.co.id");
+    var html='<a class="hm-feat" href="'+e(f.link)+'" target="_blank" rel="noopener">'+(f.img?'<img src="'+e(f.img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">':'')+
+      '<div class="hm-feat__body"><span class="badge">'+e(f.kat||"Berita")+'</span><h3>'+e(f.judul)+'</h3><small>'+tgl(f.tgl)+' &nbsp;|&nbsp; '+sumber+'</small></div></a>';
+    html+='<div class="hm-news">'+it.slice(1).map(function(n){
+      return '<a class="hm-news__item" href="'+e(n.link)+'" target="_blank" rel="noopener"><div class="hm-news__th">'+I(IK[n.kat]||"newspaper")+(n.img?'<img src="'+e(n.img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">':'')+'</div><div><h4>'+e(n.judul)+'</h4><small>'+tgl(n.tgl)+'</small></div>'+I("chevron-right")+'</a>';
+    }).join("")+'</div>';
+    el.innerHTML=html;
+  }).catch(function(){el.innerHTML='<div class="hm-empty">Berita belum bisa dimuat.</div>'});
 })();
 </script>
 <script>
@@ -295,4 +253,5 @@ function showToast(msg){
   }, 500); setTimeout(function(){ clearInterval(t); }, 15000);
 } catch(e){} })();
 </script>
+<script src="assets/siaga-ui.js?v=1"></script>
 </body></html>

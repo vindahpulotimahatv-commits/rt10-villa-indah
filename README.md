@@ -103,3 +103,11 @@ Untuk pengumpulan dana di luar iuran bulanan (perbaikan jalan, santunan, acara, 
 - **Humas** → kartu "🎯 Iuran Tambahan" di `humas.html` (hanya tampil bila ada yang aktif): catat cash, kwitansi PDF, kabari Bendahara untuk setoran.
 - Alur uang sama seperti iuran bulanan: transfer/cash dikonfirmasi Bendahara → otomatis jadi **Pemasukan Kas RT** (kategori "Iuran Tambahan") → dipublikasikan lewat tombol Publikasi ke Transparansi.
 - **Wajib**: gabungkan aturan baru di `firebase-rules-tambahan-saja.json` ke Firebase Rules (lihat panduan di dalam file `firebase-rules.json`).
+
+## Tampilan (redesign UI 2026)
+
+Seluruh tampilan memakai satu design system: `assets/siaga.css` (token warna navy/emas, tipografi Plus Jakarta Sans + Inter, tombol, kartu, form, tabel) dan `assets/siaga-ui.js` (ikon Lucide inline, navbar, drawer, pencarian halaman, bottom-nav mobile). Kedua file dimuat di setiap halaman setelah CSS inline lama, jadi logika Firebase/form tidak berubah.
+
+- Ganti warna/radius/bayangan cukup di blok `:root` pada `assets/siaga.css`.
+- Emoji di tampilan otomatis diganti ikon oleh `siaga-ui.js` (teks pesan WhatsApp tidak tersentuh). Ikon baru: tambahkan path SVG Lucide pada daftar `ICONS` di `assets/siaga-ui.js`.
+- Header, bottom-nav, dan footer halaman publik ada di tiap file HTML (blok `sg-header`, `sg-bottom`, `sg-footer`); ubah menu di sana.
