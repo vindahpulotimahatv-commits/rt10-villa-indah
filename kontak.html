@@ -335,6 +335,8 @@ radial-gradient(circle at 85% 20%,rgba(213,166,43,.12),transparent 18%),
   <div class="contact-card"><div class="contact-icon">🚒</div><div><strong>Pemadam Kebakaran</strong><span id="cPemadam">113</span></div></div>
   <div class="contact-card"><div class="contact-icon">🚑</div><div><strong>Ambulans / Faskes</strong><span id="cAmbulans">119</span></div></div>
 </div>
+<h2 style="margin:26px 0 14px;font-size:22px;color:#fff">Humas per Gang</h2>
+<div class="contact-grid" id="humasGrid"></div>
 <div style="height:20px"></div>
 <div class="callout"><div><h3>🚨 Kondisi darurat?</h3><p>Untuk keadaan yang mengancam keselamatan, hubungi layanan darurat resmi dan keamanan lingkungan.</p></div><a class="btn btn-gold" href="#" id="btnHubKeamanan">Hubungi Keamanan</a></div>
 </div></section>
@@ -398,6 +400,23 @@ document.addEventListener("DOMContentLoaded",()=>{
   setName("cNamaSekretaris", RT_CONFIG.namaSekretaris);
   setName("cNamaBendahara", RT_CONFIG.namaBendahara);
   setName("cNamaKeamanan", RT_CONFIG.namaKeamanan);
+
+  (function(){
+    const g=document.getElementById("humasGrid"); if(!g) return;
+    (RT_CONFIG.humasGang||[]).forEach(h=>{
+      const wa=String(h.wa||"").replace(/[^0-9]/g,"");
+      const tampil=wa.replace(/^62/,"0").replace(/(\d{4})(\d{4})(\d+)/,"$1-$2-$3");
+      const d=document.createElement("div"); d.className="contact-card";
+      const ic=document.createElement("div"); ic.className="contact-icon"; ic.textContent="🤝";
+      const b=document.createElement("div");
+      const s=document.createElement("strong"); s.textContent="Humas "+h.gang;
+      const sp=document.createElement("span");
+      if(wa){const a=document.createElement("a"); a.href="tel:+"+wa; a.textContent=tampil; a.style.color="inherit"; sp.appendChild(a);} else sp.textContent="-";
+      b.appendChild(s); b.appendChild(sp);
+      if(h.nama){const sm=document.createElement("small"); sm.className="contact-name"; sm.textContent=h.nama; b.appendChild(sm);}
+      d.appendChild(ic); d.appendChild(b); g.appendChild(d);
+    });
+  })();
 
   const btnH=document.getElementById("btnHubKeamanan");
   if(btnH){
