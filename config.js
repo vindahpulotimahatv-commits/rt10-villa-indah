@@ -37,9 +37,9 @@ const RT_CONFIG = {
   // ---------- Nomor WhatsApp pengurus (WAJIB diisi agar tombol berfungsi) ----------
   // Format: kode negara 62 + nomor tanpa angka 0 di depan.
   // Contoh nomor 0812-3456-7890 ditulis: "6281234567890"
-  waKetua: "",
-  waSekretaris: "",
-  waBendahara: "",
+  waKetua: "6287786630841",
+  waSekretaris: "6285925032017",
+  waBendahara: "6281222710041",
   waKeamanan: "",
 
   // Nomor WhatsApp yang menerima pesan "Pendaftaran UMKM" dari halaman UMKM.
@@ -47,9 +47,9 @@ const RT_CONFIG = {
   waUMKM: "",
 
   // Nama pengurus (ditampilkan di halaman Kontak)
-  namaKetua: "",
-  namaSekretaris: "",
-  namaBendahara: "",
+  namaKetua: "KHORIYANTO WIBOWO",
+  namaSekretaris: "MUGI PRASETYO",
+  namaBendahara: "IMAM SANTOSO",
   namaKeamanan: "",
 
   // Link undangan Grup WhatsApp warga (opsional, kosongkan jika belum ada)
@@ -66,10 +66,20 @@ const RT_CONFIG = {
   alamatKopSurat: "Perumahan Villa Indah Pulo Timaha, Desa Babelan Kota",
   emailKopSurat: "",
 
+  // ---------- Kontak Humas per Gang (tampil di halaman Kontak) ----------
+  // wa: format 62 + nomor tanpa 0 di depan.
+  humasGang: [
+    { gang: "Gang Damai",              nama: "ERWIN",         wa: "6282177173399" },
+    { gang: "Gang Ikhlas",             nama: "SUJARWOKO",     wa: "6285772737040" },
+    { gang: "Gang Barokah",            nama: "EKO WIDIYANTO", wa: "6281388152661" },
+    { gang: "Gang Arjuna",             nama: "Ibu Budi",      wa: "6281386555975" },
+    { gang: "Gang Asy-Syakiroh & D6",  nama: "HENDY",         wa: "6288293655490" }
+  ],
+
   // ---------- Nomor telepon untuk ditampilkan di halaman Kontak ----------
-  teleponKetua: "",
-  teleponSekretaris: "",
-  teleponBendahara: "",
+  teleponKetua: "0877-8663-0841",
+  teleponSekretaris: "0859-2503-2017",
+  teleponBendahara: "0812-2271-0041",
   teleponKeamanan: "",
   teleponPemadam: "113",
   teleponAmbulans: "119",
